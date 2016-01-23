@@ -16,6 +16,9 @@
        http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
        http://cxf.apache.org/transports/http-jetty/configuration http://cxf.apache.org/schemas/configuration/http-jetty.xsd">
 	
+	<bean id="configservice" class="com.ericsson.tm.core.config.ConfigService" />	
+	<bean id ="commonSpringHelper" class="com.ericsson.tm.core.SpringHelper" />
+	
 	<bean id="gsonCustomerProfile" class="org.apache.camel.component.gson.GsonDataFormat">
 		<property name="unmarshalType"
 			value="com.ericsson.tm.entities.CustomerProfile" />
