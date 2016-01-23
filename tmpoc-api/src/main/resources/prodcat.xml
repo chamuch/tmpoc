@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE prodcat SYSTEM "prodcat.dtd">
+
 <prodcat>
-	<product id="PRD_9">
+
+	<product id="PRD_14" discoverable="true">
+		<name>UniFi Advance 30Mbps</name>
+		<composition type="include">
+			<atomicProduct id="PRD_9"/>
+			<atomicProduct id="PRD_11"/>
+			<atomicProduct id="PRD_13"/>
+		</composition>
+	</product>
+
+	<product id="PRD_9" discoverable="true">
 		<name>HyppTV Residential</name>
 		<composition type="include">
 			<atomicProduct id="PRD_5" />
@@ -12,7 +24,7 @@
 		</composition>
 	</product>
 
-	<product id="PRD_11">
+	<product id="PRD_11"  discoverable="true">
 		<name>Residential Voice</name>
 		<composition type="include">
 			<atomicProduct id="PRD_10" />
@@ -20,7 +32,7 @@
 	</product>
 
 
-	<product id="PRD_10">
+	<product id="PRD_10"  discoverable="false">
 		<name>Residential 1BB</name>
 		<description>Residential Voice Basic - 1BB #CRLF# Phone #CRLF# Voice - Call Line Identification Presentation (CLIP) #CRLF# Standard Offering Allow All #CRLF# Voice - Do Not Disturb</description>
 		<composition type="include">
@@ -28,15 +40,15 @@
 		</composition>
 	</product>
 
-	<product id="PRD_13">
-		<name>HyppTV Residential</name>
+	<product id="PRD_13"  discoverable="true">
+		<name>Residential High Speed Internet</name>
 		<composition type="include">
 			<atomicProduct id="PRD_12" />
 		</composition>
 	</product>
 
 
-	<product id="PRD_12">
+	<product id="PRD_12" discoverable="false">
 		<name>Wifi</name>
 		<description>Wi-Fi (RG) #CRLF# Commitment Period - 1BB #CRLF# High SPeed Internet - Residential - 30 Mbps</description>
 		<composition type="include">
@@ -44,7 +56,7 @@
 		</composition>
 	</product>
 
-	<product id="PRD_5">
+	<product id="PRD_5" discoverable="true">
 		<name>Promo 1</name>
 		<description>Promo 1 Month Free Premium Channels #CRLF# Commitment Period -
 			IPTV Consumer #CRLF# HyppTV Everywhere</description>
@@ -53,49 +65,49 @@
 		</composition>
 	</product>
 
-	<product id="PRD_6">
+	<product id="PRD_6" discoverable="true">
 		<name>HyppTV Aneka Pack</name>
 		<composition type="include">
 			<atomicProduct id="PRD_2" />
 		</composition>
 	</product>
 
-	<product id="PRD_7">
+	<product id="PRD_7" discoverable="true">
 		<name>HyppTV Jumbo Pack</name>
 		<composition type="include">
 			<atomicProduct id="PRD_3" />
 		</composition>
 	</product>
 
-	<product id="PRD_8">
-		<name>HyppTV Jumbo Pack</name>
+	<product id="PRD_8" discoverable="true">
+		<name>HyppTV Sport Pack</name>
 		<composition type="include">
 			<atomicProduct id="PRD_4" />
 		</composition>
 	</product>
 
-	<product id="PRD_1">
+	<product id="PRD_1" discoverable="false">
 		<name>HyppTV Everywhere Plan A Free</name>
 		<composition type="include">
 			<resource id="HyppTV" />
 		</composition>
 	</product>
 
-	<product id="PRD_2">
+	<product id="PRD_2" discoverable="false">
 		<name>Commitment Period - Aneka Pack</name>
 		<composition type="include">
 			<resource id="CommitmentPeriod" />
 		</composition>
 	</product>
 
-	<product id="PRD_3">
+	<product id="PRD_3" discoverable="false">
 		<name>Commitment Period - Jumbo Pack</name>
 		<composition type="include">
 			<resource id="CommitmentPeriod" />
 		</composition>
 	</product>
 
-	<product id="PRD_4">
+	<product id="PRD_4" discoverable="false">
 		<name>Commitment Period - Sport Pack</name>
 		<composition type="include">
 			<resource id="CommitmentPeriod" />

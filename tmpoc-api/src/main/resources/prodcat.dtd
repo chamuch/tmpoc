@@ -10,7 +10,17 @@
 
 <!ATTLIST product
 	id ID #REQUIRED
+	discoverable (true|false) #REQUIRED
 >
 
 <!ATTLIST composition
-	type (include|mutex)
+	type (include|mutex) #REQUIRED
+>
+
+<!ATTLIST atomicProduct
+	id IDREF #REQUIRED
+>
+
+<!ATTLIST resource
+	id CDATA #REQUIRED
+>

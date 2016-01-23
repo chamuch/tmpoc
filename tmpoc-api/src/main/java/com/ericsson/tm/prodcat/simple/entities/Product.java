@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlElement;
 public class Product {
 	
 	private String id = null;
+	private boolean discoverable = false;
 	private String name = null;
 	private String description = null;
 	private Composition composition = null;
@@ -17,6 +18,15 @@ public class Product {
 	
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	@XmlAttribute (name="discoverable")
+	public boolean isDiscoverable() {
+		return discoverable;
+	}
+
+	public void setDiscoverable(boolean discoverable) {
+		this.discoverable = discoverable;
 	}
 
 	@XmlElement (name="name")
