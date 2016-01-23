@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prodcat>
+	<product id="PRD_9">
+		<name>HyppTV Residential</name>
+		<composition type="include">
+			<atomicProduct id="PRD_5" />
+			<composition type="mutex">
+				<atomicProduct id="PRD_6" />
+				<atomicProduct id="PRD_7" />
+				<atomicProduct id="PRD_8" />
+			</composition>
+		</composition>
+	</product>
+
+	<product id="PRD_11">
+		<name>Residential Voice</name>
+		<composition type="include">
+			<atomicProduct id="PRD_10" />
+		</composition>
+	</product>
+
+
+	<product id="PRD_10">
+		<name>Residential 1BB</name>
+		<description>Residential Voice Basic - 1BB #CRLF# Phone #CRLF# Voice - Call Line Identification Presentation (CLIP) #CRLF# Standard Offering Allow All #CRLF# Voice - Do Not Disturb</description>
+		<composition type="include">
+			<resource id="EXT_1BB" />
+		</composition>
+	</product>
+
+	<product id="PRD_13">
+		<name>HyppTV Residential</name>
+		<composition type="include">
+			<atomicProduct id="PRD_12" />
+		</composition>
+	</product>
+
+
+	<product id="PRD_12">
+		<name>Wifi</name>
+		<description>Wi-Fi (RG) #CRLF# Commitment Period - 1BB #CRLF# High SPeed Internet - Residential - 30 Mbps</description>
+		<composition type="include">
+			<resource id="EXT_Wifi" />
+		</composition>
+	</product>
+
+	<product id="PRD_5">
+		<name>Promo 1</name>
+		<description>Promo 1 Month Free Premium Channels #CRLF# Commitment Period -
+			IPTV Consumer #CRLF# HyppTV Everywhere</description>
+		<composition type="include">
+			<atomicProduct id="PRD_1" />
+		</composition>
+	</product>
+
+	<product id="PRD_6">
+		<name>HyppTV Aneka Pack</name>
+		<composition type="include">
+			<atomicProduct id="PRD_2" />
+		</composition>
+	</product>
+
+	<product id="PRD_7">
+		<name>HyppTV Jumbo Pack</name>
+		<composition type="include">
+			<atomicProduct id="PRD_3" />
+		</composition>
+	</product>
+
+	<product id="PRD_8">
+		<name>HyppTV Jumbo Pack</name>
+		<composition type="include">
+			<atomicProduct id="PRD_4" />
+		</composition>
+	</product>
+
+	<product id="PRD_1">
+		<name>HyppTV Everywhere Plan A Free</name>
+		<composition type="include">
+			<resource id="HyppTV" />
+		</composition>
+	</product>
+
+	<product id="PRD_2">
+		<name>Commitment Period - Aneka Pack</name>
+		<composition type="include">
+			<resource id="CommitmentPeriod" />
+		</composition>
+	</product>
+
+	<product id="PRD_3">
+		<name>Commitment Period - Jumbo Pack</name>
+		<composition type="include">
+			<resource id="CommitmentPeriod" />
+		</composition>
+	</product>
+
+	<product id="PRD_4">
+		<name>Commitment Period - Sport Pack</name>
+		<composition type="include">
+			<resource id="CommitmentPeriod" />
+		</composition>
+	</product>
+
+
+
+
+</prodcat>
