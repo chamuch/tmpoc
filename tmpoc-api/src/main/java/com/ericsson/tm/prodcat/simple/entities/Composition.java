@@ -1,13 +1,16 @@
 package com.ericsson.tm.prodcat.simple.entities;
 
+import java.util.ArrayList;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 
 public class Composition {
 	
 	private CompositionType type = null;
-	private String atomicProduct = null;
-	private String resource = null;
+	private ArrayList<String> atomicProducts = new ArrayList<String>();
+	private ArrayList<String> resources = new ArrayList<String>();
+	private ArrayList<Composition> childCompositions = new ArrayList<Composition>();
 	
 	@XmlAttribute (name="type")
 	public CompositionType getType() {
@@ -23,21 +26,58 @@ public class Composition {
 	}
 	
 	@XmlElement (name="atomicProduct")
-	public String getAtomicProduct() {
-		return atomicProduct;
+	public ArrayList<String> getAtomicProducts() {
+		return atomicProducts;
 	}
 	
-	public void setAtomicProduct(String atomicProduct) {
-		this.atomicProduct = atomicProduct;
+	public void setAtomicProducts(ArrayList<String> atomicProducts) {
+		this.atomicProducts = atomicProducts;
 	}
 	
 	@XmlElement (name="resource")
-	public String getResource() {
-		return resource;
+	public ArrayList<String> getResources() {
+		return resources;
 	}
 	
-	public void setResource(String resource) {
-		this.resource = resource;
+	public void setResources(ArrayList<String> resources) {
+		this.resources = resources;
+	}
+
+	@XmlElement (name="composition")
+	public ArrayList<Composition> getChildCompositions() {
+		return childCompositions;
+	}
+
+	public void setChildCompositions(ArrayList<Composition> childCompositions) {
+		this.childCompositions = childCompositions;
+	}
+
+	public boolean hasResourceAccess(String resourceId) {
+		for (Composition composition: this.getChildCompositions()) {
+			if (composition.hasResourceAccess(resourceId))
+				return true;
+		}
+		
+		for (String resource: this.getResources()) {
+			if (resource.equals(resourceId))
+				return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean hasProductAccess(String productId) {
+		for (Composition composition: this.getChildCompositions()) {
+			if (composition.hasProductAccess(productId))
+				return true;
+		}
+		
+		for (String product: this.getAtomicProducts()) {
+			if (product.equals(productId))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	

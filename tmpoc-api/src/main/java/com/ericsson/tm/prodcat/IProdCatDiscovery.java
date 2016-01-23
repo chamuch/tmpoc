@@ -12,7 +12,9 @@ public interface IProdCatDiscovery {
 	
 	public Product getProduct(String id);
 	
-	public ArrayList<Product> getProducts(String resourceId);
+	public ArrayList<Product> getProductsForChild(String productId);
+
+	public ArrayList<Product> getProductsForResource(String resourceId);
 	
 
 }

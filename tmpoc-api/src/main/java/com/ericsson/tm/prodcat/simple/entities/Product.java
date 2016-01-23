@@ -1,5 +1,7 @@
 package com.ericsson.tm.prodcat.simple.entities;
 
+import java.util.ArrayList;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 
@@ -9,7 +11,7 @@ public class Product {
 	private boolean discoverable = false;
 	private String name = null;
 	private String description = null;
-	private Composition composition = null;
+	private ArrayList<Composition> composition = new ArrayList<Composition>();
 	
 	@XmlAttribute (name="id")
 	public String getId() {
@@ -48,14 +50,31 @@ public class Product {
 	}
 
 	@XmlElement (name="composition")
-	public Composition getComposition() {
+	public ArrayList<Composition> getCompositions() {
 		return composition;
 	}
 
-	public void setComposition(Composition composition) {
+	public void setCompositions(ArrayList<Composition> composition) {
 		this.composition = composition;
 	}
+
+	public boolean hasResourceAccess(String resourceId) {
+		for (Composition composition: this.getCompositions()) {
+			if (composition.hasResourceAccess(resourceId))
+				return true;
+		}
+		
+		return false;
+	}
 	
+	public boolean hasProductAccess(String productId) {
+		for (Composition composition: this.getCompositions()) {
+			if (composition.hasProductAccess(productId))
+				return true;
+		}
+		
+		return false;
+	}
 	
 
 }

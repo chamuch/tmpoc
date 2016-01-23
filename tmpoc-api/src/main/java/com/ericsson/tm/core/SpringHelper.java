@@ -6,6 +6,8 @@ import org.springframework.context.ApplicationContextAware;
 
 import com.ericsson.tm.core.config.ConfigService;
 import com.ericsson.tm.core.config.IConfig;
+import com.ericsson.tm.prodcat.IProdCatDiscovery;
+import com.ericsson.tm.prodcat.simple.ProdCatService;
 
 public class SpringHelper implements ApplicationContextAware {
 	
@@ -20,4 +22,7 @@ public class SpringHelper implements ApplicationContextAware {
         return context.getBean(ConfigService.class);
     }
 	
+	public static IProdCatDiscovery getProductCatalogForDiscovery() {
+		return context.getBean(ProdCatService.class);
+	}
 }

@@ -97,6 +97,7 @@
 		<name>Commitment Period - Aneka Pack</name>
 		<composition type="include">
 			<resource id="CommitmentPeriod" />
+			<resource id="TVChannel"/>
 		</composition>
 	</product>
 
@@ -104,6 +105,8 @@
 		<name>Commitment Period - Jumbo Pack</name>
 		<composition type="include">
 			<resource id="CommitmentPeriod" />
+			<resource id="TVChannel"/>
+			<atomicProduct id="PRD_15"/>
 		</composition>
 	</product>
 
@@ -111,10 +114,35 @@
 		<name>Commitment Period - Sport Pack</name>
 		<composition type="include">
 			<resource id="CommitmentPeriod" />
+			<resource id="TVChannel"/>
 		</composition>
 	</product>
 
+	<product id="PRD_15" discoverable="true">
+		<name>Kids Co</name>
+		<description>Ala Carte Channel - Kids</description>
+		<composition type="include">
+			<resource id="TVChannel"/>
+		</composition>
+	</product>
 
+	<product id="PRD_16" discoverable="true">
+		<name>Fashion TV HD</name>
+		<description>Ala Carte Channel - Fashion</description>
+		<composition type="include">
+			<resource id="TVChannel"/>
+		</composition>
+	</product>
+
+	<product id="PRD_17" discoverable="true">
+		<name>CBeebies</name>
+		<description>Ala Carte Channel - CBeebies</description>
+		<composition type="include">
+			<resource id="TVChannel"/>
+		</composition>
+	</product>
+
+	
 
 
 </prodcat>
