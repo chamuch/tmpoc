@@ -19,4 +19,5 @@ public class SpringHelper implements ApplicationContextAware {
 	public static IConfig getConfig() {
         return context.getBean(ConfigService.class);
     }
+	
 }
