@@ -1,18 +1,7 @@
 <!DOCTYPE config SYSTEM "config.dtd">
 <config>	
-	<section id="Cagw_EndPoint" description="cagw backend url">
-		<property key="Mmsc_Cagw_BackendUrl"
-			value="http4://192.168.5.164:9090/cagw-backend/CgWeb/process" />
-		<property key="Smpp_Cagw_BackendUrl"
-		value="http4://192.168.5.164:9090/cagw-backend/CgWeb/process" />
-	</section>
-
-	<section id="DB_PROP" description="cagw backend url">
-		<property key="cassandraAddress" value="192.168.5.136,192.168.5.142" />
-		<property key="keySpaceName" value="cagw_keyspace" />
-		<property key="poolSize" value="150" />
-		<property key="keepAlive" value="cagw_keyspace" />
-		<property key="queueSize" value="cagw_keyspace" />
+	<section id="TM_PROXY" description="Proxy End Point Url">
+		<property key="proxyUrl" value="https://dice.tm.com.my/prj_HsbbEai_War/httpMessageReceiver.do" />		
 	</section>
     
 	<section id="GLOBAL" description="SMPP sections">
