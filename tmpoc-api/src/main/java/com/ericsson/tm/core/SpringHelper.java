@@ -4,6 +4,9 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
+import com.ericsson.tm.core.config.ConfigService;
+import com.ericsson.tm.core.config.IConfig;
+
 public class SpringHelper implements ApplicationContextAware {
 	
 	private static ApplicationContext context = null;
@@ -13,6 +16,7 @@ public class SpringHelper implements ApplicationContextAware {
 		SpringHelper.context = context;
 	}
 	
-	
-
+	public static IConfig getConfig() {
+        return context.getBean(ConfigService.class);
+    }
 }
