@@ -40,6 +40,11 @@
 		<property name="unmarshalType"
 			value="com.ericsson.tm.prodcat.simple.GetProductRequest" />
 	</bean>
+	
+	<bean id="gsonProduct" class="org.apache.camel.component.gson.GsonDataFormat">
+		<property name="unmarshalType"
+			value="com.ericsson.tm.prodcat.simple.entities.Product" />
+	</bean>
 
 	<bean id="gsonGetProductsForChild" class="org.apache.camel.component.gson.GsonDataFormat">
 		<property name="unmarshalType"
@@ -91,6 +96,7 @@
 					<camel:unmarshal ref="gsonGetProduct" />
 					<camel:bean
 						beanType="com.ericsson.tm.prodcat.simple.processors.GetProductProcessor" />
+					<camel:marshal ref="gsonProduct" />	
 				</camel:when>
 
 				<camel:when>
