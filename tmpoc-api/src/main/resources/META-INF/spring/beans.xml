@@ -102,6 +102,18 @@
 						<camel:bean beanType="com.ericsson.tm.prodcat.simple.processors.GetProductProcessor" />
 					</camel:when>
 					
+					<camel:when>
+						<camel:simple>${header.CamelHttpPath} == 'getProductsForChild'</camel:simple>
+						<camel:unmarshal ref="gsonGetProduct" />
+						<camel:bean beanType="com.ericsson.tm.prodcat.simple.processors.GetProductsForChildProcessor" />
+					</camel:when>
+					
+					<camel:when>
+						<camel:simple>${header.CamelHttpPath} == 'getProductsForResource'</camel:simple>
+						<camel:unmarshal ref="gsonGetProduct" />
+						<camel:bean beanType="com.ericsson.tm.prodcat.simple.processors.GetProductsForResourceProcessor" />
+					</camel:when>
+					
 					<camel:doCatch>
 						<camel:exception>
 							<camel:exception>java.lang.Exception</camel:exception>
