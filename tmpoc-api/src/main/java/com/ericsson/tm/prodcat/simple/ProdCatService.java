@@ -41,6 +41,9 @@ public class ProdCatService implements IProdCatDiscovery {
 
 	@Override
 	public ArrayList<Product> getAllProducts() {
+		if (this.prodcat == null)
+			throw new RuntimeException("Prodcat is not initialized yet!!");
+		
 		ArrayList<Product> discovery = new ArrayList<>();
 		
 		for (Product product: this.prodcat.getProducts()) {
@@ -52,6 +55,9 @@ public class ProdCatService implements IProdCatDiscovery {
 
 	@Override
 	public Product getProduct(String id) {
+		if (this.prodcat == null)
+			throw new RuntimeException("Prodcat is not initialized yet!!");
+		
 		for (Product product: this.prodcat.getProducts()) {
 			if (product.getId().equals(id))
 				return product;
@@ -61,6 +67,9 @@ public class ProdCatService implements IProdCatDiscovery {
 
 	@Override
 	public ArrayList<Product> getProductsForResource(String resourceId) {
+		if (this.prodcat == null)
+			throw new RuntimeException("Prodcat is not initialized yet!!");
+		
 		ArrayList<Product> discovery = new ArrayList<>();
 		
 		for (Product product: this.prodcat.getProducts()) {
@@ -72,6 +81,9 @@ public class ProdCatService implements IProdCatDiscovery {
 	
 	@Override
 	public ArrayList<Product> getProductsForChild(String productId) {
+		if (this.prodcat == null)
+			throw new RuntimeException("Prodcat is not initialized yet!!");
+		
 		ArrayList<Product> discovery = new ArrayList<>();
 		
 		for (Product product: this.prodcat.getProducts()) {
