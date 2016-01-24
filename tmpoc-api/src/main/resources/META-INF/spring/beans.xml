@@ -43,7 +43,7 @@
 
 	<bean id="gsonGetProductsForChild" class="org.apache.camel.component.gson.GsonDataFormat">
 		<property name="unmarshalType"
-			value="com.ericsson.tm.prodcat.simple.GetProductForChildRequest" />
+			value="com.ericsson.tm.prodcat.simple.GetProductsForChildRequest" />
 	</bean>
 
 	<bean id="gsonGetProductsForResource" class="org.apache.camel.component.gson.GsonDataFormat">
@@ -95,14 +95,14 @@
 
 				<camel:when>
 					<camel:simple>${header.CamelHttpPath} == 'getProductsForChild'</camel:simple>
-					<camel:unmarshal ref="gsonGetProduct" />
+					<camel:unmarshal ref="gsonGetProductsForChild" />
 					<camel:bean
-						beanType="com.ericsson.tm.prodcat.simple.processors.GetProductsForChildProcessor" />
+						beanType="com.ericsson.tm.prodcat.simple.processors.GetAllProductsForChildProcessor" />
 				</camel:when>
 
 				<camel:when>
 					<camel:simple>${header.CamelHttpPath} == 'getProductsForResource'</camel:simple>
-					<camel:unmarshal ref="gsonGetProduct" />
+					<camel:unmarshal ref="gsonGetProductsForResource" />
 					<camel:bean
 						beanType="com.ericsson.tm.prodcat.simple.processors.GetProductsForResourceProcessor" />
 				</camel:when>
