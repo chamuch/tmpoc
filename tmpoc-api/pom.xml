@@ -28,8 +28,11 @@
 			javax.ws.rs.container,
 			javax.ws.rs.ext,
 			javax.ws.rs,
-			org.apache.camel.component.http4			
-		</osgi-import-packages>
+			org.apache.camel.component.http4,
+			javax.xml.bind	
+		</osgi-import-packages>			
+		<osgi-export-packages>			
+		</osgi-export-packages>
   </properties>
   <dependencies>
 		<dependency>
@@ -132,7 +135,8 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Import-Package>${osgi-import-packages}</Import-Package>						
+						<Import-Package>${osgi-import-packages}</Import-Package>	
+						<Export-Package>${osgi-export-packages}</Export-Package>					
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Name>${project.name}</Bundle-Name>
 						<Bundle-Version>${project.version}</Bundle-Version>
