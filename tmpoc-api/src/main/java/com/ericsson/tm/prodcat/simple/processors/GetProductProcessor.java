@@ -13,11 +13,13 @@ public class GetProductProcessor implements Processor {
 	@Override
 	public void process(Exchange exchange) throws Exception {
 		
+		System.out.println("Request Triggered..");
 		GetProductRequest request = exchange.getIn().getBody(GetProductRequest.class);
 		
 		IProdCatDiscovery discovery = SpringHelper.getProductCatalogForDiscovery();
 		Product response =  discovery.getProduct(request.getProductId());
 		
+		System.out.println("Returned Response..");
 		exchange.getOut().setBody(response);
 		
 	
