@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:camel="http://camel.apache.org/schema/spring" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-	xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:cxf="http://camel.apache.org/schema/cxf"
-	xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:cxfcore="http://cxf.apache.org/core"
+	xmlns:camel="http://camel.apache.org/schema/spring" xmlns:q0="http://nsn.com/ossbss/charge.once/wsdl/entity/Tis/xsd/1"
+	xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xmlns:cxf="http://camel.apache.org/schema/cxf" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:cxfcore="http://cxf.apache.org/core"
 	xmlns:httpj="http://cxf.apache.org/transports/http-jetty/configuration"
 	xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -22,15 +23,13 @@
 	<bean id="prodcat" class="com.ericsson.tm.prodcat.simple.ProdCatService"
 		init-method="init" />
 
-	<bean id="tmProxyHttpClient" class="com.ericsson.tm.http.client.TmProxyHttpClient"
-		init-method="init">
-		<constructor-arg name="tmProxyConfig"
-			value="#{cfg.getProperties('TM_PROXY')}" />
-	</bean>
+	<!-- <bean id="tmProxyHttpClient" class="com.ericsson.tm.http.client.TmProxyHttpClient" 
+		init-method="init"> <constructor-arg name="tmProxyConfig" value="#{cfg.getProperties('TM_PROXY')}" 
+		/> </bean> -->
 
-	<bean id="gsonCustomerProfile" class="org.apache.camel.component.gson.GsonDataFormat">
-		<property name="unmarshalType" value="com.ericsson.tm.entities.CustomerProfile" />
-	</bean>
+	<!-- <bean id="gsonCustomerProfile" class="org.apache.camel.component.gson.GsonDataFormat"> 
+		<property name="unmarshalType" value="com.ericsson.tm.entities.CustomerProfile" 
+		/> </bean> -->
 
 	<bean id="gsonGetAllProducts" class="org.apache.camel.component.gson.GsonDataFormat">
 		<property name="unmarshalType"
@@ -63,74 +62,60 @@
 		</httpj:engine>
 	</httpj:engine-factory>
 
-	<cxf:rsServer id="tmeServer" bus="tmPocApiEngine"
-		address="http://0.0.0.0:9090/tmpoc-api/" serviceClass="com.ericsson.tm.web.TmApiRestEndPoint" />
+	<!-- <cxf:rsServer id="tmeServer" bus="tmPocApiEngine" address="http://0.0.0.0:9090/tmpoc-api/" 
+		serviceClass="com.ericsson.tm.web.TmApiRestEndPoint" /> -->
 
 	<cxf:rsServer id="prodcatServer" bus="tmPocApiEngine"
 		address="http://0.0.0.0:9090/prodcat-api/" serviceClass="com.ericsson.tm.web.NativeSimpleProdcatEndpoint" />
 
 	<camelContext id="tm-api" xmlns="http://camel.apache.org/schema/spring">
-		<route id="tm-api-route">
-			<from uri="cxfrs://bean://tmeServer" />
+		<!-- <route id="tm-api-route"> <from uri="cxfrs://bean://tmeServer" /> 
+			<camel:doTry> <camel:unmarshal ref="gsonCustomerProfile" /> <camel:bean beanType="com.ericsson.tm.processor.DummyProcessor" 
+			/> <camel:marshal ref="gsonCustomerProfile" /> <camel:doCatch> <camel:exception>java.lang.Exception</camel:exception> 
+			<camel:log message="Exception: ${exception.stacktrace}" /> </camel:doCatch> 
+			<camel:doFinally> <camel:log message="Leave-api:${body}" /> </camel:doFinally> 
+			</camel:doTry> </route> -->
+
+		<route id="prodcat-getallproducts">
+			<from uri="cxfrs://bean://prodcatServer" />
 			<camel:doTry>
-				<camel:unmarshal ref="gsonCustomerProfile" />
-				<camel:bean beanType="com.ericsson.tm.processor.DummyProcessor" />
-				<camel:marshal ref="gsonCustomerProfile" />
-				<camel:doCatch>
+				<camel:when>
+					<camel:simple>${header.CamelHttpPath} == 'getAllProducts'</camel:simple>
+					<camel:unmarshal ref="gsonGetAllProducts" />
+					<camel:bean
+						beanType="com.ericsson.tm.prodcat.simple.processors.GetAllProductsProcessor" />
+				</camel:when>
+
+				<camel:when>
+					<camel:simple>${header.CamelHttpPath} == 'getProduct'</camel:simple>
+					<camel:unmarshal ref="gsonGetProduct" />
+					<camel:bean
+						beanType="com.ericsson.tm.prodcat.simple.processors.GetProductProcessor" />
+				</camel:when>
+
+				<camel:when>
+					<camel:simple>${header.CamelHttpPath} == 'getProductsForChild'</camel:simple>
+					<camel:unmarshal ref="gsonGetProduct" />
+					<camel:bean
+						beanType="com.ericsson.tm.prodcat.simple.processors.GetProductsForChildProcessor" />
+				</camel:when>
+
+				<camel:when>
+					<camel:simple>${header.CamelHttpPath} == 'getProductsForResource'</camel:simple>
+					<camel:unmarshal ref="gsonGetProduct" />
+					<camel:bean
+						beanType="com.ericsson.tm.prodcat.simple.processors.GetProductsForResourceProcessor" />
+				</camel:when>
+
+				<camel:doCatch>					
 					<camel:exception>java.lang.Exception</camel:exception>
-					<camel:log message="Exception: ${exception.stacktrace}" />
+					<camel:log message="Exception: ${exception.stacktrace}" />						
 				</camel:doCatch>
+
 				<camel:doFinally>
 					<camel:log message="Leave-api:${body}" />
 				</camel:doFinally>
 			</camel:doTry>
 		</route>
-
-		<route id="prodcat-getallproducts">
-			<from uri="cxfrs://bean://prodcatServer" />
-			<camel:doTry>
-				<camel:choice>
-					<camel:when>
-						<camel:simple>${header.CamelHttpPath} == 'getAllProducts'</camel:simple>
-						<camel:unmarshal ref="gsonGetAllProducts" />
-						<camel:bean beanType="com.ericsson.tm.prodcat.simple.processors.GetAllProductsProcessor" />
-					</camel:when>
-					
-					<camel:when>
-						<camel:simple>${header.CamelHttpPath} == 'getProduct'</camel:simple>
-						<camel:unmarshal ref="gsonGetProduct" />
-						<camel:bean beanType="com.ericsson.tm.prodcat.simple.processors.GetProductProcessor" />
-					</camel:when>
-					
-					<camel:when>
-						<camel:simple>${header.CamelHttpPath} == 'getProductsForChild'</camel:simple>
-						<camel:unmarshal ref="gsonGetProduct" />
-						<camel:bean beanType="com.ericsson.tm.prodcat.simple.processors.GetProductsForChildProcessor" />
-					</camel:when>
-					
-					<camel:when>
-						<camel:simple>${header.CamelHttpPath} == 'getProductsForResource'</camel:simple>
-						<camel:unmarshal ref="gsonGetProduct" />
-						<camel:bean beanType="com.ericsson.tm.prodcat.simple.processors.GetProductsForResourceProcessor" />
-					</camel:when>
-					
-					<camel:doCatch>
-						<camel:exception>
-							<camel:exception>java.lang.Exception</camel:exception>
-							<camel:log message="Exception: ${exception.stacktrace}" />
-						</camel:exception>
-					</camel:doCatch>
-
-					<camel:doFinally>
-						<camel:log message="Leave-api:${body}" />
-					</camel:doFinally>
-				</choice>
-			</doTry>
-		</route>
-
-
 	</camelContext>
-
-
-
 </beans>
