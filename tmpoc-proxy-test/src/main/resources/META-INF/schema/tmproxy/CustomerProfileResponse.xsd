@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.ericsson.com/tm/proxy/customer/response"
+	xmlns="http://www.w3.org/2001/XMLSchema">
+
+	<element name="PortalMessage">
+		<complexType>
+			<sequence>
+				<element name="Header" maxOccurs="1" minOccurs="1">
+
+                    <complexType>
+                    	<sequence>
+    		<element name="BusinessEvent" maxOccurs="1" minOccurs="1" type="string">
+    		</element>
+    		<element name="Timestamp" maxOccurs="1" minOccurs="1" type="string">
+    		</element>
+    		<element name="ReqRespType" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="MessageId" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="ErrorCode" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="ErrorMessage" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+                    </complexType>
+                </element>
+				<element name="Response" maxOccurs="1" minOccurs="1">
+					<complexType>
+						<sequence>
+							<element name="CustomerAccount" maxOccurs="1" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="AccountNo" type="string" maxOccurs="1"
+											minOccurs="1">
+										</element>
+										<element name="CustomerName" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="SegmentCode" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="SegmentGroup" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="PrimaryIDType" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="PrimaryIDNo" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="TMExternalSource" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="Blacklist" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="MobilePhone" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="OfficePhone" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="HomePhone" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="ContactMethod" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="Industry" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="EmailAddress" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="FaxNumber" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="ExpiryDate" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="CustomerAddress" maxOccurs="1"
+											minOccurs="0">
+											<complexType>
+												<sequence>
+													<element name="AddressType" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="HouseUnitLot" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="Postcode" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="Floor" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="BuildingName" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="StreetType" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="StreetName" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="Section" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="City" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="State" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="Country" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="TMAddressID" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+												</sequence>
+											</complexType>
+										</element>
+										<element name="Priority" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="PassportCountry" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="RegisteredAddress" maxOccurs="1"
+											minOccurs="0">
+											<complexType>
+												<sequence>
+													<element name="AddressType" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="HouseUnitLot" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="Postcode" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="Floor" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="BuildingName" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="StreetType" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="StreetName" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="Section" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="City" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="State" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="Country" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="TMAddressID" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+												</sequence>
+											</complexType>
+										</element>
+										<element name="ServiceProvider" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="LARSRewardsNo" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="LARSMembershipNo" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="LARSMemberCategory" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="LARSMemberStatus" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="LARSTotalPoint" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="LARSTotalPointDate" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="LARSPointExpiry" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="LARSPointExpiryDate" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="LARSLastEarnTrnDate" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="LARSLastEarnTrnDesc" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="LARSLastEarnTrnPoint" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="LARSLastRedemTrnDate" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="LARSLastRedemTrnDesc" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="LARSLastRedemTrnPoint" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="LARSProfileEnrollFlag" type="boolean"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="TMBRNSubType" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+									</sequence>
+								</complexType>
+							</element>
+							<element name="NonConsumerDemographics" maxOccurs="1"
+								minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="RetailIndustry" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="NatureOfBusiness" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="CompanyAnnualRevenue" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="NoOfEmployees" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="NoOfBranches" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="HeadquarterLocation" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+									</sequence>
+								</complexType>
+							</element>
+							<element name="ConsumerDemographics" maxOccurs="1"
+								minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="Gender" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="Race" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="Occupation" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="JobTitle" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="DateOfBirth" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="Nationality" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="MaritalStatus" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="ChildrenInAge7to21" maxOccurs="1"
+											minOccurs="0">
+											<complexType>
+												<sequence>
+													<element name="Name" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="Value" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+												</sequence>
+											</complexType>
+										</element>
+										<element name="MonthlyHouseholdIncome" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="HouseholdSize" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="HouseOwnership" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="StayingWith" type="string" maxOccurs="1"
+											minOccurs="0">
+										</element>
+										<element name="PrimaryFestiveCelebration" type="string"
+											maxOccurs="1" minOccurs="0">
+										</element>
+										<element name="Hobbies" maxOccurs="1" minOccurs="0">
+											<complexType>
+												<sequence>
+													<element name="RowId" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="Name" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="Value" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+												</sequence>
+											</complexType>
+										</element>
+										<element name="DeviceOwnership" maxOccurs="1"
+											minOccurs="0">
+											<complexType>
+												<sequence>
+													<element name="RowId" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="Name" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="Value" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+												</sequence>
+											</complexType>
+										</element>
+									</sequence>
+								</complexType>
+							</element>
+							<element name="ContactList" maxOccurs="1" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="Contact" maxOccurs="unbounded"
+											minOccurs="1">
+											<complexType>
+												<sequence>
+													<element name="PrimaryContactIndicator" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="ContactPrimaryIdType" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="ContactPrimaryIdNo" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="ContactID" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="ContactName" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="OfficePhone" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="HomePhone" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="MobilePhone" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="PortalID" type="string" maxOccurs="1"
+														minOccurs="0">
+													</element>
+													<element name="EmailAddress" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="Designation" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+
+												</sequence>
+											</complexType>
+										</element>
+									</sequence>
+								</complexType>
+							</element>
+							<element name="CommitmentPeriodList" maxOccurs="1"
+								minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="CommitmentPeriod" maxOccurs="unbounded"
+											minOccurs="1">
+											<complexType>
+												<sequence>
+													<element name="CommitmentName" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="CommitmentDuration" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+												</sequence>
+											</complexType>
+										</element>
+									</sequence>
+								</complexType>
+							</element>
+							<element name="BillingList" maxOccurs="1" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="BillingAccount" maxOccurs="unbounded"
+											minOccurs="1">
+											<complexType>
+												<sequence>
+													<element name="BillingAddress" maxOccurs="1"
+														minOccurs="0">
+														<complexType>
+															<sequence>
+																<element name="TMAddressID" type="string"
+																	maxOccurs="1" minOccurs="0">
+																</element>
+																<element name="AddressType" type="string"
+																	maxOccurs="1" minOccurs="0">
+																</element>
+																<element name="HouseUnitLot" type="string"
+																	maxOccurs="1" minOccurs="0">
+																</element>
+																<element name="Postcode" type="string"
+																	maxOccurs="1" minOccurs="0">
+																</element>
+																<element name="Floor" type="string" maxOccurs="1"
+																	minOccurs="0">
+																</element>
+																<element name="BuildingName" type="string"
+																	maxOccurs="1" minOccurs="0">
+																</element>
+																<element name="StreetType" type="string"
+																	maxOccurs="1" minOccurs="0">
+																</element>
+																<element name="StreetName" type="string"
+																	maxOccurs="1" minOccurs="0">
+																</element>
+																<element name="Section" type="string" maxOccurs="1"
+																	minOccurs="0">
+																</element>
+																<element name="City" type="string" maxOccurs="1"
+																	minOccurs="0">
+																</element>
+																<element name="State" type="string" maxOccurs="1"
+																	minOccurs="0">
+																</element>
+																<element name="Country" type="string" maxOccurs="1"
+																	minOccurs="0">
+																</element>
+															</sequence>
+														</complexType>
+													</element>
+													<element name="BillingAccountRowID" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="BillingAccountNo" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="BillingName" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="BillingProfileRowID" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="BillAccountStatus" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="BillingCycle" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="BillingSalesPTT" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="BillingType" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+													<element name="HsbaBtuFlag" type="string"
+														maxOccurs="1" minOccurs="0">
+													</element>
+												</sequence>
+											</complexType>
+										</element>
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

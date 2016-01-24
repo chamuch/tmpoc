@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ericsson.com/tm/proxy/customer/request">
+	<xsd:element name="PortalMessage">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Header" maxOccurs="1" minOccurs="1">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="BusinessEvent" maxOccurs="1" minOccurs="1" type="xsd:string">
+							</xsd:element>
+							<xsd:element name="Timestamp" maxOccurs="1" minOccurs="1" type="xsd:string">
+
+							</xsd:element>
+							<xsd:element name="ReqRespType" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+							<xsd:element name="MessageId" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+							<xsd:element name="ErrorCode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+							<xsd:element name="ErrorMessage" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="Request" maxOccurs="1" minOccurs="1">
+
+                    <xsd:complexType>
+                    	<xsd:sequence>
+                    		<xsd:element name="AccountNo" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+                    	</xsd:sequence>
+                    </xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
