@@ -4,12 +4,8 @@
 		<property key="proxyUrl" value="https://dice.tm.com.my/prj_HsbbEai_War/httpMessageReceiver.do" />		
 	</section>
     
-	<section id="GLOBAL" description="SMPP sections">
-    	<!--<property key="smppSectionsList" value="Esme_Props_Smsc1,Esme_Props_Smsc2,Esme_Props_Smsc3,Esme_Props_Smsc4,Esme_Props_Smsc5,Esme_Props_Smsc6,Esme_Props_Smsc7,Esme_Props_Smsc8,Esme_Props_Smsc18,Esme_Props_Smsc19,Esme_Props_Smsc20,Esme_Props_Smsc21" />-->
-		<property key="smppSectionsList" value="Esme_Props_Test1" />
-		<property key="monitorInterval" value="30000" />
-		<property key="monitorInitialWait" value="120000" />
-		<property key="defaultLocationAddress" value="84980200903" />
+    <section id="prodcat" description="Product Catalogue Parameters">    	
+		<property key="prodcatLocation" value="/home/ec2-user/tm_soa/software/jboss-fuse-6.2.0.redhat-133/tmpoc-config" />		
     </section>	
 	
 </config>
