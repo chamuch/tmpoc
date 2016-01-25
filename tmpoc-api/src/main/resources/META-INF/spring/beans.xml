@@ -76,36 +76,43 @@
 	<camelContext id="ecm-rest" xmlns="http://camel.apache.org/schema/spring">
 		<rest path="prodcat-api">
 			<post uri="getAllProducts">
-				<route id="native-prodcat-GAP">
-					<from uri="direct:getAllProducts"/>
-					<camel:unmarshal ref="gsonGetAllProducts" />
-					<camel:bean
-						beanType="com.ericsson.tm.prodcat.simple.processors.GetAllProductsProcessor" />
-					<camel:marshal ref="gsonArray" />	
-				</route>
+				<camel:to uri="direct:getAllProducts"></camel:to>
 			</post>
 
 			<post uri="getProduct">
-				<route id="native-prodcat-GP"></route>
-					<camel:unmarshal ref="gsonGetProduct" />
-					<camel:bean
-						beanType="com.ericsson.tm.prodcat.simple.processors.GetProductProcessor" />
-					<camel:marshal ref="gsonProduct" />
-				</route>	
+				<camel:to uri="direct:getProduct"></camel:to>
 			</post>
 
 		</rest>
+
+		<route id="native-prodcat-GAP">
+			<from uri="direct:getAllProducts"/>
+			<camel:unmarshal ref="gsonGetAllProducts" />
+			<camel:bean
+				beanType="com.ericsson.tm.prodcat.simple.processors.GetAllProductsProcessor" />
+			<camel:marshal ref="gsonArray" />	
+		</route>
+
+		<route id="native-prodcat-GP"></route>
+			<from uri="direct:getProduct"/>
+			<camel:unmarshal ref="gsonGetProduct" />
+			<camel:bean
+				beanType="com.ericsson.tm.prodcat.simple.processors.GetProductProcessor" />
+			<camel:marshal ref="gsonProduct" />
+		</route>	
 	
 	
 	
 		<rest path="/ecmRT/v2">
 			<get uri="productCategories">
-				<route id="ecm-APG"></route>
-					<camel:bean beanType="com.ericsson.tm.web.EcmProdcatEndpoint"/>
-				</route>						
+				<camel:to uri="direct:AGP"></camel:to>
 			</get>
 		</rest>
 		
+		<route id="ecm-APG"></route>
+			<from uri="direct:AGP"/>
+			<camel:bean beanType="com.ericsson.tm.web.EcmProdcatEndpoint"/>
+		</route>						
 		
 		
 		
