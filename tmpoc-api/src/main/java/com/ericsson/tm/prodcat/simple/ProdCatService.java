@@ -9,6 +9,7 @@ import javax.xml.bind.Unmarshaller;
 
 import com.ericsson.tm.core.SpringHelper;
 import com.ericsson.tm.prodcat.IProdCatDiscovery;
+import com.ericsson.tm.prodcat.simple.entities.Composition;
 import com.ericsson.tm.prodcat.simple.entities.ProdCat;
 import com.ericsson.tm.prodcat.simple.entities.Product;
 
@@ -59,8 +60,21 @@ public class ProdCatService implements IProdCatDiscovery {
 			throw new RuntimeException("Prodcat is not initialized yet!!");
 		
 		for (Product product: this.prodcat.getProducts()) {
-			if (product.getId().equals(id))
+			if (product.getId().equals(id)){
+				if(product.getCompositions() != null){
+					System.out.println("Coming inside Compositions..:"+product.getCompositions().size());
+					
+					for(Composition compositionItem: product.getCompositions()){
+						System.out.println("compositionItemType:"+compositionItem.getType().name());
+						if(compositionItem.getAtomicProducts() != null){
+							for(int i=0; i < compositionItem.getAtomicProducts().size(); i++){
+								System.out.println(compositionItem.getAtomicProducts().get(i));
+							}						
+						}
+					}
+				}
 				return product;
+			}	
 		}
 		return null;
 	}

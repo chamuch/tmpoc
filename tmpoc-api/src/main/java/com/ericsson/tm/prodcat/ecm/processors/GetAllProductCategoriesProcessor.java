@@ -12,6 +12,7 @@ public class GetAllProductCategoriesProcessor implements Processor {
 
 	@Override
 	public void process(Exchange exchange) throws Exception {
+		System.out.println("GetAllProductCategoriesProcessor start");
 		List<ProductCategory> prodCategories = SpringHelper.getEcmProductCatalog().getAllProductCategoies();
 		exchange.getOut().setBody(prodCategories);
 		
