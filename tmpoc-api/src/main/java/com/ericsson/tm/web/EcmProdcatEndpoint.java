@@ -13,6 +13,12 @@ public class EcmProdcatEndpoint {
 
 	}
 	
+	@GET
+	@Path("/productCategory/{productCategoryId}")
+	public void getProductCategory(byte[] object) {
+
+	}
+	
 	
 
 }
