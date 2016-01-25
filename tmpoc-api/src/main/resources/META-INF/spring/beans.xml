@@ -23,13 +23,6 @@
 	<bean id="prodcat" class="com.ericsson.tm.prodcat.simple.ProdCatService"
 		init-method="init" />
 
-	<!-- <bean id="tmProxyHttpClient" class="com.ericsson.tm.http.client.TmProxyHttpClient" 
-		init-method="init"> <constructor-arg name="tmProxyConfig" value="#{cfg.getProperties('TM_PROXY')}" 
-		/> </bean> -->
-
-	<!-- <bean id="gsonCustomerProfile" class="org.apache.camel.component.gson.GsonDataFormat"> 
-		<property name="unmarshalType" value="com.ericsson.tm.entities.CustomerProfile" 
-		/> </bean> -->
 
 	<bean id="gsonGetAllProducts" class="org.apache.camel.component.gson.GsonDataFormat">
 		<property name="unmarshalType"
@@ -72,70 +65,13 @@
 		</httpj:engine>
 	</httpj:engine-factory>
 
-	<!-- <cxf:rsServer id="tmeServer" bus="tmPocApiEngine" address="http://0.0.0.0:9090/tmpoc-api/" 
-		serviceClass="com.ericsson.tm.web.TmApiRestEndPoint" /> -->
-
 	<cxf:rsServer id="prodcatServer" bus="tmPocApiEngine"
 		address="http://0.0.0.0:9090/prodcat-api/" serviceClass="com.ericsson.tm.web.NativeSimpleProdcatEndpoint" />
 
 	<cxf:rsServer id="ecmServer" bus="tmPocApiEngine"
 		address="http://0.0.0.0:9090/ecm/" serviceClass="com.ericsson.tm.web.EcmProdcatEndpoint" />
 
-<!-- 	<camelContext id="prodcat-simple" xmlns="http://camel.apache.org/schema/spring"> -->
-<!-- 		<!-- <route id="tm-api-route"> <from uri="cxfrs://bean://tmeServer" />  -->
-<!-- 			<camel:doTry> <camel:unmarshal ref="gsonCustomerProfile" /> <camel:bean beanType="com.ericsson.tm.processor.DummyProcessor"  -->
-<!-- 			/> <camel:marshal ref="gsonCustomerProfile" /> <camel:doCatch> <camel:exception>java.lang.Exception</camel:exception>  -->
-<!-- 			<camel:log message="Exception: ${exception.stacktrace}" /> </camel:doCatch>  -->
-<!-- 			<camel:doFinally> <camel:log message="Leave-api:${body}" /> </camel:doFinally>  -->
-<!-- 			</camel:doTry> </route> --> -->
 
-<!-- 		<route id="prodcat-simple"> -->
-<!-- 			<from uri="cxfrs://bean://prodcatServer" /> -->
-<!-- 			<camel:doTry> -->
-<!-- 				<camel:when> -->
-<!-- 					<camel:simple>${header.CamelHttpPath} == 'getAllProducts'</camel:simple> -->
-<!-- 					<camel:unmarshal ref="gsonGetAllProducts" /> -->
-<!-- 					<camel:bean -->
-<!-- 						beanType="com.ericsson.tm.prodcat.simple.processors.GetAllProductsProcessor" /> -->
-<!-- 					<camel:marshal ref="gsonArray" />	 -->
-<!-- 				</camel:when> -->
-
-<!-- 				<camel:when> -->
-<!-- 					<camel:simple>${header.CamelHttpPath} == 'getProduct'</camel:simple> -->
-<!-- 					<camel:unmarshal ref="gsonGetProduct" /> -->
-<!-- 					<camel:bean -->
-<!-- 						beanType="com.ericsson.tm.prodcat.simple.processors.GetProductProcessor" /> -->
-<!-- 					<camel:marshal ref="gsonProduct" />	 -->
-<!-- 				</camel:when> -->
-
-<!-- 				<camel:when> -->
-<!-- 					<camel:simple>${header.CamelHttpPath} == 'getProductsForChild'</camel:simple> -->
-<!-- 					<camel:unmarshal ref="gsonGetProductsForChild" /> -->
-<!-- 					<camel:bean -->
-<!-- 						beanType="com.ericsson.tm.prodcat.simple.processors.GetAllProductsForChildProcessor" /> -->
-<!-- 					<camel:marshal ref="gsonArray" />	 -->
-<!-- 				</camel:when> -->
-
-<!-- 				<camel:when> -->
-<!-- 					<camel:simple>${header.CamelHttpPath} == 'getProductsForResource'</camel:simple> -->
-<!-- 					<camel:unmarshal ref="gsonGetProductsForResource" /> -->
-<!-- 					<camel:bean -->
-<!-- 						beanType="com.ericsson.tm.prodcat.simple.processors.GetProductsForResourceProcessor" /> -->
-<!-- 					<camel:marshal ref="gsonArray" />	 -->
-<!-- 				</camel:when> -->
-
-<!-- 				<camel:doCatch>					 -->
-<!-- 					<camel:exception>java.lang.Exception</camel:exception> -->
-<!-- 					<camel:log message="Exception: ${exception.stacktrace}" />						 -->
-<!-- 				</camel:doCatch> -->
-
-<!-- 				<camel:doFinally> -->
-<!-- 					<camel:log message="Leave-api:${body}" /> -->
-<!-- 				</camel:doFinally> -->
-<!-- 			</camel:doTry> -->
-<!-- 		</route> -->
-		
-<!-- 	</camelContext> -->
 	
 	<camelContext id="ecm-rest" xmlns="http://camel.apache.org/schema/spring">
 		<rest path="prodcat-api">
@@ -158,11 +94,7 @@
 	
 		<rest path="/ecmRT/v2">
 			<get uri="productCategories">
-				<camel:bean beanType="com.ericsson.tm.web.EcmProdcatEndpoint"/>
-<!-- 				<camel:dataFormats> -->
-<!-- 					<camel:json id="gson" library="Gson" unmarshalTypeName="java.util.ArrayList"/> -->
-<!-- 				</camel:dataFormats> -->
-						
+				<camel:bean beanType="com.ericsson.tm.web.EcmProdcatEndpoint"/>						
 			</get>
 		</rest>
 	</camelContext>
