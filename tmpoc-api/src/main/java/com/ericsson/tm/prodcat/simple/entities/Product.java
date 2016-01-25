@@ -11,7 +11,9 @@ public class Product {
 	private boolean discoverable = false;
 	private String name = null;
 	private String description = null;
-	private ArrayList<Composition> composition = new ArrayList<Composition>();
+	private ArrayList<Composition> compositions = new ArrayList<Composition>();
+	private Price price = null;
+	private ArrayList<Meta> metas = new ArrayList<Meta>();
 	
 	@XmlAttribute (name="id")
 	public String getId() {
@@ -51,11 +53,29 @@ public class Product {
 
 	@XmlElement (name="composition")
 	public ArrayList<Composition> getCompositions() {
-		return composition;
+		return compositions;
 	}
 
 	public void setCompositions(ArrayList<Composition> composition) {
-		this.composition = composition;
+		this.compositions = composition;
+	}
+
+	@XmlElement (name="price")
+	public Price getPrice() {
+		return price;
+	}
+
+	public void setPrice(Price price) {
+		this.price = price;
+	}
+
+	@XmlElement (name="meta")
+	public ArrayList<Meta> getMetas() {
+		return metas;
+	}
+
+	public void setMetas(ArrayList<Meta> metas) {
+		this.metas = metas;
 	}
 
 	public boolean hasResourceAccess(String resourceId) {

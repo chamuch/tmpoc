@@ -1,7 +1,9 @@
 <!ELEMENT prodcat (product*)>
-<!ELEMENT product (name, composition+)>
+<!ELEMENT product (name, composition+, price?, meta*)>
 <!ELEMENT name EMPTY>
 <!ELEMENT composition ((atomicProduct|resource)+, composition*)>
+<!ELEMENT price EMPTY>
+<!ELEMENT meta EMPTY>
 <!ELEMENT atomicProduct EMPTY>
 <!ELEMENT resource EMPTY>
 
@@ -12,6 +14,16 @@
 
 <!ATTLIST composition
 	type (include|mutex) #REQUIRED
+>
+
+<!ATTLIST price
+	isoCurrencyCode CDATA #REQUIRED
+	amount CDATA #REQUIRED
+>
+
+<!ATTLIST meta
+	name CDATA #REQUIRED
+	value CDATA #REQUIRED
 >
 
 <!ATTLIST atomicProduct
