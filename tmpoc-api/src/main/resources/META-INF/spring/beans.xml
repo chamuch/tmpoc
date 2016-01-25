@@ -93,7 +93,7 @@
 			<camel:marshal ref="gsonArray" />	
 		</route>
 
-		<route id="native-prodcat-GP"></route>
+		<route id="native-prodcat-GP">
 			<from uri="direct:getProduct"/>
 			<camel:unmarshal ref="gsonGetProduct" />
 			<camel:bean
@@ -109,7 +109,7 @@
 			</get>
 		</rest>
 		
-		<route id="ecm-APG"></route>
+		<route id="ecm-APG">
 			<from uri="direct:AGP"/>
 			<camel:bean beanType="com.ericsson.tm.web.EcmProdcatEndpoint"/>
 		</route>						
