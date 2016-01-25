@@ -141,6 +141,10 @@
 		<rest path="/ecmRT/v2">
 			<get uri="productCategories">
 				<camel:bean beanType="com.ericsson.tm.web.EcmProdcatEndpoint"/>
+				<camel:dataFormats>
+					<camel:json id="gson" library="Gson" unmarshalTypeName="java.util.ArrayList"/>
+				</camel:dataFormats>
+						
 			</get>
 		</rest>
 	</camelContext>
