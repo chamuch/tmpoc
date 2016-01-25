@@ -9,6 +9,7 @@ public class EcmProdcatEndpoint {
 	
 	@GET
 	@Path("/productCategory/")
+	
 	public void getAllProducts(byte[] object) {
 
 	}

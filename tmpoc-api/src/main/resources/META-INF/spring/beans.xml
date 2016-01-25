@@ -81,7 +81,7 @@
 	<cxf:rsServer id="ecmServer" bus="tmPocApiEngine"
 		address="http://0.0.0.0:9090/ecm/" serviceClass="com.ericsson.tm.web.EcmProdcatEndpoint" />
 
-	<camelContext id="tm-api" xmlns="http://camel.apache.org/schema/spring">
+	<camelContext id="prodcat-simple" xmlns="http://camel.apache.org/schema/spring">
 		<!-- <route id="tm-api-route"> <from uri="cxfrs://bean://tmeServer" /> 
 			<camel:doTry> <camel:unmarshal ref="gsonCustomerProfile" /> <camel:bean beanType="com.ericsson.tm.processor.DummyProcessor" 
 			/> <camel:marshal ref="gsonCustomerProfile" /> <camel:doCatch> <camel:exception>java.lang.Exception</camel:exception> 
@@ -135,30 +135,16 @@
 			</camel:doTry>
 		</route>
 		
-		<route id="prodcat-ecm">
-			<from uri="cxfrs://bean://ecmServer" />
-			<camel:doTry>
-				<camel:when>
-					<camel:simple>${header.CamelHttpPath} == 'productCategory'</camel:simple>
-					<camel:bean
-						beanType="com.ericsson.tm.prodcat.ecm.processors.GetAllProductCategoriesProcessor" />
-					<camel:marshal ref="gsonArray" />	
-				</camel:when>
-
-				
-
-				<camel:doCatch>					
-					<camel:exception>java.lang.Exception</camel:exception>
-					<camel:log message="Exception: ${exception.stacktrace}" />						
-				</camel:doCatch>
-
-				<camel:doFinally>
-					<camel:log message="Leave-api:${body}" />
-				</camel:doFinally>
-			</camel:doTry>
-		</route>
-		
-		
-		
 	</camelContext>
+	
+	<camelContext id="ecm-rest" xmlns="http://camel.apache.org/schema/spring">
+		<rest path="/ecmRT/v2">
+			<get uri="productCategories">
+				<camel:bean beanType="com.ericsson.tm.web.EcmProdcatEndpoint"/>
+			</get>
+		</rest>
+	</camelContext>
+	
+	
+	
 </beans>
