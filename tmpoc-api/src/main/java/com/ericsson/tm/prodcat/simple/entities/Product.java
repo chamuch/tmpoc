@@ -96,5 +96,15 @@ public class Product {
 		return false;
 	}
 	
+	public String getMeta(String metaName) {
+		if (this.metas != null && this.metas.size() > 0) {
+			for (Meta meta: this.metas) {
+				if (meta.getName().equals(metaName))
+					return meta.getValue();
+			}
+		}
+		return null;
+	}
+	
 
 }
