@@ -85,6 +85,12 @@
 
 		</rest>
 
+				<rest path="/ecmRT/v2">
+			<get uri="productCategories">
+				<camel:to uri="direct:AGP"></camel:to>
+			</get>
+		</rest>
+		
 		<route id="native-prodcat-GAP">
 			<from uri="direct:getAllProducts"/>
 			<camel:unmarshal ref="gsonGetAllProducts" />
@@ -103,12 +109,6 @@
 	
 	
 	
-		<rest path="/ecmRT/v2">
-			<get uri="productCategories">
-				<camel:to uri="direct:AGP"></camel:to>
-			</get>
-		</rest>
-		
 		<route id="ecm-APG">
 			<from uri="direct:AGP"/>
 			<camel:bean beanType="com.ericsson.tm.web.EcmProdcatEndpoint"/>
