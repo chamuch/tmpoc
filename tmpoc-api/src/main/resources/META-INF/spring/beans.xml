@@ -46,6 +46,11 @@
 			value="com.ericsson.tm.prodcat.simple.entities.Product" />
 	</bean>
 
+	<bean id="gsonArray" class="org.apache.camel.component.gson.GsonDataFormat">
+		<property name="unmarshalType"
+			value="java.util.ArrayList" />
+	</bean>
+
 	<bean id="gsonGetProductsForChild" class="org.apache.camel.component.gson.GsonDataFormat">
 		<property name="unmarshalType"
 			value="com.ericsson.tm.prodcat.simple.GetProductsForChildRequest" />
@@ -89,6 +94,7 @@
 					<camel:unmarshal ref="gsonGetAllProducts" />
 					<camel:bean
 						beanType="com.ericsson.tm.prodcat.simple.processors.GetAllProductsProcessor" />
+					<camel:marshal ref="gsonArray" />	
 				</camel:when>
 
 				<camel:when>
@@ -104,6 +110,7 @@
 					<camel:unmarshal ref="gsonGetProductsForChild" />
 					<camel:bean
 						beanType="com.ericsson.tm.prodcat.simple.processors.GetAllProductsForChildProcessor" />
+					<camel:marshal ref="gsonArray" />	
 				</camel:when>
 
 				<camel:when>
@@ -111,6 +118,7 @@
 					<camel:unmarshal ref="gsonGetProductsForResource" />
 					<camel:bean
 						beanType="com.ericsson.tm.prodcat.simple.processors.GetProductsForResourceProcessor" />
+					<camel:marshal ref="gsonArray" />	
 				</camel:when>
 
 				<camel:doCatch>					
