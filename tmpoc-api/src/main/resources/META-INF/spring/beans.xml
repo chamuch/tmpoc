@@ -90,17 +90,15 @@
 		serviceClass="com.ericsson.services.ws_cil_5.ContractsSearchService"
 		xmlns:soapenv="http://schemas.xmlsoap.org/wsdl/soap/" wsdlURL="classpath:wsdl/ws_CIL_5_ContractsSearchService.wsdl"
 		bus="cxf">
-
-
 		<cxf:properties>
 			<entry key="address" value="http://0.0.0.0:9090/services/ContractService" />
 			<entry key="dataFormat" value="POJO" />
-			<entry key="ws-security.validate.token" value="false" />
+			<!-- <entry key="ws-security.validate.token" value="false" /> -->
 		</cxf:properties>
 		<cxf:inInterceptors>
 			<!-- <ref bean="loggingInInterceptor" /> -->
 			<!-- <ref bean="licenseInterceptor" /> -->
-			<ref bean="authenticationInterceptor" />
+			<!-- <ref bean="authenticationInterceptor" /> -->
 		</cxf:inInterceptors>
 
 		<cxf:outInterceptors>
