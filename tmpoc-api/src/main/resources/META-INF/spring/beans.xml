@@ -150,6 +150,7 @@
 			<camel:doTry>
 				<camel:when>
 					<camel:simple>${header.operationName} == 'productCategory'</camel:simple>
+					<camel:log message="Delegating to GetAllProductCategories: Request: ${header}"/>
 					<camel:to uri="direct:productCategory"></camel:to>	
 				</camel:when>
 				<camel:doCatch>					
