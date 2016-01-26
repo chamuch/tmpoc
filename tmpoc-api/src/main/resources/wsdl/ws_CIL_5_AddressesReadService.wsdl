@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://lhsgroup.com/lhsws/money" xmlns:sch1="http://lhsgroup.com/lhsws/svlany" xmlns:sch2="http://ericsson.com/services/ws_CIL_5/sessionchange" xmlns:sch3="http://ericsson.com/services/ws_CIL_5/addressesread" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ericsson.com/services/ws_CIL_5" targetNamespace="http://ericsson.com/services/ws_CIL_5">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lhsws="http://lhsgroup.com/lhsws/money" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://lhsgroup.com/lhsws/money"><xs:complexType name="money"><xs:sequence><xs:element name="amount" type="xs:double"/><xs:element name="currency" type="xs:string"/></xs:sequence></xs:complexType></xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lhsws="http://lhsgroup.com/lhsws/svlany" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://lhsgroup.com/lhsws/svlany"><xs:complexType name="svlany"><xs:sequence><xs:element name="content" type="xs:string"/></xs:sequence></xs:complexType></xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ericsson.com/services/ws_CIL_5/sessionchange" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_5/sessionchange"><xs:complexType name="valuesListpartRequest"><xs:all><xs:element name="key" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> Name of the value that shall be changed. See release dependent documentation for supported keys</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element name="value" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>New value for a named value.</p>]]>
+											</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="valuesRequest"><xs:sequence><xs:element maxOccurs="unbounded" name="item" type="wsi:valuesListpartRequest"/></xs:sequence></xs:complexType><xs:complexType name="sessionChangeRequest"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>
+						
+						</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="values" type="wsi:valuesRequest"/></xs:all></xs:complexType></xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sessionchange="http://ericsson.com/services/ws_CIL_5/sessionchange" xmlns:wsi="http://ericsson.com/services/ws_CIL_5/addressesread" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_5/addressesread"><xs:import namespace="http://ericsson.com/services/ws_CIL_5/sessionchange"/><xs:element name="addressesReadRequest" type="wsi:addressesReadRequest"/><xs:element name="addressesReadResponse" type="wsi:addressesReadResponse"/><xs:complexType name="listOfAllAddressesListpartResponse"><xs:all><xs:element minOccurs="0" name="adrSeq" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> sequence no of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrRoles" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> All address roles assigned to the party. This argument is modeled as a
+													<code>String</code> containing the character encodings of the various
+													address roles, as defined in <code>ADDRESSROLES.READ</code>.
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrJurTaxOverridden" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p> jurisdiction address used for taxation different to billing address of customer by at least one of billling accounts. </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrTempbillOverridden" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p> temporary billing address is overridden by at least one of billling accounts. </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrDeleted" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p> true if the address is deleted</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="ttlId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> title of the customer.  </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="ttlIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the title</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrLname" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> last name of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrName" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> company name if applicable </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrFname" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> first name of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrStreet" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> street of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrStreetno" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> street no of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrZip" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> zip of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrCity" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> city of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="countryId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> country id of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="countryIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the country</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="lngCode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> language code of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="lngCodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the language</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrNote1" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> note 1 of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrNote2" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> note 2 of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrNote3" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> note 3 of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrJbdes" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> job description of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrPhn1Area" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> phone no.1 areacode of the voice address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrPhn1" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> phone no.1 of the voice address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrPhn2Area" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> phone no.2 areacode of the voice address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrPhn2" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> phone no.2 of the voice address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrFaxArea" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> fax no.1 areacode of the fax address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrFax" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> fax no.1 of the fax address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrMname" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> middle initial name of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrEmail" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> email address of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrSmsno" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> short message no of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrYears" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p> years at this postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrState" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> state of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrCounty" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> county of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrValiddate" type="xs:dateTime"><xs:annotation><xs:documentation>
+													<![CDATA[<p> date of last address validation </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrInccode" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> incorporated city area of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrUrgent" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p> address is of "urgent" type </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrForward" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p> address may be forwarded for commercial purposes </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrLocation1" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> additional address information 1 of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrLocation2" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> additional address information 2 of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrRemark" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> hints for installation workforce of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrTaxno" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> tax registration number of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrCompno" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> company registration number of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="idtypeCode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> identity-type code of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrIdno" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> identity-number of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrBirthdt" type="xs:date"><xs:annotation><xs:documentation>
+													<![CDATA[<p> birth date of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrSocialseno" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> social security number of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrDrivelicence" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> driving licence number of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrSex" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> gender of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrEmployer" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> employer of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrCusttype" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> type of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="masCode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> marital status of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="masCodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the marital status.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrNationality" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> nationality of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrNationalityPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the country</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrEmployee" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p> remark if customer is an employee </p>]]>
+											</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="listOfAllAddressesResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:listOfAllAddressesListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="addressesReadResponse"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Identifies a customer with the public or private key.</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="listOfAllAddresses" type="wsi:listOfAllAddressesResponse"/><xs:element minOccurs="0" name="csId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p> internal BSCS customer id </p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customers public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="inputAttributes"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Identifies a customer with the public or private key. At least one of the arguments in group should be entered</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="csId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p> internal BSCS customer id </p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customers public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="addressesReadRequest"><xs:all><xs:element minOccurs="0" name="inputAttributes" type="wsi:inputAttributes"/><xs:element minOccurs="0" name="sessionChangeRequest" type="sessionchange:sessionChangeRequest"/></xs:all></xs:complexType></xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addressesReadRequest">
+    <wsdl:part element="sch3:addressesReadRequest" name="addressesReadRequest"/>
+  </wsdl:message>
+  <wsdl:message name="addressesReadResponse">
+    <wsdl:part element="sch3:addressesReadResponse" name="addressesReadResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="AddressesReadService">
+    <wsdl:operation name="addressesRead">
+      <wsdl:input message="tns:addressesReadRequest" name="addressesReadRequest"/>
+      <wsdl:output message="tns:addressesReadResponse" name="addressesReadResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AddressesReadServiceSoap11" type="tns:AddressesReadService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addressesRead">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addressesReadRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addressesReadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AddressesReadService">
+    <wsdl:port binding="tns:AddressesReadServiceSoap11" name="AddressesReadServiceSoap11">
+      <soap:address location="/services"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

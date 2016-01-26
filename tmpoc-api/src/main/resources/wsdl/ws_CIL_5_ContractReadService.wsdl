@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://lhsgroup.com/lhsws/money" xmlns:sch1="http://lhsgroup.com/lhsws/svlany" xmlns:sch2="http://ericsson.com/services/ws_CIL_5/sessionchange" xmlns:sch3="http://ericsson.com/services/ws_CIL_5/contractread" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ericsson.com/services/ws_CIL_5" targetNamespace="http://ericsson.com/services/ws_CIL_5">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lhsws="http://lhsgroup.com/lhsws/money" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://lhsgroup.com/lhsws/money"><xs:complexType name="money"><xs:sequence><xs:element name="amount" type="xs:double"/><xs:element name="currency" type="xs:string"/></xs:sequence></xs:complexType></xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lhsws="http://lhsgroup.com/lhsws/svlany" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://lhsgroup.com/lhsws/svlany"><xs:complexType name="svlany"><xs:sequence><xs:element name="content" type="xs:string"/></xs:sequence></xs:complexType></xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ericsson.com/services/ws_CIL_5/sessionchange" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_5/sessionchange"><xs:complexType name="valuesListpartRequest"><xs:all><xs:element name="key" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> Name of the value that shall be changed. See release dependent documentation for supported keys</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element name="value" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>New value for a named value.</p>]]>
+											</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="valuesRequest"><xs:sequence><xs:element maxOccurs="unbounded" name="item" type="wsi:valuesListpartRequest"/></xs:sequence></xs:complexType><xs:complexType name="sessionChangeRequest"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>
+						
+						</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="values" type="wsi:valuesRequest"/></xs:all></xs:complexType></xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:money="http://lhsgroup.com/lhsws/money" xmlns:sessionchange="http://ericsson.com/services/ws_CIL_5/sessionchange" xmlns:wsi="http://ericsson.com/services/ws_CIL_5/contractread" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_5/contractread"><xs:import namespace="http://ericsson.com/services/ws_CIL_5/sessionchange"/><xs:import namespace="http://lhsgroup.com/lhsws/money"/><xs:element name="contractReadRequest" type="wsi:contractReadRequest"/><xs:element name="contractReadResponse" type="wsi:contractReadResponse"/><xs:complexType name="servicesListpartResponse"><xs:all><xs:element minOccurs="0" name="sncode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service code (ProductElement)</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sncodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="profileId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Profile id</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coSnStatus" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Status of the service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coSnPendingStatus" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Pending status of the service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coReqPending" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Request id of service pending request</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="spcode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service package code (SimpleProduct)</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="spcodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the service package</p>]]>
+											</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="servicesResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:servicesListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="relatedContractsListpartResponse"><xs:all><xs:element minOccurs="0" name="coType" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Type of the contract:
+													<ul><li>'M' : Main contract</li><li>'R' : Related contract</li><li>NULL : Regular contract</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Contract id </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the contract</p>]]>
+											</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="relatedContractsResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:relatedContractsListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="contractReadResponse"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>This parameter is relevant only for the Charging and Billing in One releases</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="accPackId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>The accounting package identifier. Filled only for a content provider contract.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="firstCsId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customer id of the first contract holder</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="firstCsIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customers public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customer id of the second contract holder</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customers public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="contractTypeId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>contract type can be set as alternative to FIRST_PARTY_ROLE_NAME and SECOND_PARTY_ROLE_NAME.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coTrialStartDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Start date of the contract trial</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="commonRefData" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>contract data is common reference data</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="homeBidGroupId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Home BIG group id</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="foreignBidGroupId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Foreign BIG group id</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="description" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>description of the contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sccode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Technology (Market code)</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sccodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the market</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="plcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Network code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="plcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the network</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Composite product (Rate plan code)</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the rateplan</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extProductId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>id of external product</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extProductIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the external product</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="altRpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Alternate rateplan code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="altRpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the rateplan</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="pendingRpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Pending Composite product (Rate plan code)</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="pendingRpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the rateplan</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coStmedno" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Serial number of the storage medium</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coArchive" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Archive calls</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coOpDir" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>List in operator's directory</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coPstnDir" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>List in PSTN directory</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coStatus" type="xs:integer"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Contract status
+							<ul><li>onhold     = 1</li><li>activation = 2</li><li>suspension = 3</li><li>deactive   = 4</li></ul>
+							</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coLastReason" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Reason for the last contract status change</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coPendingStatus" type="xs:integer"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Pending status of the contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="reason" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Reason for pending status change</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coPendingDate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Date of the pending status change</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coLastStatusChangeDate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Date of the last status change</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coModdate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Date of last modification</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coEntdate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Date of last status change</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coActivated" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Date of  first activation of this contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="currencyId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Currency of the following fields:
+							<ul><li>
+							<code>CONTRACT_ALL.CO_CRD_AMOUNT</code>
+							</li><li>
+							<code>CONTRACT_ALL.CO_CRD_AMOUNT_DAY</code>
+							</li><li>
+							<code>CO_IB_THRESHOLD</code>
+							</li><li>
+							<code>MPUFDTAB.UNBILLED_PERIODIC</code>
+							</li><li>
+							<code>MPUFDTAB.UNBILLED_DAY</code>
+							</li></ul>
+							</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="currencyIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the currency</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="contractRequest" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Request id of contract pending request</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coTrialEndDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>End date of the contract trial</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coExpirDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Expiration date of the contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="anPackageId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Anonymization</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="anPackageIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the anonymization package</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="preratedTapRp" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Pre-rated TAP Rateplan Indicator</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coType" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Type of the contract:
+							<ul><li>'M' : Main contract</li><li>'R' : Related contract</li><li>NULL : Regular contract</li></ul>
+							</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coNonexplServPaymentType" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Indicate the payment type for the non-explicit contracted services.</p><p>
+							Possible values:<ul><li>'R' : Prepaid</li><li>'O' : Postpaid</li><li>'D' - not specified: as in rateplan definition</li></ul></p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coSignedDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Date when contract is signed</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="relatedContracts" type="wsi:relatedContractsResponse"/><xs:element minOccurs="0" name="services" type="wsi:servicesResponse"/><xs:element minOccurs="0" name="coId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Id of the contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="submId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>TechnologyFlavour (Submarket code)</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="submIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the submarket</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="callDetail" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Indicates if individual calls should be displayed on call detail statement</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="userinstallationAdr" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Indicates if user/installation address should be printed on call detail statement</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="bmId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Bill medium private key</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="bmIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Bill medium public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="notificationMediumId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Bill medium private key.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="notificationMediumIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Bill medium public key.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="chargingPeriodAdjustmentReference" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Charging period adjustment period for services with charging schedule set to "Cut off date related". Domain: 'B' - Billing period reference date, 'A' - Contract activation date</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="nextCutOffDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>The next charging period is the same for all contracted services with charging schedule set to "Cut off date related". This attribute defines the next cut off date.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="lastCutOffDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>The last charging period is the same for all contracted services with charging schedule set to "Cut off date related". This attribute defines the last cut off date.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="lastNotificationDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>The date at which a notification message has been generated.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="chargeStartDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Charge start date.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coEquipmentStatus" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>The status of the equipment.<ul><li>'Y' : Equipment sold</li><li>'V' : Equipment vended</li></ul></p><p>However no validation is provided as this column is not used by BSCS</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="earliestEndDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Earliest contract end date.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="ivrBarringDate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Date until the IVR will ignore calls incoming from this contract.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="ivrLangId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Identifier of the language to be used in IVR for the current subscription. If not specified the default one will be used.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="ivrLangIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the language</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="pendingIvrLangId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Identifier of the language used in IVR for the current subscription.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="pendingIvrLangIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the language</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="markedForRerating" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Indicates whether the contract is marked as a candidate for re-rating</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="currentRpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Private key of the rate plan set in CS.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="currentRpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key  of the rate plan set in CS.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="refillBarredUntil" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>This parameter is relevant only for the Charging and Billing in One releases</p><p>Date until refill is barred.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="mainAccount1" type="money:money"><xs:annotation><xs:documentation>
+							<![CDATA[<p>This parameter is relevant only for the Charging and Billing in One releases</p><p>The main account balance in first currency.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="promotionPlanId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Promotion plan private identifier.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="promotionPlanCode" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Promotion plan Charging System identifier.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sdpId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>This parameter is relevant only for the Charging and Billing in One releases</p><p>SDP Id, only for Charging sytem integration.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="svpFile" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>External service code</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="inputAttributes"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Identifies a contract with the public or private key</p><p>Mandatory if no other contract-related command containing this information has been executed before.</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="coId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Contract id</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="syncWithDb" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>true if a database read is forced.</p><p>In case the contract was already loaded in the server cache, the contract data is refreshed.</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="contractReadRequest"><xs:all><xs:element minOccurs="0" name="inputAttributes" type="wsi:inputAttributes"/><xs:element minOccurs="0" name="sessionChangeRequest" type="sessionchange:sessionChangeRequest"/></xs:all></xs:complexType></xs:schema>
+  </wsdl:types>
+  <wsdl:message name="contractReadRequest">
+    <wsdl:part element="sch3:contractReadRequest" name="contractReadRequest"/>
+  </wsdl:message>
+  <wsdl:message name="contractReadResponse">
+    <wsdl:part element="sch3:contractReadResponse" name="contractReadResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ContractReadService">
+    <wsdl:operation name="contractRead">
+      <wsdl:input message="tns:contractReadRequest" name="contractReadRequest"/>
+      <wsdl:output message="tns:contractReadResponse" name="contractReadResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ContractReadServiceSoap11" type="tns:ContractReadService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="contractRead">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="contractReadRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="contractReadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ContractReadService">
+    <wsdl:port binding="tns:ContractReadServiceSoap11" name="ContractReadServiceSoap11">
+      <soap:address location="/services"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://lhsgroup.com/lhsws/money" xmlns:sch1="http://lhsgroup.com/lhsws/svlany" xmlns:sch2="http://ericsson.com/services/ws_CIL_5/sessionchange" xmlns:sch3="http://ericsson.com/services/ws_CIL_5/rateplansread" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ericsson.com/services/ws_CIL_5" targetNamespace="http://ericsson.com/services/ws_CIL_5">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lhsws="http://lhsgroup.com/lhsws/money" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://lhsgroup.com/lhsws/money"><xs:complexType name="money"><xs:sequence><xs:element name="amount" type="xs:double"/><xs:element name="currency" type="xs:string"/></xs:sequence></xs:complexType></xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lhsws="http://lhsgroup.com/lhsws/svlany" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://lhsgroup.com/lhsws/svlany"><xs:complexType name="svlany"><xs:sequence><xs:element name="content" type="xs:string"/></xs:sequence></xs:complexType></xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ericsson.com/services/ws_CIL_5/sessionchange" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_5/sessionchange"><xs:complexType name="valuesListpartRequest"><xs:all><xs:element name="key" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> Name of the value that shall be changed. See release dependent documentation for supported keys</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element name="value" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>New value for a named value.</p>]]>
+											</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="valuesRequest"><xs:sequence><xs:element maxOccurs="unbounded" name="item" type="wsi:valuesListpartRequest"/></xs:sequence></xs:complexType><xs:complexType name="sessionChangeRequest"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>
+						
+						</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="values" type="wsi:valuesRequest"/></xs:all></xs:complexType></xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sessionchange="http://ericsson.com/services/ws_CIL_5/sessionchange" xmlns:wsi="http://ericsson.com/services/ws_CIL_5/rateplansread" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_5/rateplansread"><xs:import namespace="http://ericsson.com/services/ws_CIL_5/sessionchange"/><xs:element name="rateplansReadRequest" type="wsi:rateplansReadRequest"/><xs:element name="rateplansReadResponse" type="wsi:rateplansReadResponse"/><xs:complexType name="sharedAccountPackagesListpartResponse"><xs:all><xs:element minOccurs="0" name="sharedAccountPackageId" type="xs:long"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Shared account package identifier</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sharedAccountPackageIdPub" type="xs:string"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Shared account package short description, used as public key</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sharedAccountPackageDes" type="xs:string"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Shared account package description</p>]]>
+																	</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="sharedAccountPackagesResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:sharedAccountPackagesListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="creditLimitsListpartResponse"><xs:all><xs:element minOccurs="0" name="crlStart" type="xs:date"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Effective start date</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="crlEnd" type="xs:date"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Effective end date</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="crlPrdicAmount" type="xs:double"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Periodical check credit amount</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="crlDailyAmount" type="xs:double"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Daily check credit amount</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="crlDays" type="xs:integer"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Credit limit days</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="crlChangeable" type="xs:boolean"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Flag indicating if modification is allowed</p>]]>
+																	</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="creditLimitsResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:creditLimitsListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="numRpListpartResponse"><xs:all><xs:element minOccurs="0" name="rpcode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Rateplan code</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the rateplan</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpVscode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Rateplan version</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpShdes" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Rateplan short description</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpDes" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Rateplan description</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="avFrom" type="xs:date"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Effective date of the rate plan version or the start date of the availability period if it's defined for the rateplan.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="avTo" type="xs:date"><xs:annotation><xs:documentation>
+													<![CDATA[<p>End date of the availability period if it's defined for this rateplan.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpOcc" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Flag to indicate rateplans with assignable other credits and charges
+													<ul><li>True = Rateplan with assignable OCC</li><li>False =  Rateplan without assignable OCC</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpIsExternal" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Indicates if the rateplan is external</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="preratedTapInd" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Prerated TAP rateplan indicator
+													<ul><li>True = Prerated TAP rateplan</li><li>False =  No prerated TAP rateplan</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="scope" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Scope of a rateplan
+													<ul><li>C = content product rateplan</li><li>B = usual BSCS rateplan</li><li>E = charging system rateplan</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="paymentMethodInd" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Payment method
+													<ul><li>P : Postpaid</li><li>A : Prepaid</li><li>H : Hybrid</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="creditLimits" type="wsi:creditLimitsResponse"/><xs:element minOccurs="0" name="coObligationPeriodYears" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Contract obligation period - time duration in years</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coObligationPeriodMonths" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Contract obligation period - time duration in months</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coObligationPeriodWeeks" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Contract obligation period - time duration in weeks</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coObligationPeriodDays" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Contract obligation period - time duration in days</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sharedAccountPackages" type="wsi:sharedAccountPackagesResponse"/></xs:all></xs:complexType><xs:complexType name="numRpResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:numRpListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="rateplansReadResponse"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Information about the current rateplans</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="numRp" type="wsi:numRpResponse"/></xs:all></xs:complexType><xs:complexType name="inputAttributes"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Identifies an external product with the public or private key. Use instead of RPCODE.</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="rpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Rateplan code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the rateplan</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extProductId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>id of external product</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extProductIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the external product</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="readSharedAccounts" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>flag indicating if shared account package info should be read - default is false</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="rateplansReadRequest"><xs:all><xs:element minOccurs="0" name="inputAttributes" type="wsi:inputAttributes"/><xs:element minOccurs="0" name="sessionChangeRequest" type="sessionchange:sessionChangeRequest"/></xs:all></xs:complexType></xs:schema>
+  </wsdl:types>
+  <wsdl:message name="rateplansReadResponse">
+    <wsdl:part element="sch3:rateplansReadResponse" name="rateplansReadResponse"/>
+  </wsdl:message>
+  <wsdl:message name="rateplansReadRequest">
+    <wsdl:part element="sch3:rateplansReadRequest" name="rateplansReadRequest"/>
+  </wsdl:message>
+  <wsdl:portType name="RateplansReadService">
+    <wsdl:operation name="rateplansRead">
+      <wsdl:input message="tns:rateplansReadRequest" name="rateplansReadRequest"/>
+      <wsdl:output message="tns:rateplansReadResponse" name="rateplansReadResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RateplansReadServiceSoap11" type="tns:RateplansReadService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="rateplansRead">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="rateplansReadRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="rateplansReadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RateplansReadService">
+    <wsdl:port binding="tns:RateplansReadServiceSoap11" name="RateplansReadServiceSoap11">
+      <soap:address location="/services"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
