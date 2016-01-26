@@ -21,6 +21,7 @@ public class Product {
 	}
 	
 	public void setId(String id) {
+		System.out.println("Product attribute 'id' set to : " + id);
 		this.id = id;
 	}
 
@@ -30,6 +31,7 @@ public class Product {
 	}
 
 	public void setDiscoverable(boolean discoverable) {
+		System.out.println("Product attribute 'discoverable' set to : " + discoverable);
 		this.discoverable = discoverable;
 	}
 

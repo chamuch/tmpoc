@@ -18,6 +18,7 @@ public class Composition {
 	}
 	
 	public void setType(String type) {
+		System.out.println("Composition attribute 'type' set to : " + type);
 		this.type = CompositionType.get(type);
 	}
 	

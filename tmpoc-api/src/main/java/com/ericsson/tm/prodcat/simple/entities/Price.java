@@ -13,6 +13,7 @@ public class Price {
 	}
 	
 	public void setIsoCurrencyCode(String isoCurrencyCode) {
+		System.out.println("Price attribute 'isoCurrencyCode' set to : " + isoCurrencyCode);
 		this.isoCurrencyCode = isoCurrencyCode;
 	}
 	
@@ -21,6 +22,7 @@ public class Price {
 		return amount;
 	}
 	public void setAmount(long amount) {
+		System.out.println("Price attribute 'amount' set to : " + amount);
 		this.amount = amount;
 	}
 	

@@ -13,6 +13,7 @@ public class Meta {
 	}
 	
 	public void setName(String name) {
+		System.out.println("Meta attribute 'name' set to : " + name);
 		this.name = name;
 	}
 	
@@ -22,6 +23,7 @@ public class Meta {
 	}
 	
 	public void setValue(String value) {
+		System.out.println("Meta attribute 'value' set to : " + value);
 		this.value = value;
 	}
 	
