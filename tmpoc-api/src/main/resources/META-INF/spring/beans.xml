@@ -82,7 +82,7 @@
 		serviceClass="com.ericsson.tm.cbio.contractsearch.ContractsSearchService">
 		<cxf:properties>
 			<entry key="address"
-				value="http://0.0.0.0:8080/services/ws_CIL_5/contractssearch" />
+				value="http://0.0.0.0:9090/services/ws_CIL_5/contractssearch" />
 		</cxf:properties>
 	</cxf:cxfEndpoint>
 
