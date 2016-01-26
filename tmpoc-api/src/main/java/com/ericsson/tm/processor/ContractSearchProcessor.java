@@ -1,0 +1,128 @@
+package com.ericsson.tm.processor;
+
+import java.math.BigInteger;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
+
+import com.ericsson.services.ws_cil_5.contractssearch.ContractsResponse;
+import com.ericsson.services.ws_cil_5.contractssearch.ContractsSearchRequest;
+import com.ericsson.services.ws_cil_5.contractssearch.ContractsSearchResponse;
+import com.ericsson.services.ws_cil_5.contractssearch.ContractsListpartResponse;
+import com.ericsson.tm.proxy.service.response.PortalMessage.Response.LineItems;
+import com.ericsson.tm.services.entity.CustomerProfileRetrieveEntityService;
+import com.ericsson.tm.services.entity.ServiceDetailsRetrieveEntityService;
+
+public class ContractSearchProcessor implements Processor {
+
+	@Override
+	public void process(Exchange exchange) throws Exception {
+		
+		System.out.println("Request Triggered ContractSearchProcessor..");
+		try{
+			ContractsSearchRequest request = exchange.getIn().getBody(ContractsSearchRequest.class);
+			
+			String csIdPub = request.getInputAttributes().getCsIdPub();
+			String customerAccountNo = "";
+			
+			String csIdPubConstantResp = "";
+			
+			// Mappings
+			if(csIdPub == "CUST_86"){
+				customerAccountNo = "1-1LTUM7F";
+				csIdPubConstantResp = "1";
+			} else if (csIdPub == "CUST_88"){
+				customerAccountNo = "1-10E2Y4D";
+				csIdPubConstantResp = "2";
+			} else if (csIdPub == "CUST_101"){
+				customerAccountNo = "1-4HQDJHY";
+				csIdPubConstantResp = "3";
+			} else if (csIdPub == "CUST_102"){
+				customerAccountNo = "1-12YASD";
+				csIdPubConstantResp = "4";
+			}
+			
+			// Invoke Customer Profile Retrieve
+			CustomerProfileRetrieveEntityService srvc1 = new CustomerProfileRetrieveEntityService();
+			com.ericsson.tm.proxy.customer.request.PortalMessage.Request reqObj1 = new com.ericsson.tm.proxy.customer.request.PortalMessage.Request();
+			reqObj1.setAccountNo(customerAccountNo);
+			com.ericsson.tm.proxy.customer.response.PortalMessage.Response respObj1 = srvc1.operation(reqObj1);
+			
+			// Invoke Service Profile Retrieve
+			ServiceDetailsRetrieveEntityService srvc2 = new ServiceDetailsRetrieveEntityService();			
+			com.ericsson.tm.proxy.service.request.PortalMessage.Request reqObj2 = new com.ericsson.tm.proxy.service.request.PortalMessage.Request();			
+			reqObj2.setCustomerAccountNo(customerAccountNo);
+			reqObj2.setStatus("ACTIVE");			
+			com.ericsson.tm.proxy.service.response.PortalMessage.Response respObj2 = srvc2.operation(reqObj2);
+			
+			ContractsSearchResponse response = new ContractsSearchResponse();
+			
+			ContractsResponse contractResponse = new ContractsResponse();
+
+			List<ContractsListpartResponse> itemList = contractResponse.getItem();
+			
+			ContractsListpartResponse item = new ContractsListpartResponse();
+			item.setContractTypeId(new Long(1));
+			item.setBuId(new Long(2));
+			item.setCoStatus(BigInteger.valueOf(2));
+			
+			item.setCsCode(csIdPub);
+			
+			if(respObj2.getLineItems() != null){
+				for(LineItems lineItem: respObj2.getLineItems()){
+					if (lineItem.getProductName() != null && lineItem.getProductName().equalsIgnoreCase("Residential Voice")){
+						item.setDirnum(lineItem.getServiceID());
+					}
+				}
+			}
+						
+			item.setAdrFname(respObj1.getCustomerAccount().getCustomerName());
+			item.setAdrLname(respObj1.getCustomerAccount().getCustomerName());
+			item.setAdrZip(respObj1.getCustomerAccount().getCustomerAddress().getPostcode());
+			item.setAdrCity(respObj1.getCustomerAccount().getCustomerAddress().getCity());
+			item.setAdrStreet(respObj1.getCustomerAccount().getCustomerAddress().getStreetType()+" "+respObj1.getCustomerAccount().getCustomerAddress().getStreetName());
+			item.setAdrStreetno(respObj1.getCustomerAccount().getCustomerAddress().getHouseUnitLot());
+			
+			item.setSubmId(new Long(1));
+			item.setPlcode(new Long(1001));
+			item.setExternalind(false);
+			item.setRpcode(new Long(14));
+			
+			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		    Date dobConst = df.parse("01/01/2016");
+		    GregorianCalendar constCal = new GregorianCalendar();
+		    constCal.setTimeInMillis(dobConst.getTime());
+		    XMLGregorianCalendar dateConst = DatatypeFactory.newInstance().newXMLGregorianCalendar(constCal);			
+			item.setCoActivated(dateConst);
+			
+			item.setCoId(new Long(1));
+			item.setCoIdPub("CONTR0000000010");
+			item.setCsId(new Long(csIdPubConstantResp));
+			
+			item.setCsIdPub(csIdPub);
+
+			item.setCurrentDn(true);
+			item.setPaymentResp("X");
+			item.setCsContrResp("X");
+			item.setPaymentMethodInd("H");
+			
+			itemList.add(item);
+			
+			response.setContracts(contractResponse);
+			
+			exchange.getOut().setBody(response);
+			System.out.println("Returned");
+			
+		}catch(Exception genE){
+			System.out.println("Encountered exception:"+genE);
+		}
+	}
+}
