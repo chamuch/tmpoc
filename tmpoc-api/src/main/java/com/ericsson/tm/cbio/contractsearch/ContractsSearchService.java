@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
  * 
  */
  
-@WebService(targetNamespace = "http://ericsson.com/services/ws_CIL_5", name = "ContractsSearchService")
+/*@WebService(targetNamespace = "http://ericsson.com/services/ws_CIL_5", name = "ContractsSearchService")
 @XmlSeeAlso({ObjectFactory.class})
 @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
 public interface ContractsSearchService {
@@ -23,6 +23,15 @@ public interface ContractsSearchService {
     @WebMethod
     public ContractsSearchResponse contractsSearch(
         @WebParam(partName = "contractsSearchRequest", name = "contractsSearchRequest", targetNamespace = "http://ericsson.com/services/ws_CIL_5/contractssearch")
+        ContractsSearchRequest contractsSearchRequest
+    );
+}*/
+
+@WebService
+public interface ContractsSearchService {
+
+    @WebMethod
+    public ContractsSearchResponse contractsSearch(
         ContractsSearchRequest contractsSearchRequest
     );
 }
