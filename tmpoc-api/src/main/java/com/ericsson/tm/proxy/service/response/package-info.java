@@ -5,5 +5,5 @@
 // Generated on: 2016.01.25 at 01:10:52 AM CST 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.ericsson.com/tm/proxy/customer/response")
-package com.ericsson.tm.proxy.customer.response;
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.ericsson.com/tm/proxy/service/response")
+package com.ericsson.tm.proxy.service.response;

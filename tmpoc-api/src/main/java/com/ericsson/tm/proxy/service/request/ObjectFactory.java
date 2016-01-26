@@ -6,7 +6,7 @@
 //
 
 
-package com.ericsson.tm.proxy.customer.request;
+package com.ericsson.tm.proxy.service.request;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the com.ericsson.tm.proxy.customer.request package. 
+ * generated in the com.ericsson.tm.proxy.service.request package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -30,10 +30,18 @@ public class ObjectFactory {
 
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.ericsson.tm.proxy.customer.request
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.ericsson.tm.proxy.service.request
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link PortalMessage.Header }
+     * 
+     */
+    public PortalMessage.Header createPortalMessageHeader() {
+        return new PortalMessage.Header();
     }
 
     /**
@@ -50,14 +58,6 @@ public class ObjectFactory {
      */
     public PortalMessage.Request createPortalMessageRequest() {
         return new PortalMessage.Request();
-    }
-
-    /**
-     * Create an instance of {@link PortalMessage.Header }
-     * 
-     */
-    public PortalMessage.Header createPortalMessageHeader() {
-        return new PortalMessage.Header();
     }
 
 }

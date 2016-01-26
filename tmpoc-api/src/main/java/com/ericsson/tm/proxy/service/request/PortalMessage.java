@@ -6,7 +6,7 @@
 //
 
 
-package com.ericsson.tm.proxy.customer.request;
+package com.ericsson.tm.proxy.service.request;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -47,6 +47,8 @@ import javax.xml.bind.annotation.XmlType;
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
  *                   &lt;element name="AccountNo" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                   &lt;element name="BillingAccountNo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *                   &lt;element name="Status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -360,6 +362,8 @@ public class PortalMessage {
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
      *         &lt;element name="AccountNo" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *         &lt;element name="BillingAccountNo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+     *         &lt;element name="Status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -370,12 +374,18 @@ public class PortalMessage {
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "accountNo"
+        "accountNo",
+        "billingAccountNo",
+        "status"
     })
     public static class Request {
 
         @XmlElement(name = "AccountNo", required = true)
         protected String accountNo;
+        @XmlElement(name = "BillingAccountNo")
+        protected String billingAccountNo;
+        @XmlElement(name = "Status")
+        protected String status;
 
         /**
          * Gets the value of the accountNo property.
@@ -403,6 +413,62 @@ public class PortalMessage {
 
         public boolean isSetAccountNo() {
             return (this.accountNo!= null);
+        }
+
+        /**
+         * Gets the value of the billingAccountNo property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getBillingAccountNo() {
+            return billingAccountNo;
+        }
+
+        /**
+         * Sets the value of the billingAccountNo property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setBillingAccountNo(String value) {
+            this.billingAccountNo = value;
+        }
+
+        public boolean isSetBillingAccountNo() {
+            return (this.billingAccountNo!= null);
+        }
+
+        /**
+         * Gets the value of the status property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getStatus() {
+            return status;
+        }
+
+        /**
+         * Sets the value of the status property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setStatus(String value) {
+            this.status = value;
+        }
+
+        public boolean isSetStatus() {
+            return (this.status!= null);
         }
 
     }
