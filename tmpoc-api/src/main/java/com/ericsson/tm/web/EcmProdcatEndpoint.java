@@ -18,17 +18,12 @@ public interface EcmProdcatEndpoint {
 	
 	@GET
 	@Path("/productCategory/")
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces("application/json")
 	public List<ProductCategory> getAllProductCategories();
-//	{
-//		System.out.println("All Product Category");
-//	}
 	
 	@GET
 	@Path("/productCategory/{productCategoryId}")
 	@Produces("application/json")
 	public ProductCategory getProductCategory(@PathParam ("productCategoryId") String productCategoryId);
-//	{
-//		System.out.println("Product Category");
-//	}
+
 }

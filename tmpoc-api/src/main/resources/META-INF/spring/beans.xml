@@ -77,16 +77,23 @@
 
 	<!-- <cxf:rsServer id="tmeServer" bus="tmPocApiEngine" address="http://0.0.0.0:9090/tmpoc-api/" 
 		serviceClass="com.ericsson.tm.web.TmApiRestEndPoint" /> -->
+		
+	<cxf:cxfEndpoint id="contractsSearch"
+		serviceClass="com.ericsson.tm.cbio.contractsearch.ContractsSearchService">
+		<cxf:properties>
+			<entry key="address"
+				value="http://0.0.0.0:8080/services/ws_CIL_5/contractssearch" />
+		</cxf:properties>
+	</cxf:cxfEndpoint>
 
 	<cxf:rsServer id="prodcatServer" bus="tmPocApiEngine"
 		address="http://0.0.0.0:9090/prodcat-api/" serviceClass="com.ericsson.tm.web.NativeSimpleProdcatEndpoint" />
 
 	<cxf:rsServer id="ecmServer" bus="tmPocApiEngine"
 		address="http://0.0.0.0:9090/ecm/" 
-		serviceClass="com.ericsson.tm.web.EcmProdcatEndpoint"> 
-	
+		serviceClass="com.ericsson.tm.web.EcmProdcatEndpoint"> 	
 		<cxf:providers>
-			<bean class="org.sns.utils.camel.MyMessageBidyHandler"></bean>
+			<bean class="org.sns.utils.camel.MyMessageBodyHandler"></bean>
 		</cxf:providers>
 	</cxf:rsServer>
 
@@ -161,7 +168,10 @@
 			<camel:bean ref="ecmService" method="getAllProductCategories"></camel:bean>
 		</route>
 		
-		
+		<route>
+			<from uri="cxf:bean:contractsSearch" />
+			<camel:bean beanType="com.ericsson.tm.processor.DummyProcessor" />
+		</route>
 		
 	</camelContext>
 </beans>
