@@ -30,7 +30,8 @@
 			javax.ws.rs,
 			org.apache.camel.component.http4,
 			javax.xml.bind,
-			javax.xml.datatype
+			javax.xml.datatype,
+			com.google.gson
 		</osgi-import-packages>			
 		<osgi-export-packages>			
 		</osgi-export-packages>
