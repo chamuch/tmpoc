@@ -91,7 +91,8 @@
 
 	<cxf:rsServer id="ecmServer" bus="tmPocApiEngine"
 		address="http://0.0.0.0:9090/ecm/" 
-		serviceClass="com.ericsson.tm.web.EcmProdcatEndpoint"> 	
+		serviceClass="com.ericsson.tm.prodcat.ecm.processors.EcmProdcatProcessor">
+		<!--  serviceClass="com.ericsson.tm.web.EcmProdcatEndpoint"> --> 	
 		<cxf:providers>
 			<bean class="org.sns.utils.camel.MyMessageBodyHandler"></bean>
 		</cxf:providers>
