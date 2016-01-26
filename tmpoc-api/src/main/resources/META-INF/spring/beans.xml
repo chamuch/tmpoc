@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:camel="http://camel.apache.org/schema/spring" xmlns:q0="http://nsn.com/ossbss/charge.once/wsdl/entity/Tis/xsd/1"
+	xmlns:camel="http://camel.apache.org/schema/spring" xmlns:q0="http://ericsson.com/services/ws_CIL_5/contractssearch"
 	xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:osgi="http://www.springframework.org/schema/osgi"
 	xmlns:cxf="http://camel.apache.org/schema/cxf" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
 	xmlns:cxfcore="http://cxf.apache.org/core"
@@ -87,13 +87,13 @@
 	</cxf:cxfEndpoint> -->
 	
 	<cxf:cxfEndpoint id="contractsSearch"
-		serviceClass="com.ericsson.tm.cbio.contractsearch.ContractsSearchService"
+		serviceClass="com.ericsson.services.ws_cil_5.ContractsSearchService"
 		xmlns:soapenv="http://schemas.xmlsoap.org/wsdl/soap/" wsdlURL="classpath:wsdl/ws_CIL_5_ContractsSearchService.wsdl"
 		bus="cxf">
 
 
 		<cxf:properties>
-			<entry key="address" value="http://0.0.0.0:9882/services/TisService" />
+			<entry key="address" value="http://0.0.0.0:9090/services/ContractService" />
 			<entry key="dataFormat" value="POJO" />
 			<entry key="ws-security.validate.token" value="false" />
 		</cxf:properties>
@@ -124,7 +124,7 @@
 		</cxf:providers>
 	</cxf:rsServer>
 
-	<camelContext id="tm-api" xmlns="http://camel.apache.org/schema/spring">
+	<camelContext id="tmapi" xmlns="http://camel.apache.org/schema/spring">
 	
 		<!-- <route id="prodcat-simple">
 			<from uri="cxfrs://bean://prodcatServer" />
@@ -196,10 +196,20 @@
 			<camel:bean ref="ecmService" method="getAllProductCategories"></camel:bean>
 		</route>
 		
-		<!-- <route>
+		<route>
 			<from uri="cxf:bean:contractsSearch" />
+			<camel:doTry>
 			<camel:bean beanType="com.ericsson.tm.processor.DummyProcessor" />
-		</route> -->
+			<camel:doCatch>					
+					<camel:exception>java.lang.Exception</camel:exception>
+					<camel:log message="Exception: ${exception.stacktrace}" />						
+				</camel:doCatch>
+
+				<camel:doFinally>
+					<camel:log message="Leave-api:${body}" />
+				</camel:doFinally>
+			</camel:doTry>
+		</route>
 		
 	</camelContext>
 </beans>
