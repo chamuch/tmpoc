@@ -29,7 +29,8 @@
 			javax.ws.rs.ext,
 			javax.ws.rs,
 			org.apache.camel.component.http4,
-			javax.xml.bind	
+			javax.xml.bind,
+			javax.xml.datatype
 		</osgi-import-packages>			
 		<osgi-export-packages>			
 		</osgi-export-packages>
