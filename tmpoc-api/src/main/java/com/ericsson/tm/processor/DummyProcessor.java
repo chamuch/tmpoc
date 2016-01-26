@@ -48,7 +48,7 @@ public class DummyProcessor implements Processor {
 			item.setCoId(new Long(1));
 			item.setCoIdPub("CONTR0000000010");
 			item.setCsId(new Long(1));
-			item.setCsIdPub("1");
+			item.setCsIdPub("CUST_88");
 			item.setCurrentDn(true);
 			item.setPaymentResp("X");
 			item.setCsContrResp("X");

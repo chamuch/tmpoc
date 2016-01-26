@@ -1,0 +1,1162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://lhsgroup.com/lhsws/money" xmlns:sch1="http://lhsgroup.com/lhsws/svlany" xmlns:sch2="http://ericsson.com/services/ws_CIL_5/sessionchange" 
+xmlns:sch30="http://ericsson.com/services/ws_CIL_5/addressesread"
+xmlns:sch31="http://ericsson.com/services/ws_CIL_5/contractssearch"
+xmlns:sch32="http://ericsson.com/services/ws_CIL_5/contractread"
+xmlns:sch33="http://ericsson.com/services/ws_CIL_5/customerread"
+xmlns:sch34="http://ericsson.com/services/ws_CIL_5/paymentarrangementsread"
+xmlns:sch35="http://ericsson.com/services/ws_CIL_5/rateplansread"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns:tns="http://ericsson.com/services/ws_CIL_5" 
+targetNamespace="http://ericsson.com/services/ws_CIL_5">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lhsws="http://lhsgroup.com/lhsws/money" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://lhsgroup.com/lhsws/money"><xs:complexType name="money"><xs:sequence><xs:element name="amount" type="xs:double"/><xs:element name="currency" type="xs:string"/></xs:sequence></xs:complexType></xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lhsws="http://lhsgroup.com/lhsws/svlany" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://lhsgroup.com/lhsws/svlany"><xs:complexType name="svlany"><xs:sequence><xs:element name="content" type="xs:string"/></xs:sequence></xs:complexType></xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ericsson.com/services/ws_CIL_5/sessionchange" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_5/sessionchange"><xs:complexType name="valuesListpartRequest"><xs:all><xs:element name="key" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> Name of the value that shall be changed. See release dependent documentation for supported keys</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element name="value" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>New value for a named value.</p>]]>
+											</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="valuesRequest"><xs:sequence><xs:element maxOccurs="unbounded" name="item" type="wsi:valuesListpartRequest"/></xs:sequence></xs:complexType><xs:complexType name="sessionChangeRequest"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>
+						
+						</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="values" type="wsi:valuesRequest"/></xs:all></xs:complexType></xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sessionchange="http://ericsson.com/services/ws_CIL_5/sessionchange" xmlns:wsi="http://ericsson.com/services/ws_CIL_5/addressesread" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_5/addressesread"><xs:import namespace="http://ericsson.com/services/ws_CIL_5/sessionchange"/><xs:element name="addressesReadRequest" type="wsi:addressesReadRequest"/><xs:element name="addressesReadResponse" type="wsi:addressesReadResponse"/><xs:complexType name="listOfAllAddressesListpartResponse"><xs:all><xs:element minOccurs="0" name="adrSeq" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> sequence no of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrRoles" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> All address roles assigned to the party. This argument is modeled as a
+													<code>String</code> containing the character encodings of the various
+													address roles, as defined in <code>ADDRESSROLES.READ</code>.
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrJurTaxOverridden" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p> jurisdiction address used for taxation different to billing address of customer by at least one of billling accounts. </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrTempbillOverridden" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p> temporary billing address is overridden by at least one of billling accounts. </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrDeleted" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p> true if the address is deleted</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="ttlId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> title of the customer.  </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="ttlIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the title</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrLname" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> last name of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrName" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> company name if applicable </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrFname" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> first name of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrStreet" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> street of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrStreetno" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> street no of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrZip" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> zip of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrCity" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> city of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="countryId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> country id of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="countryIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the country</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="lngCode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> language code of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="lngCodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the language</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrNote1" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> note 1 of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrNote2" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> note 2 of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrNote3" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> note 3 of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrJbdes" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> job description of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrPhn1Area" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> phone no.1 areacode of the voice address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrPhn1" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> phone no.1 of the voice address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrPhn2Area" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> phone no.2 areacode of the voice address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrPhn2" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> phone no.2 of the voice address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrFaxArea" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> fax no.1 areacode of the fax address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrFax" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> fax no.1 of the fax address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrMname" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> middle initial name of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrEmail" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> email address of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrSmsno" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> short message no of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrYears" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p> years at this postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrState" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> state of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrCounty" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> county of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrValiddate" type="xs:dateTime"><xs:annotation><xs:documentation>
+													<![CDATA[<p> date of last address validation </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrInccode" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> incorporated city area of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrUrgent" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p> address is of "urgent" type </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrForward" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p> address may be forwarded for commercial purposes </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrLocation1" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> additional address information 1 of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrLocation2" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> additional address information 2 of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrRemark" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> hints for installation workforce of the postal address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrTaxno" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> tax registration number of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrCompno" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> company registration number of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="idtypeCode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> identity-type code of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrIdno" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> identity-number of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrBirthdt" type="xs:date"><xs:annotation><xs:documentation>
+													<![CDATA[<p> birth date of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrSocialseno" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> social security number of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrDrivelicence" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> driving licence number of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrSex" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> gender of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrEmployer" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> employer of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrCusttype" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> type of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="masCode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> marital status of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="masCodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the marital status.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrNationality" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> nationality of the party </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrNationalityPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the country</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrEmployee" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p> remark if customer is an employee </p>]]>
+											</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="listOfAllAddressesResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:listOfAllAddressesListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="addressesReadResponse"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Identifies a customer with the public or private key.</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="listOfAllAddresses" type="wsi:listOfAllAddressesResponse"/><xs:element minOccurs="0" name="csId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p> internal BSCS customer id </p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customers public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="inputAttributes"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Identifies a customer with the public or private key. At least one of the arguments in group should be entered</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="csId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p> internal BSCS customer id </p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customers public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="addressesReadRequest"><xs:all><xs:element minOccurs="0" name="inputAttributes" type="wsi:inputAttributes"/><xs:element minOccurs="0" name="sessionChangeRequest" type="sessionchange:sessionChangeRequest"/></xs:all></xs:complexType></xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sessionchange="http://ericsson.com/services/ws_CIL_5/sessionchange" xmlns:wsi="http://ericsson.com/services/ws_CIL_5/contractssearch" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_5/contractssearch"><xs:import namespace="http://ericsson.com/services/ws_CIL_5/sessionchange"/><xs:element name="contractsSearchRequest" type="wsi:contractsSearchRequest"/><xs:element name="contractsSearchResponse" type="wsi:contractsSearchResponse"/><xs:complexType name="salesChannelsResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="salesChannel" type="xs:string"/></xs:sequence></xs:complexType><xs:complexType name="dirnumBlocksListpartResponse"><xs:all><xs:element minOccurs="0" name="lowerExt" type="xs:string"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Lower extension of directory number block</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="upperExt" type="xs:string"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Upper extension of directory number block</p>]]>
+																	</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="dirnumBlocksResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:dirnumBlocksListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="contractsListpartResponse"><xs:all><xs:element minOccurs="0" name="contractTypeId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Contract type id.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="foreignPlcode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Foreign network code</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="homeBidGroupId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Home BIG group id</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="foreignBidGroupId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Foreign BIG group id</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="lecCoId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Local exchange carrier contract id</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="lecCoIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the external carrier contract</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="buId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Identifier of the business unit assigned to the contract</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coStatus" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Contract status</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csCode" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Customer code of the contract holder</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="dirnum" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Directory number</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="dirnumBlocks" type="wsi:dirnumBlocksResponse"/><xs:element minOccurs="0" name="adrFname" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>First name as defined in the bill/installation address, depending on the <code>USE_INSTALLATION_ADDRESS</code> input parameter.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrLname" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Last name as defined in the bill/installation address, depending on the <code>USE_INSTALLATION_ADDRESS</code> input parameter.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrName" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Company name</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrStreet" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>street of the bill/installation address, depending on the <code>USE_INSTALLATION_ADDRESS</code> input parameter.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrStreetno" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>street no of the bill/installation address, depending on the <code>USE_INSTALLATION_ADDRESS</code> input parameter.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrZip" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Zip code of the bill/installation address, depending on the <code>USE_INSTALLATION_ADDRESS</code> input parameter.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrCity" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>City of the bill/installation address, depending on the <code>USE_INSTALLATION_ADDRESS</code> input parameter.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="submId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>TechnologyFlavour (SubMarket code)</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="plcode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>NetworkId</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coType" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Type of the contract:
+													<ul><li>M = Main contract</li><li>R = Related contract</li><li>null = Regular contract</li></ul> </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="vpnId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>The VPN id</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="externalind" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>This flag indicates if the contract is Prepaid or Postpaid</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>TMCODE</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coActivated" type="xs:date"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Activation date of Contract</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="portNum" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Port number of service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="smNum" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Serial number of the storage medium</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="devPortNum" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Port number of the contract device</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Contract id </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the contract</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="mainCoId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Id of main contract </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="mainCoIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the main contract</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Customer Id</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Customers public key</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="description" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Description of the contract.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="currentDn" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Indicates TRUE if the DN is currently assigned to this contract, else FALSE.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="dnPending" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Indicates TRUE if there is a pending directory number change request DN for the directory number DIRNUM; otherwise FALSE.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="markedForRerating" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Indicates whether the contract is marked as a candidate for re-rating</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csDealerid" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Id of a dealer assigned to the contract. Only delivered for the <code>PrepaidContractTemplates</code> searcher.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="paymentResp" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>payment responsibility</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csContrResp" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>contract responsibility</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="paymentMethodInd" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Payment method of the corresponding rateplan
+													<ul><li>P : Postpaid</li><li>A : Prepaid</li><li>H : Hybrid</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coTemplateId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Template id from which the contract was created</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coTemplateIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the template from which the contract was created</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="salesChannels" type="wsi:salesChannelsResponse"/></xs:all></xs:complexType><xs:complexType name="contractsResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:contractsListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="contractsSearchResponse"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>A list of all contracts that match with the criteria specified in the in-parameters.</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="contracts" type="wsi:contractsResponse"/><xs:element minOccurs="0" name="searchIsComplete" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>flag indicating if search was completed.</p><p>This flag will be set to false if more rows than specified in Srch_Count are available in the database</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="parameterValuesRequest"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="value" type="xs:string"/></xs:sequence></xs:complexType><xs:complexType name="typesRequest"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="contractTypeId" type="xs:long"/></xs:sequence></xs:complexType><xs:complexType name="inputAttributes"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Identifies a shared account package by the public or private key.</p><p>This parameter is mandatory when SEARCHER is set with SharedAccountContractSearch to search contracts for participant assignment.</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="partyType" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>party type identifier. <ul><li>"C" : cusotmer</li><li>"B" : business partner</li><li>"O" : operator</li></ul></p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="contractTypeId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Contract type id.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="types" type="wsi:typesRequest"/><xs:element minOccurs="0" name="excludeSubscriberContracts" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>If this flag is set to true, then contracts of type "S" should be excluded from the search result.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="foreignPlcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Foreign network code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="foreignPlcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the network</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="lecCoId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Local exchange carrier contract id</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="lecCoIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the external carrier contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="ignoreBuInd" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p> Flag determines if result contains only contracts with the current business unit or all business units valid for the user</p><p> The login business unit is ingnored if value is true, default false</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="searcher" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>This argument will be used if the client wants to use/create another searcher in the registry for searching for contracts.</p><p>The default searcher is "Contract Search" which  finds the contracts with services and directory numbers assigned.</p><p>If you want to use another scenario, you must specified it in the <code>Registry_CMS_Contract.xml</code>, and call this command with the new created searcher name
+							as the value for this argument.</p><p>The defined new searchers are listed as follows:
+							<ul><li>"SimpleContractSearch"</li><li>"SearchContractsEvenWithoutServicesAndDN"</li><li>"SearchContractsEvenWithoutDN"</li><li>"SearchContractsEvenWithoutServices"</li><li>"ContentProviderContractSearch"</li><li>"ContractSearchWithoutHistory"</li><li>"ContractSearchWithHistory"</li><li>"SearchLastContractForDnPorting"</li><li>"CustomerAndOptionalContractSearch"</li><li>"SharedAccountContractSearch"</li><li>"PrepaidContractTemplates"</li><li>"SearchContractsEvenWithoutServicesWithoutDealerRestriction"</li><li>"PendingRatePlanContractSearch"</li><li>"SearchContractsByResource"</li></ul>
+							</p><p>For using one of these searchers, the client  must call the command passing as value for <code>SEARCHER</code> one of these
+							strings. The difference is in the way the contracts are searched.</p><p>Using any of  these searcher, the searching operation might be slower than the default one.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coUser" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>The user that last has made the modification</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coStatus" type="xs:integer"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Contract status</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csCode" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customer code of the contract holder</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csStatus" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>customer status</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csDealerid" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Id of a dealer assigned to the contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csDealeridPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Dealers public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="smNum" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Serial number of the storage medium, in GSM this is the SIM number. Only if the SIM number is specified as input it is available in the output as well.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="related" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Flag for searching related and main contracts.
+							<ul><li>R - only related contracts are returned.</li><li>M - only main contracts are returned.</li><li>N - only not related contracts are returned. That are main and regular contracts.</li><li>C - only contracts that are neither related nor main are returned.</li><li>not set - type related or main is not considered as search criteria</li></ul></p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="portNum" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Port number of service, only used in service driven markets.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="devPortNum" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Port number of the contract device, in GSM this is the IMSI.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sncode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Service code (ProductElement)</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sncodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the service</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coPofu" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Pooled free units (POFU) contract</p><p>This criteria indicates if the search must consider the contracts with free unit services or contract without
+							free unit services dependent on the value of <code>CO_POFU</code>.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Composite product (Rate plan code)</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the rateplan</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="paymentMethodInd" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Filter criteria payment method, if not given then contracts returned regardless of payment method of the rateplan
+							<ul><li>P : Postpaid</li><li>A : Prepaid</li><li>H : Hybrid</li></ul>
+							</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sccode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Technology (Market code)</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sccodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the market</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="dirnum" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Directory number</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="mainDirnum" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Main directory number</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="billNo" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Bill number</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="useInstallationAddress" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>If this input parameter is set to true, all the address parameters (both input and output) represent informaion regarding the installation address.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrName" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Name as defined in the bill/installation address, depending on the <code>USE_INSTALLATION_ADDRESS</code> input parameter.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrFname" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>First name as defined in the bill/installation address, depending on the <code>USE_INSTALLATION_ADDRESS</code> input parameter.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrLname" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Last name as defined in the bill/installation address, depending on the <code>USE_INSTALLATION_ADDRESS</code> input parameter.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrStreet" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>street of the bill/installation address, depending on the <code>USE_INSTALLATION_ADDRESS</code> input parameter.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrStreetno" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>street no of the bill/installation address, depending on the <code>USE_INSTALLATION_ADDRESS</code> input parameter.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrZip" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Zip code of the bill/installation address, depending on the <code>USE_INSTALLATION_ADDRESS</code> input parameter.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrCity" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>City of the bill/installation address, depending on the <code>USE_INSTALLATION_ADDRESS</code> input parameter.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrEmail" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>email address</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrBirthdt" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>birth date</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrSocialseno" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>social security number</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrDrivelicence" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>driving licence number</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrPassportno" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>identification document number</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrCompno" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>company registration number</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrTaxno" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>tax registration number</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="adrState" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p> state of the postal address </p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="countryId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p> country id of the postal address </p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="countryIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the country</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="submId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>TechnologyFlavour (SubMarket code)</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="submIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the submarket</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="plcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>NetworkId</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="plcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the network</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="lowerExt" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Lower extension of directory number block</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="upperExt" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Upper extension of directory number block</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="srchCount" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Size of result set</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="linkedPublicDirnum" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Linked Public Directory Number (MSISDN) </p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="vpnId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>VPN code</p><p>The VPN code is used when searching for VPN Contracts:
+							<ul><li>If the criteria <code>VPN_SUBSCRIBER</code> has the value true, the data for the VPN Subscriber Contract is returned</li><li>If <code>VPN_SUBSCRIBER</code> = false or not specified, the Contracts representing internal or external membership to the VPN are returned. Only Private Directory Numbers are returned</li></ul>
+							</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="vpnIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the VPN</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="vpnSubscriber" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>This criteria indicates if the search must consider</p><p>only the VPN Subscriber contract. If it is "True", the VPN_ID is mandatory</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="externalind" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>This criteria indicates if the search returns only Prepaid or only Postpaid contracts</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="laMemberContract" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>If the criteria is set, it indicates whether the search returns contracts belonging (True) or not belonging (False) to LA members.</p><p>No indication is considered in case of Unset.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="flagCase" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>case sensitive search.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="flagMatchcode" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>If set to true a matchcode search for the lastname will be executed.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="description" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Just evaluated in case of searching for contract templates</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Contract id</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customer Id</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customers public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="startIndex" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Specifies how many entries in the output should be skipped. Together with the <code>SRCH_COUNT</code> parameter it provides a
+							paging in the result set of a search. E.g. if the parameter is set to 50 and <code>SRCH_COUNT</code> is set to 20, this command provides the entries 51 to 70 of the query.
+							If not passed the command provides the search result 1 up to <code>SRCH_COUNT</code>.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="nonPendingOnly" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Used to indicate that no contracts with pending requests in MDSRRTAB should be returned.</p><p>This is currently only supported for the following searchers:<ul><li>SearchContractsEvenWithoutServices</li></ul></p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="callDetail" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Indicates if individual calls should be displayed on call detail statement.
+							<ul><li>P = call detail statement is created on request only.</li><li>R = in addition to P periodically within billing cycle related call detail statement generation requests</li><li>A = all contracts, that have either value P or R set.</li><li>null = no call detail statement can be created
+							</li></ul></p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="markedForRerating" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Indicates contracts to search:
+							<ul><li>unset - all contracts</li><li>TRUE - contracts that are marked as candidates for re-rating</li><li>FALSE - contracts that are not marked as candidates for re-rating </li></ul>
+							</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="bscsContract" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Indicates contracts to search:
+							<ul><li>unset - all contracts</li><li>TRUE - Exclude CS contracts</li><li>FALSE - all customers</li></ul>
+							</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="familyId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Family id of the customer the contract belongs to. This parameter is used for retrieving contributed contracts.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csLevelCode" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>customer level (Use the '!' sign for logical 'NOT')  e.g. 0,1,2,!1,...</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="paymentResp" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>enable Payment Responsible search</p><p>If set to true then only payment responsible customers are searched and if set to false then only not payment responsible customers searched. No restriction in case of Unset </p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csContrResp" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>enable Contract Responsible search</p><p>If set to true then only Contract responsible customers are searched and if set to false then only not Contract responsible customers searched. No restriction in case of Unset </p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rootCsId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Id of a LA structure root</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rootCsIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>LA structure root public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="fuPackId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Free Unit package code, if the code is given, only this free unit package is selected</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="fuPackIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the free unit package</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="fuCoId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Contract id</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="fuCoIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="fuSncode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Service code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="fuSncodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the service</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="snStatus" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Status of the service. Domain:  A (active), D (deactivate), S (suspended in a contract), O (initial value, on-hold status). </p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="notInServiceCriteria" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>If true, excludes contracts that satisfies given service criteria (SNCODE and SN_STATUS). </p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="prmId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Parameter identifier.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="parameterValues" type="wsi:parameterValuesRequest"/><xs:element minOccurs="0" name="salesChannel" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>For contract template search, optional sales channel filter.</p><p>Values are:
+							<ul><li>ADMX - Subscription installation (batch)</li><li>SX - SX</li><li>LA - Large accounts</li><li>RapidAct - Rapid activation</li><li>CRM - Ericsson Telecom CRM</li></ul>
+							</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="ownerCoId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>The contract id of shared account owner.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="ownerCoIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>The public key of shared account owner contract.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sharedAccountPackageId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>The shared account package identifier.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sharedAccountPackageIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>The shared account package short description, used as public key.</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="contractsSearchRequest"><xs:all><xs:element minOccurs="0" name="inputAttributes" type="wsi:inputAttributes"/><xs:element minOccurs="0" name="sessionChangeRequest" type="sessionchange:sessionChangeRequest"/></xs:all></xs:complexType></xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:money="http://lhsgroup.com/lhsws/money" xmlns:sessionchange="http://ericsson.com/services/ws_CIL_5/sessionchange" xmlns:wsi="http://ericsson.com/services/ws_CIL_5/contractread" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_5/contractread"><xs:import namespace="http://ericsson.com/services/ws_CIL_5/sessionchange"/><xs:import namespace="http://lhsgroup.com/lhsws/money"/><xs:element name="contractReadRequest" type="wsi:contractReadRequest"/><xs:element name="contractReadResponse" type="wsi:contractReadResponse"/><xs:complexType name="servicesListpartResponse"><xs:all><xs:element minOccurs="0" name="sncode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service code (ProductElement)</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sncodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="profileId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Profile id</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coSnStatus" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Status of the service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coSnPendingStatus" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Pending status of the service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coReqPending" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Request id of service pending request</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="spcode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service package code (SimpleProduct)</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="spcodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the service package</p>]]>
+											</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="servicesResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:servicesListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="relatedContractsListpartResponse"><xs:all><xs:element minOccurs="0" name="coType" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Type of the contract:
+													<ul><li>'M' : Main contract</li><li>'R' : Related contract</li><li>NULL : Regular contract</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Contract id </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the contract</p>]]>
+											</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="relatedContractsResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:relatedContractsListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="contractReadResponse"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>This parameter is relevant only for the Charging and Billing in One releases</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="accPackId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>The accounting package identifier. Filled only for a content provider contract.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="firstCsId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customer id of the first contract holder</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="firstCsIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customers public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customer id of the second contract holder</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customers public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="contractTypeId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>contract type can be set as alternative to FIRST_PARTY_ROLE_NAME and SECOND_PARTY_ROLE_NAME.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coTrialStartDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Start date of the contract trial</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="commonRefData" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>contract data is common reference data</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="homeBidGroupId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Home BIG group id</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="foreignBidGroupId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Foreign BIG group id</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="description" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>description of the contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sccode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Technology (Market code)</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sccodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the market</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="plcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Network code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="plcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the network</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Composite product (Rate plan code)</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the rateplan</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extProductId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>id of external product</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extProductIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the external product</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="altRpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Alternate rateplan code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="altRpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the rateplan</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="pendingRpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Pending Composite product (Rate plan code)</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="pendingRpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the rateplan</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coStmedno" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Serial number of the storage medium</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coArchive" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Archive calls</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coOpDir" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>List in operator's directory</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coPstnDir" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>List in PSTN directory</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coStatus" type="xs:integer"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Contract status
+							<ul><li>onhold     = 1</li><li>activation = 2</li><li>suspension = 3</li><li>deactive   = 4</li></ul>
+							</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coLastReason" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Reason for the last contract status change</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coPendingStatus" type="xs:integer"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Pending status of the contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="reason" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Reason for pending status change</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coPendingDate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Date of the pending status change</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coLastStatusChangeDate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Date of the last status change</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coModdate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Date of last modification</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coEntdate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Date of last status change</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coActivated" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Date of  first activation of this contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="currencyId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Currency of the following fields:
+							<ul><li>
+							<code>CONTRACT_ALL.CO_CRD_AMOUNT</code>
+							</li><li>
+							<code>CONTRACT_ALL.CO_CRD_AMOUNT_DAY</code>
+							</li><li>
+							<code>CO_IB_THRESHOLD</code>
+							</li><li>
+							<code>MPUFDTAB.UNBILLED_PERIODIC</code>
+							</li><li>
+							<code>MPUFDTAB.UNBILLED_DAY</code>
+							</li></ul>
+							</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="currencyIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the currency</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="contractRequest" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Request id of contract pending request</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coTrialEndDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>End date of the contract trial</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coExpirDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Expiration date of the contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="anPackageId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Anonymization</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="anPackageIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the anonymization package</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="preratedTapRp" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Pre-rated TAP Rateplan Indicator</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coType" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Type of the contract:
+							<ul><li>'M' : Main contract</li><li>'R' : Related contract</li><li>NULL : Regular contract</li></ul>
+							</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coNonexplServPaymentType" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Indicate the payment type for the non-explicit contracted services.</p><p>
+							Possible values:<ul><li>'R' : Prepaid</li><li>'O' : Postpaid</li><li>'D' - not specified: as in rateplan definition</li></ul></p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coSignedDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Date when contract is signed</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="relatedContracts" type="wsi:relatedContractsResponse"/><xs:element minOccurs="0" name="services" type="wsi:servicesResponse"/><xs:element minOccurs="0" name="coId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Id of the contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="submId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>TechnologyFlavour (Submarket code)</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="submIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the submarket</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="callDetail" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Indicates if individual calls should be displayed on call detail statement</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="userinstallationAdr" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Indicates if user/installation address should be printed on call detail statement</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="bmId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Bill medium private key</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="bmIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Bill medium public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="notificationMediumId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Bill medium private key.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="notificationMediumIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Bill medium public key.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="chargingPeriodAdjustmentReference" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Charging period adjustment period for services with charging schedule set to "Cut off date related". Domain: 'B' - Billing period reference date, 'A' - Contract activation date</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="nextCutOffDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>The next charging period is the same for all contracted services with charging schedule set to "Cut off date related". This attribute defines the next cut off date.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="lastCutOffDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>The last charging period is the same for all contracted services with charging schedule set to "Cut off date related". This attribute defines the last cut off date.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="lastNotificationDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>The date at which a notification message has been generated.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="chargeStartDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Charge start date.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coEquipmentStatus" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>The status of the equipment.<ul><li>'Y' : Equipment sold</li><li>'V' : Equipment vended</li></ul></p><p>However no validation is provided as this column is not used by BSCS</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="earliestEndDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Earliest contract end date.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="ivrBarringDate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Date until the IVR will ignore calls incoming from this contract.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="ivrLangId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Identifier of the language to be used in IVR for the current subscription. If not specified the default one will be used.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="ivrLangIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the language</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="pendingIvrLangId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Identifier of the language used in IVR for the current subscription.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="pendingIvrLangIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the language</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="markedForRerating" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Indicates whether the contract is marked as a candidate for re-rating</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="currentRpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Private key of the rate plan set in CS.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="currentRpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key  of the rate plan set in CS.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="refillBarredUntil" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>This parameter is relevant only for the Charging and Billing in One releases</p><p>Date until refill is barred.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="mainAccount1" type="money:money"><xs:annotation><xs:documentation>
+							<![CDATA[<p>This parameter is relevant only for the Charging and Billing in One releases</p><p>The main account balance in first currency.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="promotionPlanId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Promotion plan private identifier.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="promotionPlanCode" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Promotion plan Charging System identifier.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sdpId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>This parameter is relevant only for the Charging and Billing in One releases</p><p>SDP Id, only for Charging sytem integration.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="svpFile" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>External service code</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="inputAttributes"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Identifies a contract with the public or private key</p><p>Mandatory if no other contract-related command containing this information has been executed before.</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="coId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Contract id</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="syncWithDb" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>true if a database read is forced.</p><p>In case the contract was already loaded in the server cache, the contract data is refreshed.</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="contractReadRequest"><xs:all><xs:element minOccurs="0" name="inputAttributes" type="wsi:inputAttributes"/><xs:element minOccurs="0" name="sessionChangeRequest" type="sessionchange:sessionChangeRequest"/></xs:all></xs:complexType></xs:schema>					
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:money="http://lhsgroup.com/lhsws/money" xmlns:sessionchange="http://ericsson.com/services/ws_CIL_5/sessionchange" xmlns:wsi="http://ericsson.com/services/ws_CIL_5/customerread" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_5/customerread"><xs:import namespace="http://ericsson.com/services/ws_CIL_5/sessionchange"/><xs:import namespace="http://lhsgroup.com/lhsws/money"/><xs:element name="customerReadRequest" type="wsi:customerReadRequest"/><xs:element name="customerReadResponse" type="wsi:customerReadResponse"/><xs:complexType name="partyRoleAssignmentsListpartResponse"><xs:all><xs:element minOccurs="0" name="partyRoleId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>party role private key</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="partyRoleShname" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>party role public key</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="partyRoleName" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>party role public key</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="partyRoleDescription" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p></p>]]>
+											</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="partyRoleAssignmentsResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:partyRoleAssignmentsListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="listOfAssignmentsListpartResponse"><xs:all><xs:element minOccurs="0" name="familyId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>id of family</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="completionStatus" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>completion status: -1=initial status, 0=completed, 1,2,3...=error code</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="validFrom" type="xs:date"><xs:annotation><xs:documentation>
+													<![CDATA[<p>valid from date</p>]]>
+											</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="listOfAssignmentsResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:listOfAssignmentsListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="customerReadResponse"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Identifies a dealer with the public or private key.</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="tbAmount" type="money:money"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Threshold amount for threshold billing</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="createdByUser" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>user of creation</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="tbMode" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Threshold mode for threshold billing: "IM" immediate request or "OD" for on demand request.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="tbPurpose" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Threshold purpose for threshold billing: "SIM" for simulation bill run, "INF" for information bill run, "REG" for regular bill run.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sioActionType" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Threshold action related to small invoices handling.</p><p><ul><li>'G': Invoice: Generate invoice anyway (default).</li><li>'F': Carry-over: Forward invoices with small amount (Baseline setup per customer group).</li><li>'S': Write-off: Suppress invoices with small amount. </li></ul>
+							</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sioThresholdAmt" type="money:money"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Threshold amount for small invoices handling.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="maxCarryOverLenght" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Max carry over length for  small invoices handling.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="maxCarryOverPeriodType" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Max carry over type period for  small invoices handling.</p><p><ul><li>'D': Days.</li><li>'M': Months.</li></ul>
+							</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="isIndividualOverdiscDisabled" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Indicates whether the generation of so-called posting items shall be disabled within traditional promotion actions</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="familyId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>id of current family</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="listOfAssignments" type="wsi:listOfAssignmentsResponse"/><xs:element minOccurs="0" name="csId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Private BSCS customer ID.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public BSCS customer ID</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csCode" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>customer code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csStatus" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>status of the customer/dealer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csStatusDate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>status date of the customer (dependend on the status CSDEACTIVATED, CSACTIVATED, SUSPENDE,REACTIVATED)</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csActivationDate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>activation date of the customer (It is only set if the status is active.)</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csIdHigh" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>id of parent level of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csIdHighPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customers public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csLevelCode" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>level of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="paymentResp" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>payment responsibility</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="prgCode" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>pricegroup of the customer/dealer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>rateplan for other credits and charges of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the rateplan</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="tradeCode" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>trade code of the customer/dealer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="areaCode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>area code of the customer/dealer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="costId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>costcenter of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="costCodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the cost center</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csPassword" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>password of the customer/dealer</p><p>The cloumn CUSTOMER_ALL.BTX_PASSWORD is mapped and the property is bTXPassword for the dealer.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rsCode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>reason for the status change</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="wpCode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>welcome procedure of the customer/dealer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="srCode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>subscription reduction of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csRemark1" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>remark 1 about the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csRemark2" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>remark 2 about the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csBillInformation" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>bill information run flag</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="expectPayCurrencyId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>home currency code for expected payment</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="expectPayCurrencyIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the currency</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csConvratetypePayment" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>conversion rate type for expected payment</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csConvratetypePaymentPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the conversion rate type</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="refundCurrencyId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>foreign currency code for expected refund</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="refundCurrencyIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the currency</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csConvratetypeRefund" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>conversion rate type for refund</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csConvratetypeRefundPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the conversion rate type</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csCrcheckAgreed" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>external credit check agreed</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="custcatCode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>category code of the customer's current individual taxation</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="custcatCodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the customer category</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csJurisdictionId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Tax geo code id.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csJurisdictionCode" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Tax geo code. Usually provided by external address validation system.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csIncorporatedInd" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Indicates that a city area is incorporated to levy taxes. Usually provided by external address validation system.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csBillcycle" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>billing cycle of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csBillcycleDesc" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>billing cycle of the customer (description)</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csLimitTr1" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>open amount threshold 1 of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csLimitTr1Pub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the threshold</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csLimitTr2" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>open amount threshold 2 of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csLimitTr2Pub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the threshold</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csLimitTr3" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>open amount threshold 3 of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csLimitTr3Pub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the threshold</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csClimit" type="money:money"><xs:annotation><xs:documentation>
+							<![CDATA[<p>credit limit of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csContresp" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>customer responsibility for contract</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csLastBcDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>last billing cycle date of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csDeposit" type="money:money"><xs:annotation><xs:documentation>
+							<![CDATA[<p>deposit amount of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csCreditscore" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>credit score</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csCscreditStatus" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>credit status</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csCscreditRemark" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>credit remark about the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csCscreditDate" type="xs:date"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Date of Credit Scoring</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csDunning" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>dunning enabled</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csDunningMode" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>dunning mode</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csPrepayment" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>prepayment required</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csCollector" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>cash collector of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csFcId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>currency of credit, deposit, current balance, and previous balance of the customer.
+							The CS_FC_ID is needed to show the HOME currency.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csFcIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the currency</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csCscurbalance" type="money:money"><xs:annotation><xs:documentation>
+							<![CDATA[<p>current balance of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csPrevbalance" type="money:money"><xs:annotation><xs:documentation>
+							<![CDATA[<p>previous balance of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csUnbilledAmount" type="money:money"><xs:annotation><xs:documentation>
+							<![CDATA[<p>unbilled amount of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csPaybehaviour" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>payment behaviour of the customer</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csNoBouncePay" type="xs:integer"><xs:annotation><xs:documentation>
+							<![CDATA[<p>number of the bounced payments.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csDealerid" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>dealer id</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csDealeridPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Dealers public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csInitPrepaidContrOwner" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Flag indicating that this customer has been created in order to be used as the initial owner of a batch of preactivated prepaid contracts.
+							This kind of customer must have the party role preactive subscriber.
+							</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csCreationDate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Creation date</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csDeactivationDate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Deactivation date</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csSuspensionDate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Suspension date</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csReactivationDate" type="xs:dateTime"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Reactivation date</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="lastModificationUser" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Last modification user</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="paymentRespId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customer id of the payment responsible.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csPaymntRespCode" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customer code of the payment responsible.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="partyRoleAssignments" type="wsi:partyRoleAssignmentsResponse"/><xs:element minOccurs="0" name="partyType" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>party type identifier. c: cusotmer, b: business partner, o: operator</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="collInd" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>true if customer is in collection process, otherwise false.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="markedForRerating" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Indicates whether the customer is marked as a candidate for re-rating</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="externalCustomerId" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>external customer id</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="externalCustomerSetId" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>external customer set id</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="maxCsLevel" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>If the customer is a large account root, the max level of its large account should be returned</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="creditScore" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Credit score grade.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="creditScoreProvider" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Credit score type: B for CrB Defined; C for CSP defined.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csCscreditUser" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Username when credit scoring has been triggered externally.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="performCreditScoring" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Column CUSTOMER_ALL.CS_SUPPORTED for LA members will be set with given value for this attribute.</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="inputAttributes"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Customer identifier. If not explicitly passed then the customer ID is taken from the context</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="csId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Private BSCS customer ID.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public BSCS customer ID</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="syncWithDb" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>true if a database read is forced. In case the customer was already loaded in the server cache, the customer data is refreshed.</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="customerReadRequest"><xs:all><xs:element minOccurs="0" name="inputAttributes" type="wsi:inputAttributes"/><xs:element minOccurs="0" name="sessionChangeRequest" type="sessionchange:sessionChangeRequest"/></xs:all></xs:complexType></xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:money="http://lhsgroup.com/lhsws/money" xmlns:sessionchange="http://ericsson.com/services/ws_CIL_5/sessionchange" xmlns:wsi="http://ericsson.com/services/ws_CIL_5/paymentarrangementsread" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_5/paymentarrangementsread"><xs:import namespace="http://ericsson.com/services/ws_CIL_5/sessionchange"/><xs:import namespace="http://lhsgroup.com/lhsws/money"/><xs:element name="paymentArrangementsReadRequest" type="wsi:paymentArrangementsReadRequest"/><xs:element name="paymentArrangementsReadResponse" type="wsi:paymentArrangementsReadResponse"/><xs:complexType name="listOfPaymentArrangementsListpartResponse"><xs:all><xs:element minOccurs="0" name="cspId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Payment arrangement (payment) identifier.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspSeqno" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> sequence number </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspPmntId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> payment-type id </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspPmntIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the payment method</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspAccno" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> account number </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspAccowner" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> account owner </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspBankcode" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> subaccount number </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspBankname" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> bank name </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspBankzip" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> zipcode of the bank-address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspBankcity" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> city of the bank-address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspBankstreet" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> street name of the bank address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspCcagCode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> credit card agency code </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspCcagCodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the financial institute.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspCcvaliddt" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> valid date of the credit card (MMYY) </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspCeiling" type="money:money"><xs:annotation><xs:documentation>
+													<![CDATA[<p> ceiling amount for credit card payments </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspBankstate" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> state of bank address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspBankcounty" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> county of bank address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspOrdernumber" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> order number </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspBankstreetno" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> street number of the bank address </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspBankcountry" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> country of the bank/ccag </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspBankcountryPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the country</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspSwiftcode" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> international bank identifier </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspActUsed" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Flag indicating, that this is the actually used payment arrangement </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cspValidFrom" type="xs:date"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Valid from date</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="authOk" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p> authorization is ok </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="authDate" type="xs:dateTime"><xs:annotation><xs:documentation>
+													<![CDATA[<p> Date for authorization </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="authNo" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> Credit card authorization code </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="authCredit" type="money:money"><xs:annotation><xs:documentation>
+													<![CDATA[<p> Credit for authorization </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="authTn" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> Phone number of authorization </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="authRemark" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p> Authorization remark </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>internal BSCS customer id</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Customers public key</p>]]>
+											</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="listOfPaymentArrangementsResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:listOfPaymentArrangementsListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="paymentArrangementsReadResponse"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p></p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="listOfPaymentArrangements" type="wsi:listOfPaymentArrangementsResponse"/></xs:all></xs:complexType><xs:complexType name="inputAttributes"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Identifies a customer with the public or private key.</p><p>Mandatory if no other customer-related command containing this information (such as <code>CUSTOMER.READ</code>) has been executed before.</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="flagCurrent" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Flag returning the current payment arrangement of the customer. Default is false, meaning all payment arrangements are returned.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p> internal BSCS customer id </p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="csIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Customers public key</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="paymentArrangementsReadRequest"><xs:all><xs:element minOccurs="0" name="inputAttributes" type="wsi:inputAttributes"/><xs:element minOccurs="0" name="sessionChangeRequest" type="sessionchange:sessionChangeRequest"/></xs:all></xs:complexType></xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sessionchange="http://ericsson.com/services/ws_CIL_5/sessionchange" xmlns:wsi="http://ericsson.com/services/ws_CIL_5/rateplansread" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_5/rateplansread"><xs:import namespace="http://ericsson.com/services/ws_CIL_5/sessionchange"/><xs:element name="rateplansReadRequest" type="wsi:rateplansReadRequest"/><xs:element name="rateplansReadResponse" type="wsi:rateplansReadResponse"/><xs:complexType name="sharedAccountPackagesListpartResponse"><xs:all><xs:element minOccurs="0" name="sharedAccountPackageId" type="xs:long"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Shared account package identifier</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sharedAccountPackageIdPub" type="xs:string"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Shared account package short description, used as public key</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sharedAccountPackageDes" type="xs:string"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Shared account package description</p>]]>
+																	</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="sharedAccountPackagesResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:sharedAccountPackagesListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="creditLimitsListpartResponse"><xs:all><xs:element minOccurs="0" name="crlStart" type="xs:date"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Effective start date</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="crlEnd" type="xs:date"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Effective end date</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="crlPrdicAmount" type="xs:double"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Periodical check credit amount</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="crlDailyAmount" type="xs:double"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Daily check credit amount</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="crlDays" type="xs:integer"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Credit limit days</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="crlChangeable" type="xs:boolean"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Flag indicating if modification is allowed</p>]]>
+																	</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="creditLimitsResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:creditLimitsListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="numRpListpartResponse"><xs:all><xs:element minOccurs="0" name="rpcode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Rateplan code</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the rateplan</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpVscode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Rateplan version</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpShdes" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Rateplan short description</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpDes" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Rateplan description</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="avFrom" type="xs:date"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Effective date of the rate plan version or the start date of the availability period if it's defined for the rateplan.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="avTo" type="xs:date"><xs:annotation><xs:documentation>
+													<![CDATA[<p>End date of the availability period if it's defined for this rateplan.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpOcc" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Flag to indicate rateplans with assignable other credits and charges
+													<ul><li>True = Rateplan with assignable OCC</li><li>False =  Rateplan without assignable OCC</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpIsExternal" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Indicates if the rateplan is external</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="preratedTapInd" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Prerated TAP rateplan indicator
+													<ul><li>True = Prerated TAP rateplan</li><li>False =  No prerated TAP rateplan</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="scope" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Scope of a rateplan
+													<ul><li>C = content product rateplan</li><li>B = usual BSCS rateplan</li><li>E = charging system rateplan</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="paymentMethodInd" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Payment method
+													<ul><li>P : Postpaid</li><li>A : Prepaid</li><li>H : Hybrid</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="creditLimits" type="wsi:creditLimitsResponse"/><xs:element minOccurs="0" name="coObligationPeriodYears" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Contract obligation period - time duration in years</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coObligationPeriodMonths" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Contract obligation period - time duration in months</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coObligationPeriodWeeks" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Contract obligation period - time duration in weeks</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="coObligationPeriodDays" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Contract obligation period - time duration in days</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sharedAccountPackages" type="wsi:sharedAccountPackagesResponse"/></xs:all></xs:complexType><xs:complexType name="numRpResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:numRpListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="rateplansReadResponse"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Information about the current rateplans</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="numRp" type="wsi:numRpResponse"/></xs:all></xs:complexType><xs:complexType name="inputAttributes"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Identifies an external product with the public or private key. Use instead of RPCODE.</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="rpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Rateplan code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the rateplan</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extProductId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>id of external product</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extProductIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the external product</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="readSharedAccounts" type="xs:boolean"><xs:annotation><xs:documentation>
+							<![CDATA[<p>flag indicating if shared account package info should be read - default is false</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="rateplansReadRequest"><xs:all><xs:element minOccurs="0" name="inputAttributes" type="wsi:inputAttributes"/><xs:element minOccurs="0" name="sessionChangeRequest" type="sessionchange:sessionChangeRequest"/></xs:all></xs:complexType></xs:schema>					
+  </wsdl:types>
+  <wsdl:message name="addressesReadRequest">
+    <wsdl:part element="sch30:addressesReadRequest" name="addressesReadRequest"/>
+  </wsdl:message>
+  <wsdl:message name="addressesReadResponse">
+    <wsdl:part element="sch30:addressesReadResponse" name="addressesReadResponse"/>
+  </wsdl:message>
+  <wsdl:message name="contractsSearchRequest">
+    <wsdl:part element="sch31:contractsSearchRequest" name="contractsSearchRequest"/>
+  </wsdl:message>
+  <wsdl:message name="contractsSearchResponse">
+    <wsdl:part element="sch31:contractsSearchResponse" name="contractsSearchResponse"/>
+  </wsdl:message>
+    <wsdl:message name="contractReadRequest">
+    <wsdl:part element="sch32:contractReadRequest" name="contractReadRequest"/>
+  </wsdl:message>
+  <wsdl:message name="contractReadResponse">
+    <wsdl:part element="sch32:contractReadResponse" name="contractReadResponse"/>
+  </wsdl:message>
+   <wsdl:message name="customerReadRequest">
+    <wsdl:part element="sch33:customerReadRequest" name="customerReadRequest"/>
+  </wsdl:message>
+  <wsdl:message name="customerReadResponse">
+    <wsdl:part element="sch33:customerReadResponse" name="customerReadResponse"/>
+  </wsdl:message>
+  <wsdl:message name="paymentArrangementsReadRequest">
+    <wsdl:part element="sch34:paymentArrangementsReadRequest" name="paymentArrangementsReadRequest"/>
+  </wsdl:message>
+  <wsdl:message name="paymentArrangementsReadResponse">
+    <wsdl:part element="sch34:paymentArrangementsReadResponse" name="paymentArrangementsReadResponse"/>
+  </wsdl:message>
+  <wsdl:message name="rateplansReadResponse">
+    <wsdl:part element="sch35:rateplansReadResponse" name="rateplansReadResponse"/>
+  </wsdl:message>
+  <wsdl:message name="rateplansReadRequest">
+    <wsdl:part element="sch35:rateplansReadRequest" name="rateplansReadRequest"/>
+  </wsdl:message>
+  <wsdl:portType name="SoaService">
+    <wsdl:operation name="addressesRead">
+      <wsdl:input message="tns:addressesReadRequest" name="addressesReadRequest"/>
+      <wsdl:output message="tns:addressesReadResponse" name="addressesReadResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="contractsSearch">
+      <wsdl:input message="tns:contractsSearchRequest" name="contractsSearchRequest"/>
+      <wsdl:output message="tns:contractsSearchResponse" name="contractsSearchResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="contractRead">
+      <wsdl:input message="tns:contractReadRequest" name="contractReadRequest"/>
+      <wsdl:output message="tns:contractReadResponse" name="contractReadResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="customerRead">
+      <wsdl:input message="tns:customerReadRequest" name="customerReadRequest"/>
+      <wsdl:output message="tns:customerReadResponse" name="customerReadResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="paymentArrangementsRead">
+      <wsdl:input message="tns:paymentArrangementsReadRequest" name="paymentArrangementsReadRequest"/>
+      <wsdl:output message="tns:paymentArrangementsReadResponse" name="paymentArrangementsReadResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="rateplansRead">
+      <wsdl:input message="tns:rateplansReadRequest" name="rateplansReadRequest"/>
+      <wsdl:output message="tns:rateplansReadResponse" name="rateplansReadResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="SoaService" type="tns:SoaService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addressesRead">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addressesReadRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addressesReadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="contractsSearch">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="contractsSearchRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="contractsSearchResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="contractRead">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="contractReadRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="contractReadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="customerRead">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="customerReadRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="customerReadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="paymentArrangementsRead">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="paymentArrangementsReadRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="paymentArrangementsReadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="rateplansRead">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="rateplansReadRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="rateplansReadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  
+  <wsdl:service name="SoaService">
+    <wsdl:port binding="tns:SoaService" name="SoaService">
+      <soap:address location="/services"/>
+    </wsdl:port>
+  </wsdl:service>
+  
+</wsdl:definitions>

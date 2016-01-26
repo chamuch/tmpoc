@@ -85,13 +85,13 @@
 				value="http://0.0.0.0:9090/services/ws_CIL_5/contractssearch" />
 		</cxf:properties>
 	</cxf:cxfEndpoint> -->
-	
-	<cxf:cxfEndpoint id="contractsSearch"
-		serviceClass="com.ericsson.services.ws_cil_5.ContractsSearchService"
-		xmlns:soapenv="http://schemas.xmlsoap.org/wsdl/soap/" wsdlURL="classpath:wsdl/ws_CIL_5_ContractsSearchService.wsdl"
+		
+	<cxf:cxfEndpoint id="cbioEndPoint"
+		serviceClass="com.ericsson.services.ws_cil_5.SoaService"
+		xmlns:soapenv="http://schemas.xmlsoap.org/wsdl/soap/" wsdlURL="classpath:wsdl/ws_CIL_5_SoaService.wsdl"
 		bus="cxf">
 		<cxf:properties>
-			<entry key="address" value="http://0.0.0.0:9090/services/ContractService" />
+			<entry key="address" value="http://0.0.0.0:9090/soa-simulator/services" />
 			<entry key="dataFormat" value="POJO" />
 			<!-- <entry key="ws-security.validate.token" value="false" /> -->
 		</cxf:properties>
@@ -105,7 +105,18 @@
 			<!-- <ref bean="loggingOutInterceptor" /> -->
 		</cxf:outInterceptors>
 	</cxf:cxfEndpoint>
-
+		
+	<!-- <cxf:cxfEndpoint id="addressesRead"
+		serviceClass="com.ericsson.services.ws_cil_5.AddressesReadService"
+		xmlns:soapenv="http://schemas.xmlsoap.org/wsdl/soap/" wsdlURL="classpath:wsdl/ws_CIL_5_AddressesReadService.wsdl"
+		bus="cxf">
+		<cxf:properties>
+			<entry key="address" value="http://0.0.0.0:9090/soa-simulator/services" />
+			<entry key="dataFormat" value="POJO" />
+			<entry key="ws-security.validate.token" value="false" />
+		</cxf:properties>		
+	</cxf:cxfEndpoint> -->
+	
 	<cxf:rsServer id="prodcatServer" bus="tmPocApiEngine"
 		address="http://0.0.0.0:9090/prodcat-api/" serviceClass="com.ericsson.tm.web.NativeSimpleProdcatEndpoint" />
 
@@ -195,9 +206,16 @@
 		</route>
 		
 		<route>
-			<from uri="cxf:bean:contractsSearch" />
+			<from uri="cxf:bean:cbioEndPoint" />
 			<camel:doTry>
-			<camel:bean beanType="com.ericsson.tm.processor.DummyProcessor" />
+				<camel:when>
+					<camel:simple>${in.header.operationName} == 'contractsSearch'</camel:simple>
+					<camel:bean beanType="com.ericsson.tm.processor.DummyProcessor" />
+				</camel:when>
+				<camel:when>
+				<camel:simple>${in.header.operationName} == 'addressesRead'</camel:simple>
+				<camel:bean beanType="com.ericsson.tm.processor.AddressReadProcessor" />
+				</camel:when>
 			<camel:doCatch>					
 					<camel:exception>java.lang.Exception</camel:exception>
 					<camel:log message="Exception: ${exception.stacktrace}" />						
@@ -208,6 +226,21 @@
 				</camel:doFinally>
 			</camel:doTry>
 		</route>
+		
+		<!-- <route>
+			<from uri="cxf:bean:addressesRead" />
+			<camel:doTry>
+			<camel:bean beanType="com.ericsson.tm.processor.AddressReadProcessor" />
+			<camel:doCatch>					
+					<camel:exception>java.lang.Exception</camel:exception>
+					<camel:log message="Exception: ${exception.stacktrace}" />						
+				</camel:doCatch>
+
+				<camel:doFinally>
+					<camel:log message="Leave-api:${body}" />
+				</camel:doFinally>
+			</camel:doTry>
+		</route> -->
 		
 	</camelContext>
 </beans>
