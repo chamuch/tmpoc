@@ -60,6 +60,9 @@
 		<property name="unmarshalType"
 			value="com.ericsson.tm.prodcat.simple.GetProductsForResourceRequest" />
 	</bean>
+	
+	<bean id="ecmService" class="com.ericsson.tm.prodcat.ecm.processors.EcmProdcatProcessor"/>
+	
 
 	<cxfcore:bus name="tmPocApiEngine" />
 
@@ -79,16 +82,16 @@
 		address="http://0.0.0.0:9090/prodcat-api/" serviceClass="com.ericsson.tm.web.NativeSimpleProdcatEndpoint" />
 
 	<cxf:rsServer id="ecmServer" bus="tmPocApiEngine"
-		address="http://0.0.0.0:9090/ecm/" serviceClass="com.ericsson.tm.web.EcmProdcatEndpoint" />
+		address="http://0.0.0.0:9090/ecm/" 
+		serviceClass="com.ericsson.tm.web.EcmProdcatEndpoint"> 
+	
+		<cxf:providers>
+			<bean class="org.sns.utils.camel.MyMessageBidyHandler"></bean>
+		</cxf:providers>
+	</cxf:rsServer>
 
 	<camelContext id="tm-api" xmlns="http://camel.apache.org/schema/spring">
-		<!-- <route id="tm-api-route"> <from uri="cxfrs://bean://tmeServer" /> 
-			<camel:doTry> <camel:unmarshal ref="gsonCustomerProfile" /> <camel:bean beanType="com.ericsson.tm.processor.DummyProcessor" 
-			/> <camel:marshal ref="gsonCustomerProfile" /> <camel:doCatch> <camel:exception>java.lang.Exception</camel:exception> 
-			<camel:log message="Exception: ${exception.stacktrace}" /> </camel:doCatch> 
-			<camel:doFinally> <camel:log message="Leave-api:${body}" /> </camel:doFinally> 
-			</camel:doTry> </route> -->
-
+	
 		<route id="prodcat-simple">
 			<from uri="cxfrs://bean://prodcatServer" />
 			<camel:doTry>
@@ -140,9 +143,7 @@
 			<camel:doTry>
 				<camel:when>
 					<camel:simple>${header.operationName} == 'productCategory'</camel:simple>
-					<camel:bean
-						beanType="com.ericsson.tm.prodcat.ecm.processors.GetAllProductCategoriesProcessor" />
-					<camel:marshal ref="gsonArray" />	
+					<camel:to uri="direct:productCategory"></camel:to>	
 				</camel:when>
 				<camel:doCatch>					
 					<camel:exception>java.lang.Exception</camel:exception>
@@ -153,6 +154,11 @@
 					<camel:log message="Leave-api:${body}" />
 				</camel:doFinally>
 			</camel:doTry>
+		</route>
+		
+		<route id="invoke-productCategory">
+			<camel:from uri="direct:productCategory"></camel:from>
+			<camel:bean ref="ecmService" method="getAllProductCategories"></camel:bean>
 		</route>
 		
 		
