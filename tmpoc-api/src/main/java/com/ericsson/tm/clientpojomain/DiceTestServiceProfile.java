@@ -20,8 +20,8 @@ public class DiceTestServiceProfile {
 			com.ericsson.tm.proxy.service.request.PortalMessage.Request reqObj = new Request();
 			
 			reqObj.setCustomerAccountNo(custAccountNo);
-			reqObj.setBillingAccountNo(billingAccountNo);
-			reqObj.setStatus(status);
+			//reqObj.setBillingAccountNo(billingAccountNo);
+			//reqObj.setStatus(status);
 			
 			Response x = srvc.operation(reqObj);
 			
