@@ -27,11 +27,15 @@ public interface ContractsSearchService {
     );
 }*/
 
-@WebService
+@WebService(targetNamespace = "http://ericsson.com/tm/cbio/contractsearch", name = "ContractsSearchService")
+@XmlSeeAlso({ObjectFactory.class})
+@SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
 public interface ContractsSearchService {
 
-    @WebMethod
+    @WebResult(name = "contractsSearchResponse", targetNamespace = "http://ericsson.com/tm/cbio/contractsearch", partName = "contractsSearchResponse")
+    @WebMethod(operationName = "ExecuteCommand")
     public ContractsSearchResponse contractsSearch(
+        @WebParam(partName = "contractsSearchRequest", name = "contractsSearchRequest", targetNamespace = "http://ericsson.com/tm/cbio/contractsearch")
         ContractsSearchRequest contractsSearchRequest
     );
 }
