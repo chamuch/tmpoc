@@ -25,7 +25,7 @@ import org.apache.http.impl.client.HttpClients;
 public class DiceHttpAdaptor {
 
 	private CloseableHttpClient httpclient = null;
-	private String diceUrl = null;
+	private final static String diceUrl = "https://dice.tm.com.my/prj_HsbbEai_Sync_War/httpMessageReceiver.do";
 	
 	/*public DiceHttpAdaptor() throws KeyManagementException,
 			NoSuchAlgorithmException, KeyStoreException {*/
@@ -43,10 +43,12 @@ public class DiceHttpAdaptor {
 			// do not set connection manager
 			httpclient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
 	
-			diceUrl = "https://dice.tm.com.my/prj_HsbbEai_Sync_War/httpMessageReceiver.do";
-		}catch(Exception genE){
+		} catch(Exception genE){
 			System.out.println("Exception in client adaptor:"+genE);
 			throw genE;
+		} catch (Throwable e) {
+			System.out.println("Unhandlable Error in client adaptor:"+ e);
+			throw e;
 		}
 	}
 

@@ -27,7 +27,7 @@ public class CustomerProfileRetrieveEntityService {
 		this.initJaxbContexts();
 	}
 	
-	public com.ericsson.tm.proxy.customer.response.PortalMessage.Response operation(com.ericsson.tm.proxy.customer.request.PortalMessage.Request requestObj){
+	public com.ericsson.tm.proxy.customer.response.PortalMessage.Response operation(com.ericsson.tm.proxy.customer.request.PortalMessage.Request requestObj) throws Exception{
 		
 		//Generate Request
 		com.ericsson.tm.proxy.customer.request.PortalMessage profileReq = new com.ericsson.tm.proxy.customer.request.PortalMessage();
@@ -52,7 +52,7 @@ public class CustomerProfileRetrieveEntityService {
 		System.out.println("Request XML:"+requestXml);
 		//Execute 
 		
-		execute(requestXml);
+		//execute(requestXml);
 		
 		String responseXML = execute(requestXml);
 		System.out.println("Response XML:"+responseXML);
@@ -63,7 +63,7 @@ public class CustomerProfileRetrieveEntityService {
 		return profileResp.getResponse();
 	}
 	
-	public String execute(String requestXML){
+	public String execute(String requestXML) throws Exception{
 		
 		String responseXml = "NO DICE";
 		
@@ -76,7 +76,11 @@ public class CustomerProfileRetrieveEntityService {
 			System.out.println("Start invoking TM API");
 			responseXml = clientAdaptor.executeHttpPost(requestXML);
 		} catch (Exception e) {	
-			e.printStackTrace();
+			System.out.println("Execute failed!! - " + e);
+			throw e;
+		} catch (Throwable e) {	
+			System.out.println("Execute threw up!! - " + e);
+			throw e;
 		}
 		
 		return responseXml;
