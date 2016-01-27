@@ -78,6 +78,7 @@ public class DiceHttpAdaptor {
 
 			post.setEntity(body);
 			HttpResponse response = httpclient.execute(post);
+			httpclient.close();
 
 			HttpEntity entity = response.getEntity();
 			responseXML = org.apache.http.util.EntityUtils.toString(entity, "UTF-8");
