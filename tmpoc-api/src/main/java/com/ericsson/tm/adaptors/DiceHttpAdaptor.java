@@ -81,7 +81,7 @@ public class DiceHttpAdaptor {
 			httpclient.close();
 
 			HttpEntity entity = response.getEntity();
-			responseXML = org.apache.http.util.EntityUtils.toString(entity, "UTF-8");
+			responseXML = org.sns.utils.Http.EntityUtils.toString(entity, "UTF-8");
 			
 			System.out.println(responseXML);
 		} catch (Exception genE) {

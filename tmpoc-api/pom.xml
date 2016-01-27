@@ -36,7 +36,9 @@
 			org.apache.http.client.config,
 			org.apache.http,
 			org.apache.http.entity,
-			org.apache.http.impl.client,						
+			org.apache.http.impl.client,
+			javax.net.ssl,
+			org.apache.http.client.methods											
 		</osgi-import-packages>			
 		<osgi-export-packages>			
 		</osgi-export-packages>
@@ -121,12 +123,7 @@
 			<groupId>javax.ws.rs</groupId>
 			<artifactId>javax.ws.rs-api</artifactId>
 			<version>2.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpcore</artifactId>
-			<version>4.4</version>
-		</dependency>
+		</dependency>		
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
