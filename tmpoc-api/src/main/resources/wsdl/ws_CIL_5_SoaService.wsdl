@@ -6,6 +6,8 @@ xmlns:sch32="http://ericsson.com/services/ws_CIL_5/contractread"
 xmlns:sch33="http://ericsson.com/services/ws_CIL_5/customerread"
 xmlns:sch34="http://ericsson.com/services/ws_CIL_5/paymentarrangementsread"
 xmlns:sch35="http://ericsson.com/services/ws_CIL_5/rateplansread"
+xmlns:sch36="http://ericsson.com/services/ws_CIL_5/servicepackagesread" 
+xmlns:sch37="http://ericsson.com/services/ws_CIL_5/servicesread"
 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
 xmlns:tns="http://ericsson.com/services/ws_CIL_5" 
 targetNamespace="http://ericsson.com/services/ws_CIL_5">
@@ -1031,6 +1033,349 @@ targetNamespace="http://ericsson.com/services/ws_CIL_5">
 					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="readSharedAccounts" type="xs:boolean"><xs:annotation><xs:documentation>
 							<![CDATA[<p>flag indicating if shared account package info should be read - default is false</p>]]>
 					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="rateplansReadRequest"><xs:all><xs:element minOccurs="0" name="inputAttributes" type="wsi:inputAttributes"/><xs:element minOccurs="0" name="sessionChangeRequest" type="sessionchange:sessionChangeRequest"/></xs:all></xs:complexType></xs:schema>					
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sessionchange="http://ericsson.com/services/ws_CIL_5/sessionchange" xmlns:wsi="http://ericsson.com/services/ws_CIL_5/servicepackagesread" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_5/servicepackagesread"><xs:import namespace="http://ericsson.com/services/ws_CIL_5/sessionchange"/><xs:element name="servicePackagesReadRequest" type="wsi:servicePackagesReadRequest"/><xs:element name="servicePackagesReadResponse" type="wsi:servicePackagesReadResponse"/><xs:complexType name="numSpListpartResponse"><xs:all><xs:element minOccurs="0" name="spcode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service package code</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="spcodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the service package</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="spShdes" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service package short description</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="spDes" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service package description</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="pdeServicePackage" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Flag to indicate whether Service Package is inserted by the mapping component.
+													<ul><li>True = Service package is inserted by mapping component</li><li>False = Service package is not inserted by mapping component.</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="atomicServicePackage" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Flag to indicate whether Service Package is atomic.</p>]]>
+											</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="numSpResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:numSpListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="servicePackagesReadResponse"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Identifies a rateplan by the public or private key.</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="rpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Rateplan code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the rateplan</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="numSp" type="wsi:numSpResponse"/></xs:all></xs:complexType><xs:complexType name="inputAttributes"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Identifies an external product with the public or private key. Use instead of RPCODE.</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="rpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Rateplan code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the rateplan</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extProductId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>id of external product</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extProductIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the external product</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="servicePackagesReadRequest"><xs:all><xs:element minOccurs="0" name="inputAttributes" type="wsi:inputAttributes"/><xs:element minOccurs="0" name="sessionChangeRequest" type="sessionchange:sessionChangeRequest"/></xs:all></xs:complexType></xs:schema>					
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:money="http://lhsgroup.com/lhsws/money" xmlns:sessionchange="http://ericsson.com/services/ws_CIL_5/sessionchange" xmlns:wsi="http://ericsson.com/services/ws_CIL_5/servicesread" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_5/servicesread"><xs:import namespace="http://ericsson.com/services/ws_CIL_5/sessionchange"/><xs:import namespace="http://lhsgroup.com/lhsws/money"/><xs:element name="servicesReadRequest" type="wsi:servicesReadRequest"/><xs:element name="servicesReadResponse" type="wsi:servicesReadResponse"/><xs:complexType name="numActionResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="actionId" type="xs:long"/></xs:sequence></xs:complexType><xs:complexType name="resourcesListpartResponse"><xs:all><xs:element minOccurs="0" name="resourceType" type="xs:integer"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Resource type.
+																			Possible values:
+																			0 = directory number;
+																			1 = port;
+																			2 = storage medium;
+																			3 = closed user group;
+																			4 = equipment;
+																			5 = call origin;
+																			6 = call destination;
+																			7 = directory number block;
+																			8 = access point (APN);
+																			9 = PDP address;
+																			10 = VPN number;
+																			11 = VPN private number;
+																			12 = instance identifier </p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="mandatory" type="xs:boolean"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Flag to indicate if the resource is mandatory or not.
+																			True = the resource is mandatory;
+																			False = the resource is optional</p>]]>
+																	</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="resourcesResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:resourcesListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="chargesListpartResponse"><xs:all><xs:element minOccurs="0" name="chargeTypeId" type="xs:long"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Type of the charge 1: one-time, 2: usage 3:recurring, 5: event, 6: advance recurring</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="chargeAmount" type="money:money"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>ammount of the charge</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="chargeAmountOvw" type="money:money"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Overwritten ammount of the charge.</p>]]>
+																	</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="chargesResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:chargesListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="numSvListpartResponse"><xs:all><xs:element minOccurs="0" name="sncode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service code</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sncodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="svShdes" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service short description</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="svDes" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service description</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="billingInd" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Billing indicator.<ul><li>True - This service is relevant for one time or recurring charges</li><li>False - This service is not relevant for one time or recurring charges</li></ul></p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="charges" type="wsi:chargesResponse"/><xs:element minOccurs="0" name="frequencyInd" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Recurrency indicator for event fees: O=one-time, P=periodic , I=Interval.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="periodType" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Type of time period for the specification of overwritten recurring charges (formerly: access fee).<ul><li>'D' - Days</li><li>'M' - Months</li></ul></p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="periodLength" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Time period for the specification of overwritten recurring charges.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="initialCredit" type="money:money"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Initial credit of a money wallet service.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="svDeposit" type="money:money"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Deposit to be paid when contracting this service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="svCsind" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Core service indicator Y if core service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="intervalType" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Type of time interval for the specification of recurring charges (formerly: access fee) D = days M = month</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="interval" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Time interval for the specification of recurring charges</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="proind" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Pro-rate charging indicator.<ul><li>'Y' - Yes</li><li>'N' - No</li><li>'F' - Fixed</li></ul></p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="srvind" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service type indicator P = permanen E = event driven</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="advind" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Advance flag : A = advance P = past</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="susind" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service suspension indicator
+													Y = charged even if suspended
+													N = otherwise</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="amtind" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Amount indicator :
+													F = fixed
+													C = changeable</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="scSccode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service category identification</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="scSnind" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service Subtype
+													U = Usage
+													E = Event
+													V = Value Added Service </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="gprs" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>GPRS Service
+													True   = GPRS Service
+													False = not a GPRS Service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="srvType" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>
+													<ul><li>SRV_Types:</li><li> V - service is VAS (used for selling goods)</li><li> C - service is CUG (used to assign a closed user group)</li><li> G - service is GPRS</li><li> P - service is VPN service</li><li> L - service is location service</li><li> Blank - all other services</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="srvSubtype" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>
+													Defines the Service subtype, which is needed in Free Units:
+													<ul><li>A: Agreement Basic Service</li><li>C: COFU (contract individual Free Units)</li><li>P: POFU (pooled Free Units at subscriber level)</li><li>L: POFUL (pooled Free Units at payment responsible level)</li><li>T: Billed Line Taxation</li><li>B: BOP Service</li><li>H: Handling charge service</li><li>N: Bank charge service</li><li>NULL: all other Services</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="lcmServiceType" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>1: Barring of incoming calls service, 2: Barring of outgoing calls service, 3: Barring of incoming roaming calls service, not set: not used in life cycle management</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="vasMapping" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>true if service can be mapping to external service code, false otherwise</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="bopModeId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Internal Identifier of the BOP mode.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="bopModeIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the BOP mode.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="portNpcode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>The ports are defined in the PORT table.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="portNpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the number plan</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="dirnumNpcode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>The DNs are defined in the DIRECTORY_NUMBER table.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="dirnumNpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the number plan</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="svMcotype" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Indicates if the service is allowed for main contracts</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="svRcotype" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Indicates if the service is allowed for regular contracts</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="svAlcotype" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Indicates if the service is allowed for AL contracts</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="svNetProvReq" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Indicates whether this service has to be provisioned to the Network.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="bsgId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>The basic service group id</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="accGlaccount" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Revenue General Ledger account code for recurring and event charges</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="accGlaccountDisc" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Discount General Ledger account code for recurring and event charges </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="accGlaccountMincom" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Minimum commitments General Ledger account code for recurring and event charges</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="accJobcost" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Revenue job cost code for recurring and event charges</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="accJobcostDisc" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Discount job cost code for recurring and event charges </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="accJobcostMincom" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Minimum commitments job cost code for recurring and event charges </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="suip" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Profile flag indicator.
+													True = service can be linked to the contract via a profile;
+													False = service can't be linked to the contract via a profile</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="vpn" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Virtual private network indicator (VPN).
+													True = service is VPN.
+													False = service is not VPN.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="vpnAdministratorInd" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>VPN administrator service indicator.
+													Indicates whether the service is a VPN administrator service.
+													Domain:
+													True = The service is a VPN administrator service
+													False = The service is not a VPN administrator service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="vpnInternalAccessInd" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>VPN internal access service indicator.
+													Indicates whether the service is a VPN internal access service.
+													Domain:
+													True = The service is a VPN internal access service
+													False = The service is not a VPN internal access service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="vpnExternalAccessInd" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>VPN external access service indicator.
+													Indicates whether the service is a VPN external access service.
+													Domain:
+													True = The service is a VPN external access service
+													False = The service is not a VPN external access service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="vpnOwnerContractInd" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>VPN owner contract indicator.
+													Indicates whether the service is allowed for contracts of VPN owners or not.
+													Domain:
+													True = The service is allowed for VPN owner contracts
+													False = The service is forbidden for VPN owner contracts</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="vpnUserContractInd" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>VPN user contract indicator.
+													Indicates whether the service is allowed for contracts of VPN owners or not.
+													Domain:
+													True = The service is allowed for VPN user contracts
+													False = The service is forbidden for VPN user contracts</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="prepaidSupportedInd" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p> Flag to indicate whether the service can be used as a prepaid service from technical point of view.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="defPaymentCondUsgInd" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p> Flag to indicate the default payment condition for the usage charges. Domain : 1 - postpaid, 2 - prepaid, 3 - no usage charge</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="paymentCondChngUsgInd" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p> Flag to indicate whether the default payment condition can be changed. Domain ; false - change not allowed, true - change allowed (during/after contracting).</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="defTimePackageUsg" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p> The default prepaid usage service time package id.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="defTypeOfControl" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p> Flag to indicate the default type of control. Domain : 1 - online, 2 - offline</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="defPaymentCondOnetimeRecInd" type="xs:integer"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Flag to indicate the default payment option for one time and recurring charges.<ul><li>1 - Postpaid</li><li>2 - Prepaid</li></ul></p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="chargingSchedule" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Charging schedule.<ul><li>'C' - Cut off date related</li><li>'B' - Billing run related</li></ul></p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="pdeImplicitInd" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Flag to indicate whether the service will be used implicitly.
+													True =  the service will be used implicitly
+													False = the service will not be used implicitly.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="echind" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Event charge indicator.
+													Values:
+													<ul><li>A = absolute charge</li><li>R = relative charge</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="resources" type="wsi:resourcesResponse"/><xs:element minOccurs="0" name="numAction" type="wsi:numActionResponse"/><xs:element minOccurs="0" name="svType" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>The service type:
+													<ul><li>B = Cost control service</li><li>C = Content service</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="simpleDiscount" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>This flag indicates whether this service is actually a simple discount due to its attached cost control package.
+													This parameter is set only in case of cost control services: SV_TYPE is B. (true, if COC_COSTCONTROL_PACKAGES.BALANCE_TYPE = 3)</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="moneyWallet" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>This flag indicates whether this service is actually a money wallet balance due to its attached cost control package.
+													This parameter is set only in case of cost control services: SV_TYPE is B. (true, if COC_COSTCONTROL_PACKAGES.BALANCE_TYPE = 1)</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="balanceType" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>This flag indicates whether this service is actually a money wallet balance due to its attached cost control package.
+													This parameter is set only in case of cost control services: SV_TYPE is B. (0: General Balance, 1: Money Wallet, 2: Spending Control, 3: Simple Discount, 4:Content Bundle Balance)</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="selfMonitoring" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>This flag indicates whether this service is a self monitoring balance due to its attached cost control package.
+													This means that if this is contracted, the corresponding costcontrol balance will implicitly monitor the contract itself.
+													This parameter is set only in case of cost control services: SV_TYPE is B.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="contractBalance" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>This flag indicates whether this service is a balance monitorig the all usage services from the owner contract and only these, due to its attached cost control package.
+													This parameter is set only in case of cost control services: </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="umcode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Unit of measurement code.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="umcodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the unit of measurement</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="creditable" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>This parameter is set only in case of cost control services: SV_TYPE is B. Delivers creditable flag of the COC package linked to the cost control services.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="individualSubscription" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Flag indicates whether the (shared account) service is individual for an assigned contract. </p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="serviceParamerterInd" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service parameter indicator.<ul><li>TRUE  = service parameter are available</li><li>FALSE = service parameter are not available</li></ul>
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cpName" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>
+													Name of the content product if this service is a catalog or bundle service. For all other services the value is not set.
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="cpExtKey" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>
+													The external key of the content product if this service is a catalog or bundle service. For all other services the value is not set. The external
+													key is unique per content provider.
+													</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rscode" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Private key of the resource structure.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rscodePub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the resource structure.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="accountId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>This parameter is relevant only for the Charging and Billing in One releases</p><p>Identifier of the account.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="accountTypeId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Identifier of the account type.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="accountTypeIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the account type.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="serviceOfferingId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>This parameter is relevant only for the Charging and Billing in One releases</p><p>Service offering identifier.</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="serviceParameterChargeInd" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Service parameter charge indicator: TRUE if parameter dependent charges are defined for the current service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="pamRecChargeInd" type="xs:boolean"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Indicates if PAM recurring charge is assigned to the service has </p>]]>
+											</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="numSvResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:numSvListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="intSvListpartResponse"><xs:all><xs:element minOccurs="0" name="sncode" type="xs:long"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Service code</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sncodePub" type="xs:string"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Public key of the service</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extResourceTypeId" type="xs:long"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>id of external resource type</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extResourceTypeIdPub" type="xs:string"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>Public key of the external resource type</p>]]>
+																	</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="resourceTypeCode" type="xs:integer"><xs:annotation><xs:documentation>
+																			<![CDATA[<p>
+																			Resource type.
+																			Possible values:
+																			0 = directory number;
+																			1 = port;
+																			2 = storage medium;
+																			3 = closed user group;
+																			4 = equipment;
+																			5 = call origin;
+																			6 = call destination;
+																			7 = directory number block;
+																			8 = access point (APN);
+																			9 = PDP address;
+																			10 = VPN number;
+																			11 = VPN private number;
+																			12 = instance identifier
+																			</p>]]>
+																	</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="intSvResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:intSvListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="svMappingListpartResponse"><xs:all><xs:element minOccurs="0" name="extServiceId" type="xs:long"><xs:annotation><xs:documentation>
+													<![CDATA[<p>id of external service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extServiceIdPub" type="xs:string"><xs:annotation><xs:documentation>
+													<![CDATA[<p>Public key of the external service</p>]]>
+											</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="intSv" type="wsi:intSvResponse"/></xs:all></xs:complexType><xs:complexType name="svMappingResponse"><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="wsi:svMappingListpartResponse"/></xs:sequence></xs:complexType><xs:complexType name="servicesReadResponse"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Identifies an external product with the public or private key.Use instead RPCODE(_PUB), RP_VSCODE and SPCODE(_PUB)</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="rpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Rate plan code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the rateplan</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpVscode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Rate plan version code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="spcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Service package code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="spcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the service package</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extProductId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>id of external product</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extProductIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the external product</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="svMapping" type="wsi:svMappingResponse"/><xs:element minOccurs="0" name="numSv" type="wsi:numSvResponse"/></xs:all></xs:complexType><xs:complexType name="inputAttributes"><xs:all><xs:annotation><xs:documentation>
+						<![CDATA[<p>Identifies an external service with the public or private key. Use instead of SNCODE(_PUB).</p>]]>
+				</xs:documentation></xs:annotation><xs:element minOccurs="0" name="rpcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Rate plan code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the rateplan</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="rpVscode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Rate plan version code. If no rate plan version is given then the current rate plan version is assumed.</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="spcode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Optional service package code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="spcodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the service package</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sncode" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Service code</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="sncodePub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the service</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extProductId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>id of external product</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extProductIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the external product</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extServiceId" type="xs:long"><xs:annotation><xs:documentation>
+							<![CDATA[<p>id of external service</p>]]>
+					</xs:documentation></xs:annotation></xs:element><xs:element minOccurs="0" name="extServiceIdPub" type="xs:string"><xs:annotation><xs:documentation>
+							<![CDATA[<p>Public key of the external service</p>]]>
+					</xs:documentation></xs:annotation></xs:element></xs:all></xs:complexType><xs:complexType name="servicesReadRequest"><xs:all><xs:element minOccurs="0" name="inputAttributes" type="wsi:inputAttributes"/><xs:element minOccurs="0" name="sessionChangeRequest" type="sessionchange:sessionChangeRequest"/></xs:all></xs:complexType></xs:schema>
   </wsdl:types>
   <wsdl:message name="addressesReadRequest">
     <wsdl:part element="sch30:addressesReadRequest" name="addressesReadRequest"/>
@@ -1068,6 +1413,18 @@ targetNamespace="http://ericsson.com/services/ws_CIL_5">
   <wsdl:message name="rateplansReadRequest">
     <wsdl:part element="sch35:rateplansReadRequest" name="rateplansReadRequest"/>
   </wsdl:message>
+  <wsdl:message name="servicePackagesReadRequest">
+    <wsdl:part element="sch36:servicePackagesReadRequest" name="servicePackagesReadRequest"/>
+  </wsdl:message>
+  <wsdl:message name="servicePackagesReadResponse">
+    <wsdl:part element="sch36:servicePackagesReadResponse" name="servicePackagesReadResponse"/>
+  </wsdl:message>
+  <wsdl:message name="servicesReadResponse">
+    <wsdl:part element="sch37:servicesReadResponse" name="servicesReadResponse"/>
+  </wsdl:message>
+  <wsdl:message name="servicesReadRequest">
+    <wsdl:part element="sch37:servicesReadRequest" name="servicesReadRequest"/>
+  </wsdl:message>
   <wsdl:portType name="SoaService">
     <wsdl:operation name="addressesRead">
       <wsdl:input message="tns:addressesReadRequest" name="addressesReadRequest"/>
@@ -1092,6 +1449,14 @@ targetNamespace="http://ericsson.com/services/ws_CIL_5">
 	<wsdl:operation name="rateplansRead">
       <wsdl:input message="tns:rateplansReadRequest" name="rateplansReadRequest"/>
       <wsdl:output message="tns:rateplansReadResponse" name="rateplansReadResponse"/>
+    </wsdl:operation>
+	    <wsdl:operation name="servicePackagesRead">
+      <wsdl:input message="tns:servicePackagesReadRequest" name="servicePackagesReadRequest"/>
+      <wsdl:output message="tns:servicePackagesReadResponse" name="servicePackagesReadResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="servicesRead">
+      <wsdl:input message="tns:servicesReadRequest" name="servicesReadRequest"/>
+      <wsdl:output message="tns:servicesReadResponse" name="servicesReadResponse"/>
     </wsdl:operation>
   </wsdl:portType>
 
@@ -1148,6 +1513,24 @@ targetNamespace="http://ericsson.com/services/ws_CIL_5">
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="rateplansReadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="servicePackagesRead">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="servicePackagesReadRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="servicePackagesReadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="servicesRead">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="servicesReadRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="servicesReadResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

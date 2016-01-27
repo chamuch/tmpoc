@@ -35,27 +35,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddressesReadRequest }
+     * Create an instance of {@link ListOfAllAddressesResponse }
      * 
      */
-    public AddressesReadRequest createAddressesReadRequest() {
-        return new AddressesReadRequest();
-    }
-
-    /**
-     * Create an instance of {@link AddressesReadResponse }
-     * 
-     */
-    public AddressesReadResponse createAddressesReadResponse() {
-        return new AddressesReadResponse();
-    }
-
-    /**
-     * Create an instance of {@link ListOfAllAddressesListpartResponse }
-     * 
-     */
-    public ListOfAllAddressesListpartResponse createListOfAllAddressesListpartResponse() {
-        return new ListOfAllAddressesListpartResponse();
+    public ListOfAllAddressesResponse createListOfAllAddressesResponse() {
+        return new ListOfAllAddressesResponse();
     }
 
     /**
@@ -67,11 +51,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ListOfAllAddressesResponse }
+     * Create an instance of {@link AddressesReadRequest }
      * 
      */
-    public ListOfAllAddressesResponse createListOfAllAddressesResponse() {
-        return new ListOfAllAddressesResponse();
+    public AddressesReadRequest createAddressesReadRequest() {
+        return new AddressesReadRequest();
+    }
+
+    /**
+     * Create an instance of {@link ListOfAllAddressesListpartResponse }
+     * 
+     */
+    public ListOfAllAddressesListpartResponse createListOfAllAddressesListpartResponse() {
+        return new ListOfAllAddressesListpartResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddressesReadResponse }
+     * 
+     */
+    public AddressesReadResponse createAddressesReadResponse() {
+        return new AddressesReadResponse();
     }
 
     /**

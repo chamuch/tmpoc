@@ -30,25 +30,35 @@ public class ContractSearchProcessor implements Processor {
 		try{
 			ContractsSearchRequest request = exchange.getIn().getBody(ContractsSearchRequest.class);
 			
-			String csIdPub = request.getInputAttributes().getCsIdPub();
-			String customerAccountNo = "";
-			
+			String csIdPub = "";
+			String customerAccountNo = "";			
 			String csIdPubConstantResp = "";
 			
-			// Mappings
-			if(csIdPub == "CUST_86"){
-				customerAccountNo = "1-1LTUM7F";
-				csIdPubConstantResp = "1";
-			} else if (csIdPub == "CUST_88"){
-				customerAccountNo = "1-10E2Y4D";
-				csIdPubConstantResp = "2";
-			} else if (csIdPub == "CUST_101"){
-				customerAccountNo = "1-4HQDJHY";
-				csIdPubConstantResp = "3";
-			} else if (csIdPub == "CUST_102"){
-				customerAccountNo = "1-12YASD";
-				csIdPubConstantResp = "4";
+			if(request.getInputAttributes() != null && request.getInputAttributes().getCsIdPub() != null){
+				csIdPub = request.getInputAttributes().getCsIdPub();
+				
+				// Mappings
+				if(csIdPub == "CUST_86"){
+					customerAccountNo = "1-1LTUM7F";
+					csIdPubConstantResp = "1";
+				} else if (csIdPub == "CUST_88"){
+					customerAccountNo = "1-10E2Y4D";
+					csIdPubConstantResp = "2";
+				} else if (csIdPub == "CUST_101"){
+					customerAccountNo = "1-4HQDJHY";
+					csIdPubConstantResp = "3";
+				} else if (csIdPub == "CUST_102"){
+					customerAccountNo = "1-12YASD";
+					csIdPubConstantResp = "4";
+				} else{
+					customerAccountNo = "1-UNKNOWN";
+					csIdPubConstantResp = "5";
+				}
+			}else{
+				customerAccountNo = "1-UNKNOWN";
+				csIdPubConstantResp = "5";
 			}
+			
 			
 			// Invoke Customer Profile Retrieve
 			CustomerProfileRetrieveEntityService srvc1 = new CustomerProfileRetrieveEntityService();
@@ -66,56 +76,63 @@ public class ContractSearchProcessor implements Processor {
 			ContractsSearchResponse response = new ContractsSearchResponse();
 			
 			ContractsResponse contractResponse = new ContractsResponse();
-
-			List<ContractsListpartResponse> itemList = contractResponse.getItem();
 			
-			ContractsListpartResponse item = new ContractsListpartResponse();
-			item.setContractTypeId(new Long(1));
-			item.setBuId(new Long(2));
-			item.setCoStatus(BigInteger.valueOf(2));
-			
-			item.setCsCode(csIdPub);
-			
-			if(respObj2.getLineItems() != null){
-				for(LineItems lineItem: respObj2.getLineItems()){
-					if (lineItem.getProductName() != null && lineItem.getProductName().equalsIgnoreCase("Residential Voice")){
-						item.setDirnum(lineItem.getServiceID());
+			if(contractResponse != null
+					&& contractResponse.getItem() != null
+					&& contractResponse.getItem().size() > 0){
+				List<ContractsListpartResponse> itemList = contractResponse.getItem();
+				
+				ContractsListpartResponse item = new ContractsListpartResponse();
+				item.setContractTypeId(new Long(1));
+				item.setBuId(new Long(2));
+				item.setCoStatus(BigInteger.valueOf(2));
+				
+				item.setCsCode(csIdPub);
+				
+				if(respObj2.getLineItems() != null){
+					for(LineItems lineItem: respObj2.getLineItems()){
+						if (lineItem.getProductName() != null && lineItem.getProductName().equalsIgnoreCase("Residential Voice")){
+							item.setDirnum(lineItem.getServiceID());
+						}
 					}
 				}
-			}
-						
-			item.setAdrFname(respObj1.getCustomerAccount().getCustomerName());
-			item.setAdrLname(respObj1.getCustomerAccount().getCustomerName());
-			item.setAdrZip(respObj1.getCustomerAccount().getCustomerAddress().getPostcode());
-			item.setAdrCity(respObj1.getCustomerAccount().getCustomerAddress().getCity());
-			item.setAdrStreet(respObj1.getCustomerAccount().getCustomerAddress().getStreetType()+" "+respObj1.getCustomerAccount().getCustomerAddress().getStreetName());
-			item.setAdrStreetno(respObj1.getCustomerAccount().getCustomerAddress().getHouseUnitLot());
-			
-			item.setSubmId(new Long(1));
-			item.setPlcode(new Long(1001));
-			item.setExternalind(false);
-			item.setRpcode(new Long(14));
-			
-			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		    Date dobConst = df.parse("01/01/2016");
-		    GregorianCalendar constCal = new GregorianCalendar();
-		    constCal.setTimeInMillis(dobConst.getTime());
-		    XMLGregorianCalendar dateConst = DatatypeFactory.newInstance().newXMLGregorianCalendar(constCal);			
-			item.setCoActivated(dateConst);
-			
-			item.setCoId(new Long(1));
-			item.setCoIdPub("CONTR0000000010");
-			item.setCsId(new Long(csIdPubConstantResp));
-			
-			item.setCsIdPub(csIdPub);
+				
+				if(respObj1.getCustomerAccount() != null){
+					item.setAdrFname(respObj1.getCustomerAccount().getCustomerName());
+					item.setAdrLname(respObj1.getCustomerAccount().getCustomerName());
+					if(respObj1.getCustomerAccount().getCustomerAddress() != null){
+						item.setAdrZip(respObj1.getCustomerAccount().getCustomerAddress().getPostcode());
+						item.setAdrCity(respObj1.getCustomerAccount().getCustomerAddress().getCity());
+						item.setAdrStreet(respObj1.getCustomerAccount().getCustomerAddress().getStreetType()+" "+respObj1.getCustomerAccount().getCustomerAddress().getStreetName());
+						item.setAdrStreetno(respObj1.getCustomerAccount().getCustomerAddress().getHouseUnitLot());
+					}
+				}
+								
+				item.setSubmId(new Long(1));
+				item.setPlcode(new Long(1001));
+				item.setExternalind(false);
+				item.setRpcode(new Long(14));
+				
+				DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+			    Date dobConst = df.parse("01/01/2016");
+			    GregorianCalendar constCal = new GregorianCalendar();
+			    constCal.setTimeInMillis(dobConst.getTime());
+			    XMLGregorianCalendar dateConst = DatatypeFactory.newInstance().newXMLGregorianCalendar(constCal);			
+				item.setCoActivated(dateConst);
+				
+				item.setCoId(new Long(1));
+				item.setCoIdPub("CONTR0000000010");
+				item.setCsId(new Long(csIdPubConstantResp));
+				
+				item.setCsIdPub(csIdPub);
 
-			item.setCurrentDn(true);
-			item.setPaymentResp("X");
-			item.setCsContrResp("X");
-			item.setPaymentMethodInd("H");
-			
-			itemList.add(item);
-			
+				item.setCurrentDn(true);
+				item.setPaymentResp("X");
+				item.setCsContrResp("X");
+				item.setPaymentMethodInd("H");
+				
+				itemList.add(item);
+			}
 			response.setContracts(contractResponse);
 			
 			exchange.getOut().setBody(response);

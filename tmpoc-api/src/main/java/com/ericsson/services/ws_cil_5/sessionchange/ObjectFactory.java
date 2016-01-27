@@ -30,14 +30,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ValuesRequest }
-     * 
-     */
-    public ValuesRequest createValuesRequest() {
-        return new ValuesRequest();
-    }
-
-    /**
      * Create an instance of {@link ValuesListpartRequest }
      * 
      */
@@ -51,6 +43,14 @@ public class ObjectFactory {
      */
     public SessionChangeRequest createSessionChangeRequest() {
         return new SessionChangeRequest();
+    }
+
+    /**
+     * Create an instance of {@link ValuesRequest }
+     * 
+     */
+    public ValuesRequest createValuesRequest() {
+        return new ValuesRequest();
     }
 
 }

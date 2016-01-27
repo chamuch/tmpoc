@@ -24,8 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _ContractsSearchResponse_QNAME = new QName("http://ericsson.com/services/ws_CIL_5/contractssearch", "contractsSearchResponse");
     private final static QName _ContractsSearchRequest_QNAME = new QName("http://ericsson.com/services/ws_CIL_5/contractssearch", "contractsSearchRequest");
+    private final static QName _ContractsSearchResponse_QNAME = new QName("http://ericsson.com/services/ws_CIL_5/contractssearch", "contractsSearchResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.ericsson.services.ws_cil_5.contractssearch
@@ -35,11 +35,43 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ContractsResponse }
+     * 
+     */
+    public ContractsResponse createContractsResponse() {
+        return new ContractsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DirnumBlocksResponse }
+     * 
+     */
+    public DirnumBlocksResponse createDirnumBlocksResponse() {
+        return new DirnumBlocksResponse();
+    }
+
+    /**
      * Create an instance of {@link SalesChannelsResponse }
      * 
      */
     public SalesChannelsResponse createSalesChannelsResponse() {
         return new SalesChannelsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ContractsSearchRequest }
+     * 
+     */
+    public ContractsSearchRequest createContractsSearchRequest() {
+        return new ContractsSearchRequest();
+    }
+
+    /**
+     * Create an instance of {@link ContractsSearchResponse }
+     * 
+     */
+    public ContractsSearchResponse createContractsSearchResponse() {
+        return new ContractsSearchResponse();
     }
 
     /**
@@ -59,51 +91,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ParameterValuesRequest }
-     * 
-     */
-    public ParameterValuesRequest createParameterValuesRequest() {
-        return new ParameterValuesRequest();
-    }
-
-    /**
-     * Create an instance of {@link ContractsSearchResponse }
-     * 
-     */
-    public ContractsSearchResponse createContractsSearchResponse() {
-        return new ContractsSearchResponse();
-    }
-
-    /**
-     * Create an instance of {@link ContractsResponse }
-     * 
-     */
-    public ContractsResponse createContractsResponse() {
-        return new ContractsResponse();
-    }
-
-    /**
      * Create an instance of {@link DirnumBlocksListpartResponse }
      * 
      */
     public DirnumBlocksListpartResponse createDirnumBlocksListpartResponse() {
         return new DirnumBlocksListpartResponse();
-    }
-
-    /**
-     * Create an instance of {@link DirnumBlocksResponse }
-     * 
-     */
-    public DirnumBlocksResponse createDirnumBlocksResponse() {
-        return new DirnumBlocksResponse();
-    }
-
-    /**
-     * Create an instance of {@link ContractsSearchRequest }
-     * 
-     */
-    public ContractsSearchRequest createContractsSearchRequest() {
-        return new ContractsSearchRequest();
     }
 
     /**
@@ -115,12 +107,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContractsSearchResponse }{@code >}}
+     * Create an instance of {@link ParameterValuesRequest }
      * 
      */
-    @XmlElementDecl(namespace = "http://ericsson.com/services/ws_CIL_5/contractssearch", name = "contractsSearchResponse")
-    public JAXBElement<ContractsSearchResponse> createContractsSearchResponse(ContractsSearchResponse value) {
-        return new JAXBElement<ContractsSearchResponse>(_ContractsSearchResponse_QNAME, ContractsSearchResponse.class, null, value);
+    public ParameterValuesRequest createParameterValuesRequest() {
+        return new ParameterValuesRequest();
     }
 
     /**
@@ -130,6 +121,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ericsson.com/services/ws_CIL_5/contractssearch", name = "contractsSearchRequest")
     public JAXBElement<ContractsSearchRequest> createContractsSearchRequest(ContractsSearchRequest value) {
         return new JAXBElement<ContractsSearchRequest>(_ContractsSearchRequest_QNAME, ContractsSearchRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ContractsSearchResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ericsson.com/services/ws_CIL_5/contractssearch", name = "contractsSearchResponse")
+    public JAXBElement<ContractsSearchResponse> createContractsSearchResponse(ContractsSearchResponse value) {
+        return new JAXBElement<ContractsSearchResponse>(_ContractsSearchResponse_QNAME, ContractsSearchResponse.class, null, value);
     }
 
 }
