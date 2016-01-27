@@ -52,6 +52,8 @@ public class CustomerProfileRetrieveEntityService {
 		System.out.println("Request XML:"+requestXml);
 		//Execute 
 		
+		execute(requestXml);
+		
 		String responseXML = execute(requestXml);
 		System.out.println("Response XML:"+responseXML);
 		
@@ -66,10 +68,12 @@ public class CustomerProfileRetrieveEntityService {
 		String responseXml = "NO DICE";
 		
 		try {
+			System.out.println("Get Client adaptor");
 			responseXml = "NO DICE CLIENT";
 			DiceHttpAdaptor clientAdaptor = new DiceHttpAdaptor();
 			
 			responseXml = "NO DICE CLIENT HTTP EXECUTE";
+			System.out.println("Start invoking TM API");
 			responseXml = clientAdaptor.executeHttpPost(requestXML);
 		} catch (Exception e) {	
 			e.printStackTrace();

@@ -165,6 +165,10 @@
 				<camel:doCatch>
 					<camel:exception>java.lang.Exception</camel:exception>
 					<camel:log message="Exception: ${exception.stacktrace}" />
+					<camel:log message="Leave-api:${body}" />
+					<camel:setBody>
+						<camel:simple>${exception}</camel:simple>
+					</camel:setBody>
 				</camel:doCatch>
 
 				<camel:doFinally>

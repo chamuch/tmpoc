@@ -50,7 +50,7 @@ public class DiceHttpAdaptor {
 		String responseXML = "NO DICE";
 
 		try {
-
+			System.out.println("executeHttpPost start");
 			HttpPost post = new HttpPost(diceUrl);
 			RequestConfig defaultRequestConfig = RequestConfig
 					.custom()
@@ -74,8 +74,11 @@ public class DiceHttpAdaptor {
 
 			HttpEntity entity = response.getEntity();
 			responseXML = EntityUtils.toString(entity, "UTF-8");
+			
+			System.out.println(responseXML);
 		} catch (Exception genE) {
 			responseXML = "ERROR - " + genE.getMessage();
+			genE.printStackTrace();
 		}
 
 		return responseXML;
