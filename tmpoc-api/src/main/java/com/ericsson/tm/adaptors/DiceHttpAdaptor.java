@@ -19,30 +19,34 @@ import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.ssl.SSLContexts;
-import org.apache.http.util.EntityUtils;
+
 
 public class DiceHttpAdaptor {
 
 	private CloseableHttpClient httpclient = null;
 	private String diceUrl = null;
-
-	public DiceHttpAdaptor() throws KeyManagementException,
-			NoSuchAlgorithmException, KeyStoreException {
-
-		SSLContext sslcontext = SSLContexts.custom()
-				.loadTrustMaterial(null, new TrustSelfSignedStrategy()).build();
-
-		// Allow TLSv1 protocol only, use NoopHostnameVerifier to trust
-		// self-singed cert
-		SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(
-				sslcontext, new String[] { "TLSv1" }, null,
-				new NoopHostnameVerifier());
-
-		// do not set connection manager
-		httpclient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
-
-		diceUrl = "https://dice.tm.com.my/prj_HsbbEai_Sync_War/httpMessageReceiver.do";
+	
+	/*public DiceHttpAdaptor() throws KeyManagementException,
+			NoSuchAlgorithmException, KeyStoreException {*/
+		public DiceHttpAdaptor() throws Exception {
+			try{
+			SSLContext sslcontext = org.apache.http.ssl.SSLContexts.custom()
+					.loadTrustMaterial(null, new TrustSelfSignedStrategy()).build();
+	
+			// Allow TLSv1 protocol only, use NoopHostnameVerifier to trust
+			// self-singed cert
+			SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(
+					sslcontext, new String[] { "TLSv1" }, null,
+					new NoopHostnameVerifier());
+	
+			// do not set connection manager
+			httpclient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
+	
+			diceUrl = "https://dice.tm.com.my/prj_HsbbEai_Sync_War/httpMessageReceiver.do";
+		}catch(Exception genE){
+			System.out.println("Exception in client adaptor:"+genE);
+			throw genE;
+		}
 	}
 
 	public String executeHttpPost(String requestXml) {
@@ -73,7 +77,7 @@ public class DiceHttpAdaptor {
 			HttpResponse response = httpclient.execute(post);
 
 			HttpEntity entity = response.getEntity();
-			responseXML = EntityUtils.toString(entity, "UTF-8");
+			responseXML = org.apache.http.util.EntityUtils.toString(entity, "UTF-8");
 			
 			System.out.println(responseXML);
 		} catch (Exception genE) {

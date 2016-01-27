@@ -31,7 +31,12 @@
 			org.apache.camel.component.http4,
 			javax.xml.bind,
 			javax.xml.datatype,
-			com.google.gson
+			com.google.gson,
+			org.apache.http.conn.ssl,
+			org.apache.http.client.config,
+			org.apache.http,
+			org.apache.http.entity,
+			org.apache.http.impl.client,						
 		</osgi-import-packages>			
 		<osgi-export-packages>			
 		</osgi-export-packages>
@@ -119,9 +124,15 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>${commons-httpclient}</version>
 		</dependency>
+		
 		</dependencies>
   <build>
 		<defaultGoal>install</defaultGoal>
