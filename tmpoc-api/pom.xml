@@ -38,9 +38,12 @@
 			org.apache.http.entity,
 			org.apache.http.impl.client,
 			javax.net.ssl,
-			org.apache.http.client.methods											
-		</osgi-import-packages>			
-		<osgi-export-packages>			
+			org.apache.http.client.methods,
+			org.apache.http.conn.socket											
+		</osgi-import-packages>						
+		<osgi-export-packages>
+			org.apache.http.ssl,
+			org.apache.http.conn.ssl						
 		</osgi-export-packages>
   </properties>
   <dependencies>
