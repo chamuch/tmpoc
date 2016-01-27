@@ -38,16 +38,16 @@ public class ContractSearchProcessor implements Processor {
 				csIdPub = request.getInputAttributes().getCsIdPub();
 				System.out.println("Incoming CsIDPub:"+csIdPub);
 				// Mappings
-				if(csIdPub == "CUST_86"){
+				if(csIdPub.equalsIgnoreCase("CUST_86")){
 					customerAccountNo = "1-1LTUM7F";
 					csIdPubConstantResp = "1";
-				} else if (csIdPub == "CUST_88"){
+				} else if (csIdPub.equalsIgnoreCase("CUST_88")){
 					customerAccountNo = "1-10E2Y4D";
 					csIdPubConstantResp = "2";
-				} else if (csIdPub == "CUST_101"){
+				} else if (csIdPub.equalsIgnoreCase("CUST_101")){
 					customerAccountNo = "1-4HQDJHY";
 					csIdPubConstantResp = "3";
-				} else if (csIdPub == "CUST_102"){
+				} else if (csIdPub.equalsIgnoreCase("CUST_102")){
 					customerAccountNo = "1-12YASD";
 					csIdPubConstantResp = "4";
 				} else{
@@ -140,6 +140,7 @@ public class ContractSearchProcessor implements Processor {
 			
 		}catch(Exception genE){
 			System.out.println("Encountered exception:"+genE);
+			throw genE;
 		}
 	}
 }

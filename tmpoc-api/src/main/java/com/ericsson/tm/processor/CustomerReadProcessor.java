@@ -34,27 +34,34 @@ public class CustomerReadProcessor implements Processor {
 		System.out.println("Request Triggered CustomerReadProcessor..");
 		try{
 			CustomerReadRequest request = exchange.getIn().getBody(CustomerReadRequest.class);
-			
-			String csIdPub = request.getInputAttributes().getCsIdPub();
-			String customerAccountNo = "";
-			
+			String csIdPub = "";
+			String customerAccountNo = "";			
 			Long csIdResp = new Long(1);
 			
-			// Mappings
-			if(csIdPub == "CUST_86"){
-				customerAccountNo = "1-1LTUM7F";
-				csIdResp = new Long(1);
-			} else if (csIdPub == "CUST_88"){
-				customerAccountNo = "1-10E2Y4D";
-				csIdResp =  new Long(2);
-			} else if (csIdPub == "CUST_101"){
-				customerAccountNo = "1-4HQDJHY";
-				csIdResp =  new Long(3);
-			} else if (csIdPub == "CUST_102"){
-				customerAccountNo = "1-12YASD";
+			if(request.getInputAttributes() != null && request.getInputAttributes().getCsIdPub() != null){
+				csIdPub = request.getInputAttributes().getCsIdPub();
+				System.out.println("Incoming CsIDPub:"+csIdPub);
+				// Mappings
+				if(csIdPub.equalsIgnoreCase("CUST_86")){
+					customerAccountNo = "1-1LTUM7F";
+					csIdResp = new Long(1);
+				} else if (csIdPub.equalsIgnoreCase("CUST_88")){
+					customerAccountNo = "1-10E2Y4D";
+					csIdResp =  new Long(2);
+				} else if (csIdPub.equalsIgnoreCase("CUST_101")){
+					customerAccountNo = "1-4HQDJHY";
+					csIdResp =  new Long(3);
+				} else if (csIdPub.equalsIgnoreCase("CUST_102")){
+					customerAccountNo = "1-12YASD";
+					csIdResp =  new Long(4);
+				} else{
+					customerAccountNo = "1-UNKNOWN";
+					csIdResp =  new Long(4);
+				}
+			}else{
+				customerAccountNo = "1-UNKNOWN";
 				csIdResp =  new Long(4);
 			}
-			
 			// Invoke Customer Profile Retrieve
 			CustomerProfileRetrieveEntityService srvc1 = new CustomerProfileRetrieveEntityService();
 			com.ericsson.tm.proxy.customer.request.PortalMessage.Request reqObj1 = new com.ericsson.tm.proxy.customer.request.PortalMessage.Request();
@@ -202,6 +209,7 @@ public class CustomerReadProcessor implements Processor {
 			
 		}catch(Exception genE){
 			System.out.println("Encountered exception:"+genE);
+			throw genE;
 		}
 	}
 }
