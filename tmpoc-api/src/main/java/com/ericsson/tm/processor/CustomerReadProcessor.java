@@ -19,10 +19,12 @@ import com.ericsson.services.ws_cil_5.contractssearch.ContractsListpartResponse;
 import com.ericsson.services.ws_cil_5.contractssearch.ContractsResponse;
 import com.ericsson.services.ws_cil_5.customerread.CustomerReadRequest;
 import com.ericsson.services.ws_cil_5.customerread.CustomerReadResponse;
+import com.ericsson.services.ws_cil_5.customerread.ListOfAssignmentsListpartResponse;
 import com.ericsson.services.ws_cil_5.customerread.ListOfAssignmentsResponse;
 import com.ericsson.tm.proxy.service.response.PortalMessage.Response.LineItems;
 import com.ericsson.tm.services.entity.CustomerProfileRetrieveEntityService;
 import com.ericsson.tm.services.entity.ServiceDetailsRetrieveEntityService;
+import com.lhsgroup.lhsws.money.Money;
 
 public class CustomerReadProcessor implements Processor {
 
@@ -36,21 +38,21 @@ public class CustomerReadProcessor implements Processor {
 			String csIdPub = request.getInputAttributes().getCsIdPub();
 			String customerAccountNo = "";
 			
-			String csIdPubConstantResp = "";
+			Long csIdResp = new Long(1);
 			
 			// Mappings
 			if(csIdPub == "CUST_86"){
 				customerAccountNo = "1-1LTUM7F";
-				csIdPubConstantResp = "1";
+				csIdResp = new Long(1);
 			} else if (csIdPub == "CUST_88"){
 				customerAccountNo = "1-10E2Y4D";
-				csIdPubConstantResp = "2";
+				csIdResp =  new Long(2);
 			} else if (csIdPub == "CUST_101"){
 				customerAccountNo = "1-4HQDJHY";
-				csIdPubConstantResp = "3";
+				csIdResp =  new Long(3);
 			} else if (csIdPub == "CUST_102"){
 				customerAccountNo = "1-12YASD";
-				csIdPubConstantResp = "4";
+				csIdResp =  new Long(4);
 			}
 			
 			// Invoke Customer Profile Retrieve
@@ -72,79 +74,107 @@ public class CustomerReadProcessor implements Processor {
 			response.setCreatedByUser("ADMX");
 			//<isIndividualOverdiscDisabled>false</isIndividualOverdiscDisabled>
 			response.setIsIndividualOverdiscDisabled(false);
+			
 			//ListOfAssignments
-			//ListOfAssignmentsResponse listOfAssignments = response.getListOfAssignments();
+			ListOfAssignmentsResponse listOfAssignments = new ListOfAssignmentsResponse();
+			List<ListOfAssignmentsListpartResponse> listOfPartAssignments = listOfAssignments.getItem();
+			ListOfAssignmentsListpartResponse item = new ListOfAssignmentsListpartResponse();
+			item.setFamilyId(new Long(3));
+			item.setCompletionStatus(new Long(0));
+			
+			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		    Date dobConst = df.parse("25/05/2015");
+		    GregorianCalendar constCal = new GregorianCalendar();
+		    constCal.setTimeInMillis(dobConst.getTime());
+		    XMLGregorianCalendar dateConst = DatatypeFactory.newInstance().newXMLGregorianCalendar(constCal);	
+			item.setValidFrom(dateConst);
+			
+			listOfPartAssignments.add(item);
+			response.setListOfAssignments(listOfAssignments);
+			
+			response.setCsId(csIdResp);
+			response.setCsIdPub(request.getInputAttributes().getCsIdPub());
+			response.setCsCode("1.36004");
+			response.setCsStatus("a");
+			
+			response.setCsActivationDate(dateConst);
+			response.setCsStatusDate(dateConst);
+			response.setCsLevelCode("0");
+			response.setPaymentResp(true);
+			response.setPrgCode("7");
+			response.setRsCode(new Long(10));
+			response.setRpcodePub("BPOCC");
+			response.setTradeCode("TELCO");
+			response.setCostId(new Long(1));
+			response.setCostCodePub("ECOS");
+			response.setCsPassword("12345");
+			response.setRsCode(new Long(1));
+			response.setWpCode(new Long(1));
+			response.setCsBillInformation(false);
+			response.setExpectPayCurrencyId(new Long(43));
+			response.setExpectPayCurrencyIdPub("MYR");
+			response.setCsConvratetypePayment(new Long(1));
+			response.setCsConvratetypePaymentPub("UDCRT");
+			response.setRefundCurrencyId(new Long(1));
+			response.setRefundCurrencyIdPub("MYR");
+			response.setCsCrcheckAgreed(true);
+			response.setCsIncorporatedInd(false);
+			response.setCsIncorporatedInd(false);
+			response.setCsBillcycle("04");
+			response.setCsBillcycleDesc("PAMSCH CBiO Postpaid 1");
+			response.setCsLimitTr1(new Long(1));
+			response.setCsLimitTr1Pub("75%");
+			response.setCsLimitTr2(new Long(1));
+			response.setCsLimitTr2Pub("75%");
+			response.setCsLimitTr3(new Long(1));
+			response.setCsLimitTr3Pub("75%");
+			//response.setCsClimit(value);
+			Money money = new Money();
+			money.setAmount(new Double("0.0"));
+			money.setCurrency("EUR");
+			response.setCsClimit(money);
+			response.setCsContresp(true);
+			
+			 Date dobConst1 = df.parse("02/06/2015");
+			    GregorianCalendar constCal1 = new GregorianCalendar();
+			    constCal.setTimeInMillis(dobConst1.getTime());
+			    XMLGregorianCalendar dateConst1 = DatatypeFactory.newInstance().newXMLGregorianCalendar(constCal);	
+				item.setValidFrom(dateConst1);
+			response.setCsLastBcDate(dateConst1);
+			
+			response.setCsDeposit(money);
+			response.setCsDunning(true);
+			response.setCsPrepayment(false);
+			response.setCsFcId(new Long(43));
+			response.setCsFcIdPub("EUR");
+			Money money1 = new Money();
+			money1.setAmount(new Double("0.0"));
+			money1.setCurrency("EUR");
+			response.setCsCscurbalance(money1);
+			
+			Money money2 = new Money();
+			money2.setAmount(new Double("6.0"));
+			money2.setCurrency("EUR");
+			response.setCsPrevbalance(money2);
+			
+			Money money3 = new Money();
+			money3.setAmount(new Double("2.25"));
+			money3.setCurrency("EUR");
+			response.setCsUnbilledAmount(money3);
+			
+			response.setCsPaybehaviour("000000000000");
+			response.setCsInitPrepaidContrOwner(false);
+			response.setCsCreationDate(dateConst);
+			
+			response.setLastModificationUser("ADMX");
+			response.setPaymentRespId(new Long(84));
+			response.setCsPaymntRespCode("1.36004");
+			
 			/*
 			//<listOfAssignments>
-			<item>
-			<familyId>3</familyId>
-			<completionStatus>0</completionStatus>
-			<validFrom>2015-05-25</validFrom>
-			</item>
-			</listOfAssignments>
-			<csId>84</csId>
-			<!-- <csIdPub>CUST0000041900</csIdPub> -->
-			<csIdPub>CUST_84</csIdPub>
-			<csCode>1.36004</csCode>
-			<csStatus>a</csStatus>
-			<csStatusDate>2015-05-25T14:59:01+02:00</csStatusDate>
-			<csActivationDate>2015-05-25T14:59:01+02:00</csActivationDate>
-			<csLevelCode>0</csLevelCode>
-			<paymentResp>true</paymentResp>
-			<prgCode>7</prgCode>
-			<rpcode>10</rpcode>
-			<rpcodePub>BPOCC</rpcodePub>
-			<tradeCode>TELCO</tradeCode>
-			<costId>1</costId>
-			<costCodePub>ECOCS</costCodePub>
-			<csPassword>12345</csPassword>
-			<rsCode>1</rsCode>
-			<wpCode>1</wpCode>
-			<csBillInformation>false</csBillInformation>
-			<expectPayCurrencyId>43</expectPayCurrencyId>
-			<expectPayCurrencyIdPub>EUR</expectPayCurrencyIdPub>
-			<csConvratetypePayment>1</csConvratetypePayment>
-			<csConvratetypePaymentPub>UDCRT</csConvratetypePaymentPub>
-			<refundCurrencyId>43</refundCurrencyId>
-			<refundCurrencyIdPub>EUR</refundCurrencyIdPub>
-			<csConvratetypeRefund>1</csConvratetypeRefund>
-			<csConvratetypeRefundPub>UDCRT</csConvratetypeRefundPub>
-			<csCrcheckAgreed>true</csCrcheckAgreed>
-			<csIncorporatedInd>false</csIncorporatedInd>
-			<csBillcycle>04</csBillcycle>
-			<csBillcycleDesc>PAMSCH CBiO Postpaid 1</csBillcycleDesc>
-			<csLimitTr1>1</csLimitTr1>
-			<csLimitTr1Pub>75% </csLimitTr1Pub>
-			<csLimitTr2>1</csLimitTr2>
-			<csLimitTr2Pub>75% </csLimitTr2Pub>
-			<csLimitTr3>1</csLimitTr3>
-			<csLimitTr3Pub>75% </csLimitTr3Pub>
-			<csClimit>
-			<amount xmlns="http://lhsgroup.com/lhsws/money">0.0</amount>
-			<currency xmlns="http://lhsgroup.com/lhsws/money">EUR</currency>
-			</csClimit>
-			<csContresp>true</csContresp>
-			<csLastBcDate>2015-06-12</csLastBcDate>
-			<csDeposit>
-			<amount xmlns="http://lhsgroup.com/lhsws/money">0.0</amount>
-			<currency xmlns="http://lhsgroup.com/lhsws/money">EUR</currency>
-			</csDeposit>
-			<csDunning>true</csDunning>
-			<csPrepayment>false</csPrepayment>
-			<csFcId>43</csFcId>
-			<csFcIdPub>EUR</csFcIdPub>
-			<csCscurbalance>
-			<amount xmlns="http://lhsgroup.com/lhsws/money">0.0</amount>
-			<currency xmlns="http://lhsgroup.com/lhsws/money">EUR</currency>
-			</csCscurbalance>
-			<csPrevbalance>
-			<amount xmlns="http://lhsgroup.com/lhsws/money">6.2</amount>
-			<currency xmlns="http://lhsgroup.com/lhsws/money">EUR</currency>
-			</csPrevbalance>
-			<csUnbilledAmount>
-			<amount xmlns="http://lhsgroup.com/lhsws/money">2.25</amount>
-			<currency xmlns="http://lhsgroup.com/lhsws/money">EUR</currency>
-			</csUnbilledAmount>
+			
+			</>
+			
 			<csPaybehaviour>000000000000</csPaybehaviour>
 			<csInitPrepaidContrOwner>false</csInitPrepaidContrOwner>
 			<csCreationDate>2015-05-25T14:59:01+02:00</csCreationDate>

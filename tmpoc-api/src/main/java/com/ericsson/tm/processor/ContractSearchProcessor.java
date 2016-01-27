@@ -13,10 +13,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 
+import com.ericsson.services.ws_cil_5.contractssearch.ContractsListpartResponse;
 import com.ericsson.services.ws_cil_5.contractssearch.ContractsResponse;
 import com.ericsson.services.ws_cil_5.contractssearch.ContractsSearchRequest;
 import com.ericsson.services.ws_cil_5.contractssearch.ContractsSearchResponse;
-import com.ericsson.services.ws_cil_5.contractssearch.ContractsListpartResponse;
 import com.ericsson.tm.proxy.service.response.PortalMessage.Response.LineItems;
 import com.ericsson.tm.services.entity.CustomerProfileRetrieveEntityService;
 import com.ericsson.tm.services.entity.ServiceDetailsRetrieveEntityService;
@@ -36,7 +36,7 @@ public class ContractSearchProcessor implements Processor {
 			
 			if(request.getInputAttributes() != null && request.getInputAttributes().getCsIdPub() != null){
 				csIdPub = request.getInputAttributes().getCsIdPub();
-				
+				System.out.println("Incoming CsIDPub:"+csIdPub);
 				// Mappings
 				if(csIdPub == "CUST_86"){
 					customerAccountNo = "1-1LTUM7F";

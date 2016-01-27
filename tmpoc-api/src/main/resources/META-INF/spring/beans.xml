@@ -152,11 +152,15 @@
 			<camel:doTry>
 				<camel:when>
 					<camel:simple>${in.header.operationName} == 'contractsSearch'</camel:simple>
-					<camel:bean beanType="com.ericsson.tm.processor.DummyProcessor" />
+					<camel:bean beanType="com.ericsson.tm.processor.ContractSearchProcessor" />
 				</camel:when>
 				<camel:when>
 					<camel:simple>${in.header.operationName} == 'addressesRead'</camel:simple>
 					<camel:bean beanType="com.ericsson.tm.processor.AddressReadProcessor" />
+				</camel:when>
+				<camel:when>
+					<camel:simple>${in.header.operationName} == 'customerRead'</camel:simple>
+					<camel:bean beanType="com.ericsson.tm.processor.CustomerReadProcessor" />
 				</camel:when>
 				<camel:doCatch>
 					<camel:exception>java.lang.Exception</camel:exception>
