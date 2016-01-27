@@ -53,7 +53,7 @@ public class ServiceDetailsRetrieveEntityService {
 		System.out.println("Request XML:"+requestXml);
 		//Execute 
 		
-		execute(requestXml);
+		//execute(requestXml);
 		
 		String responseXML = execute(requestXml);
 		System.out.println("Response XML:"+responseXML);
