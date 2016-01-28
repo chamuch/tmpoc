@@ -121,13 +121,10 @@ public class CustomerProfileRetrieveEntityService {
 	public com.ericsson.tm.proxy.customer.response.PortalMessage convertXMLToPojo(String respXML){
 		com.ericsson.tm.proxy.customer.response.PortalMessage respObj = null;
 		try{
-			// Create XML unmarshaller
-			Unmarshaller unmarshaller = customerJaxbCtxResp.createUnmarshaller();
+			JAXBContext jaxbContext = JAXBContext.newInstance(PortalMessage.class);
+			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			
-			// Convert XML string into input stream
 			InputStream xmlInpStream = new ByteArrayInputStream(respXML.getBytes());
-			
-			// Convert to object
 			respObj = (PortalMessage) unmarshaller.unmarshal(xmlInpStream);
 			
 		}catch(Exception genE){
