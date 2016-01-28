@@ -102,7 +102,7 @@ public class EntityUtils {
             } while (len != -1);
             
             responseBody = buffer.toString();
-            System.out.println("Http Response Body from the Socket: " + responseBody);
+            //System.out.println("Http Response Body from the Socket: " + responseBody);
         } finally {
             instream.close();
         }

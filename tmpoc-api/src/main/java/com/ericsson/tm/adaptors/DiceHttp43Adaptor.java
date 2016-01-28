@@ -84,7 +84,7 @@ public class DiceHttp43Adaptor {
 			HttpEntity entity = response.getEntity();
 			responseXML = org.sns.utils.Http.EntityUtils.toString(entity, "UTF-8");
 
-			System.out.println(responseXML);
+			//System.out.println(responseXML);
 		} catch (Exception genE) {
 			responseXML = "ERROR - " + genE.getMessage();
 			genE.printStackTrace();
