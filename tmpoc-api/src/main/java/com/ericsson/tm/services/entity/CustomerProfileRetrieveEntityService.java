@@ -9,6 +9,9 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import org.apache.http.client.HttpClient;
+
+import com.ericsson.tm.adaptors.DiceHttp43Adaptor;
 import com.ericsson.tm.adaptors.DiceHttpAdaptor;
 import com.ericsson.tm.proxy.customer.response.PortalMessage;
 import com.ericsson.tm.utility.GenericUtilities;
@@ -70,11 +73,13 @@ public class CustomerProfileRetrieveEntityService {
 		try {
 			System.out.println("Get Client adaptor");
 			responseXml = "NO DICE CLIENT";
-			DiceHttpAdaptor clientAdaptor = new DiceHttpAdaptor();
+			//DiceHttpAdaptor clientAdaptor = new DiceHttpAdaptor();
+			HttpClient client = DiceHttp43Adaptor.getInstance();
 			
 			responseXml = "NO DICE CLIENT HTTP EXECUTE";
 			System.out.println("Start invoking TM API");
-			responseXml = clientAdaptor.executeHttpPost(requestXML);
+			responseXml = DiceHttp43Adaptor.executeHttpPost(client, requestXML);
+			client = null;
 		} catch (Exception e) {	
 			System.out.println("Execute failed!! - " + e);
 			throw e;

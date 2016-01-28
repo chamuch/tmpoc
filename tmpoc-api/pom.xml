@@ -28,7 +28,6 @@
 			javax.ws.rs.container,
 			javax.ws.rs.ext,
 			javax.ws.rs,
-			org.apache.camel.component.http4,
 			javax.xml.bind,
 			javax.xml.datatype,
 			com.google.gson,
@@ -40,7 +39,12 @@
 			javax.net.ssl,
 			org.apache.http.client.methods,
 			org.apache.http.conn.socket											
-		</osgi-import-packages>						
+		</osgi-import-packages>		
+		<!-- 
+		removed list
+		============
+		org.apache.camel.component.http4,
+			 -->				
 		<osgi-export-packages>
 			org.apache.http.ssl,
 			org.apache.http.conn.ssl						
