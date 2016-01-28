@@ -33,9 +33,10 @@
 			com.google.gson,
 			org.apache.http.conn.ssl,
 			org.apache.http.client.config,
-			org.apache.http,
+			org.apache.http, 
 			org.apache.http.entity,
 			org.apache.http.impl.client,
+			org.apache.http.client,
 			javax.net.ssl,
 			org.apache.http.client.methods,
 			org.apache.http.conn.socket											

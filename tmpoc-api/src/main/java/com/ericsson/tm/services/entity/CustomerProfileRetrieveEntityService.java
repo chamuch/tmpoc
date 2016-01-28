@@ -12,7 +12,7 @@ import javax.xml.bind.Unmarshaller;
 import org.apache.http.client.HttpClient;
 
 import com.ericsson.tm.adaptors.DiceHttp43Adaptor;
-import com.ericsson.tm.adaptors.DiceHttpAdaptor;
+//import com.ericsson.tm.adaptors.DiceHttpAdaptor;
 import com.ericsson.tm.proxy.customer.response.PortalMessage;
 import com.ericsson.tm.utility.GenericUtilities;
 
