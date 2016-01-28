@@ -333,17 +333,18 @@ import org.w3._2001.xmlschema.Adapter3;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "header",
-    "response"
-})
+//@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlType(name = "", propOrder = {
+//    "header",
+//    "response"
+//})
 @XmlRootElement(name = "PortalMessage")
 public class PortalMessage {
 
-    @XmlElement(name = "Header", required = true)
+//    @XmlElement(name = "Header", required = true)
     protected PortalMessage.Header header;
-    @XmlElement(name = "Response", required = true)
+
+    //    @XmlElement(name = "Response", required = true)
     protected PortalMessage.Response response;
 
     /**
@@ -354,6 +355,7 @@ public class PortalMessage {
      *     {@link PortalMessage.Header }
      *     
      */
+    @XmlElement(name = "Header")
     public PortalMessage.Header getHeader() {
         return header;
     }
@@ -382,6 +384,7 @@ public class PortalMessage {
      *     {@link PortalMessage.Response }
      *     
      */
+    @XmlElement(name = "Response")
     public PortalMessage.Response getResponse() {
         return response;
     }
@@ -427,28 +430,33 @@ public class PortalMessage {
      * 
      * 
      */
-    @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "", propOrder = {
-        "businessEvent",
-        "timestamp",
-        "reqRespType",
-        "messageId",
-        "errorCode",
-        "errorMessage"
-    })
+//    @XmlAccessorType(XmlAccessType.FIELD)
+//    @XmlType(name = "", propOrder = {
+//        "businessEvent",
+//        "timestamp",
+//        "reqRespType",
+//        "messageId",
+//        "errorCode",
+//        "errorMessage"
+//    })
     public static class Header {
 
-        @XmlElement(name = "BusinessEvent", required = true)
+//        @XmlElement(name = "BusinessEvent", required = true)
         protected String businessEvent;
-        @XmlElement(name = "Timestamp", required = true)
+        
+//        @XmlElement(name = "Timestamp", required = true)
         protected String timestamp;
-        @XmlElement(name = "ReqRespType", required = true)
+        
+//        @XmlElement(name = "ReqRespType", required = true)
         protected String reqRespType;
-        @XmlElement(name = "MessageId")
+        
+//        @XmlElement(name = "MessageId")
         protected String messageId;
-        @XmlElement(name = "ErrorCode")
+        
+//        @XmlElement(name = "ErrorCode")
         protected String errorCode;
-        @XmlElement(name = "ErrorMessage")
+        
+//        @XmlElement(name = "ErrorMessage")
         protected String errorMessage;
 
         /**
@@ -459,6 +467,7 @@ public class PortalMessage {
          *     {@link String }
          *     
          */
+        @XmlElement(name = "BusinessEvent")
         public String getBusinessEvent() {
             return businessEvent;
         }
@@ -487,6 +496,7 @@ public class PortalMessage {
          *     {@link String }
          *     
          */
+        @XmlElement(name = "Timestamp")
         public String getTimestamp() {
             return timestamp;
         }
@@ -515,6 +525,7 @@ public class PortalMessage {
          *     {@link String }
          *     
          */
+        @XmlElement(name = "ReqRespType")
         public String getReqRespType() {
             return reqRespType;
         }
@@ -543,6 +554,7 @@ public class PortalMessage {
          *     {@link String }
          *     
          */
+        @XmlElement(name = "MessageId")
         public String getMessageId() {
             return messageId;
         }
@@ -571,6 +583,7 @@ public class PortalMessage {
          *     {@link String }
          *     
          */
+        @XmlElement(name = "ErrorCode")
         public String getErrorCode() {
             return errorCode;
         }
@@ -599,6 +612,7 @@ public class PortalMessage {
          *     {@link String }
          *     
          */
+        @XmlElement(name = "ErrorMessage")
         public String getErrorMessage() {
             return errorMessage;
         }
@@ -909,28 +923,33 @@ public class PortalMessage {
      * 
      * 
      */
-    @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "", propOrder = {
-        "customerAccount",
-        "nonConsumerDemographics",
-        "consumerDemographics",
-        "contactList",
-        "commitmentPeriodList",
-        "billingList"
-    })
+//    @XmlAccessorType(XmlAccessType.FIELD)
+//    @XmlType(name = "", propOrder = {
+//        "customerAccount",
+//        "nonConsumerDemographics",
+//        "consumerDemographics",
+//        "contactList",
+//        "commitmentPeriodList",
+//        "billingList"
+//    })
     public static class Response {
 
-        @XmlElement(name = "CustomerAccount")
+//        @XmlElement(name = "CustomerAccount")
         protected PortalMessage.Response.CustomerAccount customerAccount;
-        @XmlElement(name = "NonConsumerDemographics")
+        
+//        @XmlElement(name = "NonConsumerDemographics")
         protected PortalMessage.Response.NonConsumerDemographics nonConsumerDemographics;
-        @XmlElement(name = "ConsumerDemographics")
+        
+//        @XmlElement(name = "ConsumerDemographics")
         protected PortalMessage.Response.ConsumerDemographics consumerDemographics;
-        @XmlElement(name = "ContactList")
+        
+//        @XmlElement(name = "ContactList")
         protected PortalMessage.Response.ContactList contactList;
-        @XmlElement(name = "CommitmentPeriodList")
+        
+//        @XmlElement(name = "CommitmentPeriodList")
         protected PortalMessage.Response.CommitmentPeriodList commitmentPeriodList;
-        @XmlElement(name = "BillingList")
+        
+//        @XmlElement(name = "BillingList")
         protected PortalMessage.Response.BillingList billingList;
 
         /**
@@ -941,6 +960,7 @@ public class PortalMessage {
          *     {@link PortalMessage.Response.CustomerAccount }
          *     
          */
+        @XmlElement(name = "CustomerAccount")
         public PortalMessage.Response.CustomerAccount getCustomerAccount() {
             return customerAccount;
         }
@@ -969,6 +989,7 @@ public class PortalMessage {
          *     {@link PortalMessage.Response.NonConsumerDemographics }
          *     
          */
+        @XmlElement(name = "NonConsumerDemographics")
         public PortalMessage.Response.NonConsumerDemographics getNonConsumerDemographics() {
             return nonConsumerDemographics;
         }
@@ -997,6 +1018,7 @@ public class PortalMessage {
          *     {@link PortalMessage.Response.ConsumerDemographics }
          *     
          */
+        @XmlElement(name = "ConsumerDemographics")
         public PortalMessage.Response.ConsumerDemographics getConsumerDemographics() {
             return consumerDemographics;
         }
@@ -1025,6 +1047,7 @@ public class PortalMessage {
          *     {@link PortalMessage.Response.ContactList }
          *     
          */
+        @XmlElement(name = "ContactList")
         public PortalMessage.Response.ContactList getContactList() {
             return contactList;
         }
@@ -1053,6 +1076,7 @@ public class PortalMessage {
          *     {@link PortalMessage.Response.CommitmentPeriodList }
          *     
          */
+        @XmlElement(name = "CommitmentPeriodList")
         public PortalMessage.Response.CommitmentPeriodList getCommitmentPeriodList() {
             return commitmentPeriodList;
         }
@@ -1081,6 +1105,7 @@ public class PortalMessage {
          *     {@link PortalMessage.Response.BillingList }
          *     
          */
+        @XmlElement(name = "BillingList")
         public PortalMessage.Response.BillingList getBillingList() {
             return billingList;
         }
@@ -1161,13 +1186,13 @@ public class PortalMessage {
          * 
          * 
          */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "billingAccount"
-        })
+//        @XmlAccessorType(XmlAccessType.FIELD)
+//        @XmlType(name = "", propOrder = {
+//            "billingAccount"
+//        })
         public static class BillingList {
 
-            @XmlElement(name = "BillingAccount", required = true)
+//            @XmlElement(name = "BillingAccount", required = true)
             protected List<PortalMessage.Response.BillingList.BillingAccount> billingAccount;
 
             /**
@@ -1192,6 +1217,7 @@ public class PortalMessage {
              * 
              * 
              */
+            @XmlElement(name = "BillingAccount")
             public List<PortalMessage.Response.BillingList.BillingAccount> getBillingAccount() {
                 if (billingAccount == null) {
                     billingAccount = new ArrayList<PortalMessage.Response.BillingList.BillingAccount>();
@@ -1257,40 +1283,49 @@ public class PortalMessage {
              * 
              * 
              */
-            @XmlAccessorType(XmlAccessType.FIELD)
-            @XmlType(name = "", propOrder = {
-                "billingAddress",
-                "billingAccountRowID",
-                "billingAccountNo",
-                "billingName",
-                "billingProfileRowID",
-                "billAccountStatus",
-                "billingCycle",
-                "billingSalesPTT",
-                "billingType",
-                "hsbaBtuFlag"
-            })
+//            @XmlAccessorType(XmlAccessType.FIELD)
+//            @XmlType(name = "", propOrder = {
+//                "billingAddress",
+//                "billingAccountRowID",
+//                "billingAccountNo",
+//                "billingName",
+//                "billingProfileRowID",
+//                "billAccountStatus",
+//                "billingCycle",
+//                "billingSalesPTT",
+//                "billingType",
+//                "hsbaBtuFlag"
+//            })
             public static class BillingAccount {
 
-                @XmlElement(name = "BillingAddress")
+//                @XmlElement(name = "BillingAddress")
                 protected PortalMessage.Response.BillingList.BillingAccount.BillingAddress billingAddress;
-                @XmlElement(name = "BillingAccountRowID")
+                
+//                @XmlElement(name = "BillingAccountRowID")
                 protected String billingAccountRowID;
-                @XmlElement(name = "BillingAccountNo")
+                
+//                @XmlElement(name = "BillingAccountNo")
                 protected String billingAccountNo;
-                @XmlElement(name = "BillingName")
+                
+//                @XmlElement(name = "BillingName")
                 protected String billingName;
-                @XmlElement(name = "BillingProfileRowID")
+                
+//              @XmlElement(name = "BillingProfileRowID")  
                 protected String billingProfileRowID;
-                @XmlElement(name = "BillAccountStatus")
+                
+//                @XmlElement(name = "BillAccountStatus")
                 protected String billAccountStatus;
-                @XmlElement(name = "BillingCycle")
+                
+//                @XmlElement(name = "BillingCycle")
                 protected String billingCycle;
-                @XmlElement(name = "BillingSalesPTT")
+                
+//                @XmlElement(name = "BillingSalesPTT")
                 protected String billingSalesPTT;
-                @XmlElement(name = "BillingType")
+                
+//                @XmlElement(name = "BillingType")
                 protected String billingType;
-                @XmlElement(name = "HsbaBtuFlag")
+                
+//                @XmlElement(name = "HsbaBtuFlag")
                 protected String hsbaBtuFlag;
 
                 /**
@@ -1301,6 +1336,7 @@ public class PortalMessage {
                  *     {@link PortalMessage.Response.BillingList.BillingAccount.BillingAddress }
                  *     
                  */
+                @XmlElement(name = "BillingAddress")
                 public PortalMessage.Response.BillingList.BillingAccount.BillingAddress getBillingAddress() {
                     return billingAddress;
                 }
@@ -1329,6 +1365,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "BillingAccountRowID")
                 public String getBillingAccountRowID() {
                     return billingAccountRowID;
                 }
@@ -1357,6 +1394,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "BillingAccountNo")
                 public String getBillingAccountNo() {
                     return billingAccountNo;
                 }
@@ -1385,6 +1423,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "BillingName")
                 public String getBillingName() {
                     return billingName;
                 }
@@ -1413,6 +1452,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "BillingProfileRowID")
                 public String getBillingProfileRowID() {
                     return billingProfileRowID;
                 }
@@ -1441,6 +1481,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "BillAccountStatus")
                 public String getBillAccountStatus() {
                     return billAccountStatus;
                 }
@@ -1469,6 +1510,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "BillingCycle")
                 public String getBillingCycle() {
                     return billingCycle;
                 }
@@ -1497,6 +1539,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "BillingSalesPTT")
                 public String getBillingSalesPTT() {
                     return billingSalesPTT;
                 }
@@ -1525,6 +1568,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "BillingType")
                 public String getBillingType() {
                     return billingType;
                 }
@@ -1553,6 +1597,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "HsbaBtuFlag")
                 public String getHsbaBtuFlag() {
                     return hsbaBtuFlag;
                 }
@@ -1604,46 +1649,57 @@ public class PortalMessage {
                  * 
                  * 
                  */
-                @XmlAccessorType(XmlAccessType.FIELD)
-                @XmlType(name = "", propOrder = {
-                    "tmAddressID",
-                    "addressType",
-                    "houseUnitLot",
-                    "postcode",
-                    "floor",
-                    "buildingName",
-                    "streetType",
-                    "streetName",
-                    "section",
-                    "city",
-                    "state",
-                    "country"
-                })
+//                @XmlAccessorType(XmlAccessType.FIELD)
+//                @XmlType(name = "", propOrder = {
+//                    "tmAddressID",
+//                    "addressType",
+//                    "houseUnitLot",
+//                    "postcode",
+//                    "floor",
+//                    "buildingName",
+//                    "streetType",
+//                    "streetName",
+//                    "section",
+//                    "city",
+//                    "state",
+//                    "country"
+//                })
                 public static class BillingAddress {
 
-                    @XmlElement(name = "TMAddressID")
+//                    @XmlElement(name = "TMAddressID")
                     protected String tmAddressID;
-                    @XmlElement(name = "AddressType")
+                    
+//                    @XmlElement(name = "AddressType")
                     protected String addressType;
-                    @XmlElement(name = "HouseUnitLot")
+                    
+//                    @XmlElement(name = "HouseUnitLot")
                     protected String houseUnitLot;
-                    @XmlElement(name = "Postcode")
+                    
+//                    @XmlElement(name = "Postcode")
                     protected String postcode;
-                    @XmlElement(name = "Floor")
+                    
+//                    @XmlElement(name = "Floor")
                     protected String floor;
-                    @XmlElement(name = "BuildingName")
+                    
+//                    @XmlElement(name = "BuildingName")
                     protected String buildingName;
-                    @XmlElement(name = "StreetType")
+                    
+//                    @XmlElement(name = "StreetType")
                     protected String streetType;
-                    @XmlElement(name = "StreetName")
+                    
+//                    @XmlElement(name = "StreetName")
                     protected String streetName;
-                    @XmlElement(name = "Section")
+                    
+//                    @XmlElement(name = "Section")
                     protected String section;
-                    @XmlElement(name = "City")
+                    
+//                    @XmlElement(name = "City")
                     protected String city;
-                    @XmlElement(name = "State")
+                    
+//                    @XmlElement(name = "State")
                     protected String state;
-                    @XmlElement(name = "Country")
+                    
+//                    @XmlElement(name = "Country")
                     protected String country;
 
                     /**
@@ -1654,6 +1710,7 @@ public class PortalMessage {
                      *     {@link String }
                      *     
                      */
+                    @XmlElement(name = "TMAddressID")
                     public String getTMAddressID() {
                         return tmAddressID;
                     }
@@ -1682,6 +1739,7 @@ public class PortalMessage {
                      *     {@link String }
                      *     
                      */
+                    @XmlElement(name = "AddressType")
                     public String getAddressType() {
                         return addressType;
                     }
@@ -1710,6 +1768,7 @@ public class PortalMessage {
                      *     {@link String }
                      *     
                      */
+                    @XmlElement(name = "HouseUnitLot")
                     public String getHouseUnitLot() {
                         return houseUnitLot;
                     }
@@ -1738,6 +1797,7 @@ public class PortalMessage {
                      *     {@link String }
                      *     
                      */
+                    @XmlElement(name = "Postcode")
                     public String getPostcode() {
                         return postcode;
                     }
@@ -1766,6 +1826,7 @@ public class PortalMessage {
                      *     {@link String }
                      *     
                      */
+                    @XmlElement(name = "Floor")
                     public String getFloor() {
                         return floor;
                     }
@@ -1794,6 +1855,7 @@ public class PortalMessage {
                      *     {@link String }
                      *     
                      */
+                    @XmlElement(name = "BuildingName")
                     public String getBuildingName() {
                         return buildingName;
                     }
@@ -1822,6 +1884,7 @@ public class PortalMessage {
                      *     {@link String }
                      *     
                      */
+                    @XmlElement(name = "StreetType")
                     public String getStreetType() {
                         return streetType;
                     }
@@ -1850,6 +1913,7 @@ public class PortalMessage {
                      *     {@link String }
                      *     
                      */
+                    @XmlElement(name = "StreetName")
                     public String getStreetName() {
                         return streetName;
                     }
@@ -1878,6 +1942,7 @@ public class PortalMessage {
                      *     {@link String }
                      *     
                      */
+                    @XmlElement(name = "Section")
                     public String getSection() {
                         return section;
                     }
@@ -1906,6 +1971,7 @@ public class PortalMessage {
                      *     {@link String }
                      *     
                      */
+                    @XmlElement(name = "City")
                     public String getCity() {
                         return city;
                     }
@@ -1934,6 +2000,7 @@ public class PortalMessage {
                      *     {@link String }
                      *     
                      */
+                    @XmlElement(name = "State")
                     public String getState() {
                         return state;
                     }
@@ -1962,6 +2029,7 @@ public class PortalMessage {
                      *     {@link String }
                      *     
                      */
+                    @XmlElement(name = "Country")
                     public String getCountry() {
                         return country;
                     }
@@ -2019,14 +2087,14 @@ public class PortalMessage {
          * 
          * 
          */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "commitmentPeriod"
-        })
+//        @XmlAccessorType(XmlAccessType.FIELD)
+//        @XmlType(name = "", propOrder = {
+//            "commitmentPeriod"
+//        })
         public static class CommitmentPeriodList {
 
-            @XmlElement(name = "CommitmentPeriod", required = true)
-            protected List<PortalMessage.Response.CommitmentPeriodList.CommitmentPeriod> commitmentPeriod;
+            //@XmlElement(name = "CommitmentPeriod", required = true)
+        	protected List<PortalMessage.Response.CommitmentPeriodList.CommitmentPeriod> commitmentPeriod;
 
             /**
              * Gets the value of the commitmentPeriod property.
@@ -2050,6 +2118,7 @@ public class PortalMessage {
              * 
              * 
              */
+        	@XmlElement(name = "CommitmentPeriod")
             public List<PortalMessage.Response.CommitmentPeriodList.CommitmentPeriod> getCommitmentPeriod() {
                 if (commitmentPeriod == null) {
                     commitmentPeriod = new ArrayList<PortalMessage.Response.CommitmentPeriodList.CommitmentPeriod>();
@@ -2227,55 +2296,69 @@ public class PortalMessage {
          * 
          * 
          */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "gender",
-            "race",
-            "occupation",
-            "jobTitle",
-            "dateOfBirth",
-            "nationality",
-            "maritalStatus",
-            "childrenInAge7To21",
-            "monthlyHouseholdIncome",
-            "householdSize",
-            "houseOwnership",
-            "stayingWith",
-            "primaryFestiveCelebration",
-            "hobbies",
-            "deviceOwnership"
-        })
+//        @XmlAccessorType(XmlAccessType.FIELD)
+//        @XmlType(name = "", propOrder = {
+//            "gender",
+//            "race",
+//            "occupation",
+//            "jobTitle",
+//            "dateOfBirth",
+//            "nationality",
+//            "maritalStatus",
+//            "childrenInAge7To21",
+//            "monthlyHouseholdIncome",
+//            "householdSize",
+//            "houseOwnership",
+//            "stayingWith",
+//            "primaryFestiveCelebration",
+//            "hobbies",
+//            "deviceOwnership"
+//        })
         public static class ConsumerDemographics {
 
-            @XmlElement(name = "Gender")
+//            @XmlElement(name = "Gender")
             protected String gender;
-            @XmlElement(name = "Race")
+            
+//            @XmlElement(name = "Race")
             protected String race;
-            @XmlElement(name = "Occupation")
+            
+//            @XmlElement(name = "Occupation")
             protected String occupation;
-            @XmlElement(name = "JobTitle")
+            
+//            @XmlElement(name = "JobTitle")
             protected String jobTitle;
-            @XmlElement(name = "DateOfBirth")
+            
+//            @XmlElement(name = "DateOfBirth")
             protected String dateOfBirth;
-            @XmlElement(name = "Nationality")
+            
+//            @XmlElement(name = "Nationality")
             protected String nationality;
-            @XmlElement(name = "MaritalStatus")
+            
+//            @XmlElement(name = "MaritalStatus")
             protected String maritalStatus;
-            @XmlElement(name = "ChildrenInAge7to21")
+            
+//            @XmlElement(name = "ChildrenInAge7to21")
             protected PortalMessage.Response.ConsumerDemographics.ChildrenInAge7To21 childrenInAge7To21;
-            @XmlElement(name = "MonthlyHouseholdIncome")
+            
+//            @XmlElement(name = "MonthlyHouseholdIncome")
             protected String monthlyHouseholdIncome;
-            @XmlElement(name = "HouseholdSize")
+            
+//            @XmlElement(name = "HouseholdSize")
             protected String householdSize;
-            @XmlElement(name = "HouseOwnership")
+            
+//            @XmlElement(name = "HouseOwnership")
             protected String houseOwnership;
-            @XmlElement(name = "StayingWith")
+            
+//            @XmlElement(name = "StayingWith")
             protected String stayingWith;
-            @XmlElement(name = "PrimaryFestiveCelebration")
+            
+//            @XmlElement(name = "PrimaryFestiveCelebration")
             protected String primaryFestiveCelebration;
-            @XmlElement(name = "Hobbies")
+            
+//            @XmlElement(name = "Hobbies")
             protected PortalMessage.Response.ConsumerDemographics.Hobbies hobbies;
-            @XmlElement(name = "DeviceOwnership")
+            
+//            @XmlElement(name = "DeviceOwnership")
             protected PortalMessage.Response.ConsumerDemographics.DeviceOwnership deviceOwnership;
 
             /**
@@ -2286,6 +2369,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "Gender")
             public String getGender() {
                 return gender;
             }
@@ -2314,6 +2398,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "Race")
             public String getRace() {
                 return race;
             }
@@ -2342,6 +2427,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "Occupation")
             public String getOccupation() {
                 return occupation;
             }
@@ -2370,6 +2456,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "JobTitle")
             public String getJobTitle() {
                 return jobTitle;
             }
@@ -2398,6 +2485,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "DateOfBirth")
             public String getDateOfBirth() {
                 return dateOfBirth;
             }
@@ -2426,6 +2514,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "Nationality")
             public String getNationality() {
                 return nationality;
             }
@@ -2454,6 +2543,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "MaritalStatus")
             public String getMaritalStatus() {
                 return maritalStatus;
             }
@@ -2482,6 +2572,7 @@ public class PortalMessage {
              *     {@link PortalMessage.Response.ConsumerDemographics.ChildrenInAge7To21 }
              *     
              */
+            @XmlElement(name = "ChildrenInAge7to21")
             public PortalMessage.Response.ConsumerDemographics.ChildrenInAge7To21 getChildrenInAge7To21() {
                 return childrenInAge7To21;
             }
@@ -2510,6 +2601,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "MonthlyHouseholdIncome")
             public String getMonthlyHouseholdIncome() {
                 return monthlyHouseholdIncome;
             }
@@ -2538,6 +2630,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "HouseholdSize")
             public String getHouseholdSize() {
                 return householdSize;
             }
@@ -2566,6 +2659,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "HouseOwnership")
             public String getHouseOwnership() {
                 return houseOwnership;
             }
@@ -2594,6 +2688,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "StayingWith")
             public String getStayingWith() {
                 return stayingWith;
             }
@@ -2622,6 +2717,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "PrimaryFestiveCelebration")
             public String getPrimaryFestiveCelebration() {
                 return primaryFestiveCelebration;
             }
@@ -2650,6 +2746,7 @@ public class PortalMessage {
              *     {@link PortalMessage.Response.ConsumerDemographics.Hobbies }
              *     
              */
+            @XmlElement(name = "Hobbies")
             public PortalMessage.Response.ConsumerDemographics.Hobbies getHobbies() {
                 return hobbies;
             }
@@ -2678,6 +2775,7 @@ public class PortalMessage {
              *     {@link PortalMessage.Response.ConsumerDemographics.DeviceOwnership }
              *     
              */
+            @XmlElement(name = "DeviceOwnership")
             public PortalMessage.Response.ConsumerDemographics.DeviceOwnership getDeviceOwnership() {
                 return deviceOwnership;
             }
@@ -2719,16 +2817,17 @@ public class PortalMessage {
              * 
              * 
              */
-            @XmlAccessorType(XmlAccessType.FIELD)
-            @XmlType(name = "", propOrder = {
-                "name",
-                "value"
-            })
+//            @XmlAccessorType(XmlAccessType.FIELD)
+//            @XmlType(name = "", propOrder = {
+//                "name",
+//                "value"
+//            })
             public static class ChildrenInAge7To21 {
 
-                @XmlElement(name = "Name")
+//                @XmlElement(name = "Name")
                 protected String name;
-                @XmlElement(name = "Value")
+                
+//                @XmlElement(name = "Value")
                 protected String value;
 
                 /**
@@ -2739,6 +2838,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "Name")
                 public String getName() {
                     return name;
                 }
@@ -2767,6 +2867,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "Value")
                 public String getValue() {
                     return value;
                 }
@@ -2811,19 +2912,21 @@ public class PortalMessage {
              * 
              * 
              */
-            @XmlAccessorType(XmlAccessType.FIELD)
-            @XmlType(name = "", propOrder = {
-                "rowId",
-                "name",
-                "value"
-            })
+//            @XmlAccessorType(XmlAccessType.FIELD)
+//            @XmlType(name = "", propOrder = {
+//                "rowId",
+//                "name",
+//                "value"
+//            })
             public static class DeviceOwnership {
 
-                @XmlElement(name = "RowId")
+//                @XmlElement(name = "RowId")
                 protected String rowId;
-                @XmlElement(name = "Name")
+                
+//                @XmlElement(name = "Name")
                 protected String name;
-                @XmlElement(name = "Value")
+                
+//                @XmlElement(name = "Value")
                 protected String value;
 
                 /**
@@ -2834,6 +2937,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "RowId")
                 public String getRowId() {
                     return rowId;
                 }
@@ -2862,6 +2966,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "Name")
                 public String getName() {
                     return name;
                 }
@@ -2890,6 +2995,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "Value")
                 public String getValue() {
                     return value;
                 }
@@ -2934,19 +3040,21 @@ public class PortalMessage {
              * 
              * 
              */
-            @XmlAccessorType(XmlAccessType.FIELD)
-            @XmlType(name = "", propOrder = {
-                "rowId",
-                "name",
-                "value"
-            })
+//            @XmlAccessorType(XmlAccessType.FIELD)
+//            @XmlType(name = "", propOrder = {
+//                "rowId",
+//                "name",
+//                "value"
+//            })
             public static class Hobbies {
 
-                @XmlElement(name = "RowId")
+//                @XmlElement(name = "RowId")
                 protected String rowId;
-                @XmlElement(name = "Name")
+                
+//                @XmlElement(name = "Name")
                 protected String name;
-                @XmlElement(name = "Value")
+                
+//                @XmlElement(name = "Value")
                 protected String value;
 
                 /**
@@ -2957,6 +3065,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "RowId")
                 public String getRowId() {
                     return rowId;
                 }
@@ -2985,6 +3094,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "Name")
                 public String getName() {
                     return name;
                 }
@@ -3013,6 +3123,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "Value")
                 public String getValue() {
                     return value;
                 }
@@ -3077,13 +3188,13 @@ public class PortalMessage {
          * 
          * 
          */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "contact"
-        })
+//        @XmlAccessorType(XmlAccessType.FIELD)
+//        @XmlType(name = "", propOrder = {
+//            "contact"
+//        })
         public static class ContactList {
 
-            @XmlElement(name = "Contact", required = true)
+            //@XmlElement(name = "Contact", required = true)
             protected List<PortalMessage.Response.ContactList.Contact> contact;
 
             /**
@@ -3108,6 +3219,7 @@ public class PortalMessage {
              * 
              * 
              */
+            @XmlElement(name = "Contact")
             public List<PortalMessage.Response.ContactList.Contact> getContact() {
                 if (contact == null) {
                     contact = new ArrayList<PortalMessage.Response.ContactList.Contact>();
@@ -3153,43 +3265,53 @@ public class PortalMessage {
              * 
              * 
              */
-            @XmlAccessorType(XmlAccessType.FIELD)
-            @XmlType(name = "", propOrder = {
-                "primaryContactIndicator",
-                "contactPrimaryIdType",
-                "contactPrimaryIdNo",
-                "contactID",
-                "contactName",
-                "officePhone",
-                "homePhone",
-                "mobilePhone",
-                "portalID",
-                "emailAddress",
-                "designation"
-            })
+//            @XmlAccessorType(XmlAccessType.FIELD)
+//            @XmlType(name = "", propOrder = {
+//                "primaryContactIndicator",
+//                "contactPrimaryIdType",
+//                "contactPrimaryIdNo",
+//                "contactID",
+//                "contactName",
+//                "officePhone",
+//                "homePhone",
+//                "mobilePhone",
+//                "portalID",
+//                "emailAddress",
+//                "designation"
+//            })
             public static class Contact {
 
-                @XmlElement(name = "PrimaryContactIndicator")
+//                @XmlElement(name = "PrimaryContactIndicator")
                 protected String primaryContactIndicator;
-                @XmlElement(name = "ContactPrimaryIdType")
+                
+             //   @XmlElement(name = "ContactPrimaryIdType")
                 protected String contactPrimaryIdType;
-                @XmlElement(name = "ContactPrimaryIdNo")
+                
+ //               @XmlElement(name = "ContactPrimaryIdNo")
                 protected String contactPrimaryIdNo;
-                @XmlElement(name = "ContactID")
+                
+ //               @XmlElement(name = "ContactID")
                 protected String contactID;
-                @XmlElement(name = "ContactName")
+                
+ //               @XmlElement(name = "ContactName")
                 protected String contactName;
-                @XmlElement(name = "OfficePhone")
+                
+ //               @XmlElement(name = "OfficePhone")
                 protected String officePhone;
-                @XmlElement(name = "HomePhone")
+                
+ //               @XmlElement(name = "HomePhone")
                 protected String homePhone;
-                @XmlElement(name = "MobilePhone")
+                
+ //               @XmlElement(name = "MobilePhone")
                 protected String mobilePhone;
-                @XmlElement(name = "PortalID")
+                
+ //               @XmlElement(name = "PortalID")
                 protected String portalID;
-                @XmlElement(name = "EmailAddress")
+                
+ //               @XmlElement(name = "EmailAddress")
                 protected String emailAddress;
-                @XmlElement(name = "Designation")
+                
+ //               @XmlElement(name = "Designation")
                 protected String designation;
 
                 /**
@@ -3200,6 +3322,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "PrimaryContactIndicator")
                 public String getPrimaryContactIndicator() {
                     return primaryContactIndicator;
                 }
@@ -3228,6 +3351,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "ContactPrimaryIdType")
                 public String getContactPrimaryIdType() {
                     return contactPrimaryIdType;
                 }
@@ -3256,6 +3380,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "ContactPrimaryIdNo")
                 public String getContactPrimaryIdNo() {
                     return contactPrimaryIdNo;
                 }
@@ -3284,6 +3409,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "ContactID")
                 public String getContactID() {
                     return contactID;
                 }
@@ -3312,6 +3438,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "ContactName")
                 public String getContactName() {
                     return contactName;
                 }
@@ -3340,6 +3467,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "OfficePhone")
                 public String getOfficePhone() {
                     return officePhone;
                 }
@@ -3368,6 +3496,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "HomePhone")
                 public String getHomePhone() {
                     return homePhone;
                 }
@@ -3396,6 +3525,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "MobilePhone")
                 public String getMobilePhone() {
                     return mobilePhone;
                 }
@@ -3424,6 +3554,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "PortalID")
                 public String getPortalID() {
                     return portalID;
                 }
@@ -3452,6 +3583,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "EmailAddress")
                 public String getEmailAddress() {
                     return emailAddress;
                 }
@@ -3480,6 +3612,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "Designation")
                 public String getDesignation() {
                     return designation;
                 }
@@ -3602,7 +3735,7 @@ public class PortalMessage {
          * 
          * 
          */
-        @XmlAccessorType(XmlAccessType.FIELD)
+ /*       @XmlAccessorType(XmlAccessType.FIELD)
         @XmlType(name = "", propOrder = {
             "accountNo",
             "customerName",
@@ -3641,84 +3774,84 @@ public class PortalMessage {
             "larsLastRedemTrnPoint",
             "larsProfileEnrollFlag",
             "tmbrnSubType"
-        })
+        })*/
         public static class CustomerAccount {
 
-            @XmlElement(name = "AccountNo", required = true)
+ //           @XmlElement(name = "AccountNo", required = true)
             protected String accountNo;
-            @XmlElement(name = "CustomerName")
+ //           @XmlElement(name = "CustomerName")
             protected String customerName;
-            @XmlElement(name = "SegmentCode")
+ //           @XmlElement(name = "SegmentCode")
             protected String segmentCode;
-            @XmlElement(name = "SegmentGroup")
+ //           @XmlElement(name = "SegmentGroup")
             protected String segmentGroup;
-            @XmlElement(name = "PrimaryIDType")
+  //          @XmlElement(name = "PrimaryIDType")
             protected String primaryIDType;
-            @XmlElement(name = "PrimaryIDNo")
+ //           @XmlElement(name = "PrimaryIDNo")
             protected String primaryIDNo;
-            @XmlElement(name = "TMExternalSource")
+ //           @XmlElement(name = "TMExternalSource")
             protected String tmExternalSource;
-            @XmlElement(name = "Blacklist")
+ //           @XmlElement(name = "Blacklist")
             protected String blacklist;
-            @XmlElement(name = "MobilePhone")
+ //           @XmlElement(name = "MobilePhone")
             protected String mobilePhone;
-            @XmlElement(name = "OfficePhone")
+//            @XmlElement(name = "OfficePhone")
             protected String officePhone;
-            @XmlElement(name = "HomePhone")
+//            @XmlElement(name = "HomePhone")
             protected String homePhone;
-            @XmlElement(name = "ContactMethod")
+//            @XmlElement(name = "ContactMethod")
             protected String contactMethod;
-            @XmlElement(name = "Industry")
+//            @XmlElement(name = "Industry")
             protected String industry;
-            @XmlElement(name = "EmailAddress")
+//            @XmlElement(name = "EmailAddress")
             protected String emailAddress;
-            @XmlElement(name = "FaxNumber")
+//            @XmlElement(name = "FaxNumber")
             protected String faxNumber;
-            @XmlElement(name = "ExpiryDate")
+ //           @XmlElement(name = "ExpiryDate")
             protected String expiryDate;
-            @XmlElement(name = "CustomerAddress")
+//            @XmlElement(name = "CustomerAddress")
             protected PortalMessage.Response.CustomerAccount.CustomerAddress customerAddress;
-            @XmlElement(name = "Priority")
+//            @XmlElement(name = "Priority")
             protected String priority;
-            @XmlElement(name = "PassportCountry")
+//            @XmlElement(name = "PassportCountry")
             protected String passportCountry;
-            @XmlElement(name = "RegisteredAddress")
+//            @XmlElement(name = "RegisteredAddress")
             protected PortalMessage.Response.CustomerAccount.RegisteredAddress registeredAddress;
-            @XmlElement(name = "ServiceProvider")
+//            @XmlElement(name = "ServiceProvider")
             protected String serviceProvider;
-            @XmlElement(name = "LARSRewardsNo")
+//            @XmlElement(name = "LARSRewardsNo")
             protected String larsRewardsNo;
-            @XmlElement(name = "LARSMembershipNo")
+ //           @XmlElement(name = "LARSMembershipNo")
             protected String larsMembershipNo;
-            @XmlElement(name = "LARSMemberCategory")
+ //           @XmlElement(name = "LARSMemberCategory")
             protected String larsMemberCategory;
-            @XmlElement(name = "LARSMemberStatus")
+ //           @XmlElement(name = "LARSMemberStatus")
             protected String larsMemberStatus;
-            @XmlElement(name = "LARSTotalPoint")
+ //           @XmlElement(name = "LARSTotalPoint")
             protected String larsTotalPoint;
-            @XmlElement(name = "LARSTotalPointDate")
+ //           @XmlElement(name = "LARSTotalPointDate")
             protected String larsTotalPointDate;
-            @XmlElement(name = "LARSPointExpiry")
+ //           @XmlElement(name = "LARSPointExpiry")
             protected String larsPointExpiry;
-            @XmlElement(name = "LARSPointExpiryDate")
+ //           @XmlElement(name = "LARSPointExpiryDate")
             protected String larsPointExpiryDate;
-            @XmlElement(name = "LARSLastEarnTrnDate")
+ //           @XmlElement(name = "LARSLastEarnTrnDate")
             protected String larsLastEarnTrnDate;
-            @XmlElement(name = "LARSLastEarnTrnDesc")
+ //           @XmlElement(name = "LARSLastEarnTrnDesc")
             protected String larsLastEarnTrnDesc;
-            @XmlElement(name = "LARSLastEarnTrnPoint")
+ //           @XmlElement(name = "LARSLastEarnTrnPoint")
             protected String larsLastEarnTrnPoint;
-            @XmlElement(name = "LARSLastRedemTrnDate")
+ //           @XmlElement(name = "LARSLastRedemTrnDate")
             protected String larsLastRedemTrnDate;
-            @XmlElement(name = "LARSLastRedemTrnDesc")
+ //           @XmlElement(name = "LARSLastRedemTrnDesc")
             protected String larsLastRedemTrnDesc;
-            @XmlElement(name = "LARSLastRedemTrnPoint")
+ //           @XmlElement(name = "LARSLastRedemTrnPoint")
             protected String larsLastRedemTrnPoint;
-            @XmlElement(name = "LARSProfileEnrollFlag", type = String.class)
+ //           @XmlElement(name = "LARSProfileEnrollFlag", type = String.class)
             @XmlJavaTypeAdapter(Adapter3 .class)
-            @XmlSchemaType(name = "boolean")
+ //           @XmlSchemaType(name = "boolean")
             protected Boolean larsProfileEnrollFlag;
-            @XmlElement(name = "TMBRNSubType")
+ //           @XmlElement(name = "TMBRNSubType")
             protected String tmbrnSubType;
 
             /**
@@ -3729,6 +3862,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "AccountNo")
             public String getAccountNo() {
                 return accountNo;
             }
@@ -3757,6 +3891,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "CustomerName")
             public String getCustomerName() {
                 return customerName;
             }
@@ -3785,6 +3920,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "SegmentCode")
             public String getSegmentCode() {
                 return segmentCode;
             }
@@ -3813,6 +3949,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "SegmentGroup")
             public String getSegmentGroup() {
                 return segmentGroup;
             }
@@ -3841,6 +3978,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "PrimaryIDType")
             public String getPrimaryIDType() {
                 return primaryIDType;
             }
@@ -3869,6 +4007,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "PrimaryIDNo")
             public String getPrimaryIDNo() {
                 return primaryIDNo;
             }
@@ -3897,6 +4036,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "TMEXternalSource")
             public String getTMExternalSource() {
                 return tmExternalSource;
             }
