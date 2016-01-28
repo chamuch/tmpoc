@@ -54,11 +54,14 @@ public class EntityUtils {
      */
     public static String toString(
             final HttpEntity entity, final Charset defaultCharset) throws IOException, ParseException {
-        //Args.notNull(entity, "Entity");
+        
+    	String responseBody = null;
+    	InputStream instream =  null;
+        
     	if (entity == null)
     		throw new ParseException("incoming entity was missing!!", 0);
-    		
-        final InputStream instream = entity.getContent();
+    	
+    	instream = entity.getContent();
         if (instream == null) {
             return null;
         }
@@ -89,14 +92,22 @@ public class EntityUtils {
             final Reader reader = new InputStreamReader(instream, charset);
             final StringBuffer buffer = new StringBuffer(i);
             final char[] tmp = new char[1024];
-            int l;
-            while((l = reader.read(tmp)) != -1) {
-                buffer.append(tmp, 0, l);
-            }
-            return buffer.toString();
+            int len;
+            do {
+            	len = reader.read(tmp);
+            	if (len == -1) 
+            		break;
+            	
+            	buffer.append(tmp, 0, len);
+            } while (len != -1);
+            
+            responseBody = buffer.toString();
+            System.out.println("Http Response Body from the Socket: " + responseBody);
         } finally {
             instream.close();
         }
+
+        return responseBody;
     }
     
 }
