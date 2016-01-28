@@ -79,7 +79,7 @@ public class DiceHttp43Adaptor {
 
 			post.setEntity(body);
 			HttpResponse response = httpclient.execute(post);
-			((CloseableHttpClient)httpclient).close();
+			//((CloseableHttpClient)httpclient).close();
 
 			HttpEntity entity = response.getEntity();
 			responseXML = org.sns.utils.Http.EntityUtils.toString(entity, "UTF-8");
