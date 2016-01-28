@@ -10,7 +10,7 @@
 		<cxf-version>3.0.4</cxf-version>
 		<camel-version>2.15.1</camel-version>
 		<spring-version>3.2.12.RELEASE</spring-version>
-		<commons-httpclient>4.4</commons-httpclient>
+		<commons-httpclient>4.3</commons-httpclient>
 		<osgi-import-packages>
 			org.springframework.*,
 			org.apache.camel,
