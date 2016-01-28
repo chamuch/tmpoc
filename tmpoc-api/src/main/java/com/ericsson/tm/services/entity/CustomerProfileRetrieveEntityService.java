@@ -3,6 +3,7 @@ package com.ericsson.tm.services.entity;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.nio.charset.Charset;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -121,13 +122,14 @@ public class CustomerProfileRetrieveEntityService {
 	public com.ericsson.tm.proxy.customer.response.PortalMessage convertXMLToPojo(String respXML){
 		com.ericsson.tm.proxy.customer.response.PortalMessage respObj = null;
 		
-		respXML = respXML.trim().replaceFirst("^([\\W]+)<","<");
+		respXML = respXML.trim().replaceFirst("^([\\W\\t]+)<","<");
+		respXML = respXML.replaceAll("[^\\x20-\\x7e\\x0A]", "");
 		System.out.println("Validate RespXML: <<<<||||" + respXML + "||||>>>>");
 		try{
 			JAXBContext jaxbContext = JAXBContext.newInstance(PortalMessage.class);
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			
-			InputStream xmlInpStream = new ByteArrayInputStream(respXML.getBytes());
+			InputStream xmlInpStream = new ByteArrayInputStream(respXML.getBytes(Charset.forName("UTF-8")));
 			respObj = (PortalMessage) unmarshaller.unmarshal(xmlInpStream);
 			
 		}catch(Exception genE){
