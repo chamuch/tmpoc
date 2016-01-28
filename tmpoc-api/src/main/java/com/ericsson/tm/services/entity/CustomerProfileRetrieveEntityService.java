@@ -121,6 +121,7 @@ public class CustomerProfileRetrieveEntityService {
 	public com.ericsson.tm.proxy.customer.response.PortalMessage convertXMLToPojo(String respXML){
 		com.ericsson.tm.proxy.customer.response.PortalMessage respObj = null;
 		
+		respXML = respXML.trim().replaceFirst("^([\\W]+)<","<");
 		System.out.println("Validate RespXML: <<<<||||" + respXML + "||||>>>>");
 		try{
 			JAXBContext jaxbContext = JAXBContext.newInstance(PortalMessage.class);
