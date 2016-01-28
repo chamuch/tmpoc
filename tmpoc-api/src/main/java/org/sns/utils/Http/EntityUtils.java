@@ -91,19 +91,21 @@ public class EntityUtils {
             }
             
             System.out.println("Using charset: " + charset.name());
-            final Reader reader = new InputStreamReader(instream, charset);
-            final StringBuffer buffer = new StringBuffer(i);
-            final char[] tmp = new char[1024];
+            //final Reader reader = new InputStreamReader(instream, charset);
+            final StringBuffer responseBuffer = new StringBuffer(i);
+            //final char[] tmp = new char[1024];
+            final byte[] readBuffer = new byte[1024];
             int len;
             do {
-            	len = reader.read(tmp);
+            	//len = reader.read(tmp);
+            	len = instream.read(readBuffer);
             	if (len == -1) 
             		break;
             	
-            	buffer.append(tmp, 0, len);
+            	responseBuffer.append(new String(readBuffer, 0, len));
             } while (len != -1);
             
-            responseBody = buffer.toString();
+            responseBody = responseBuffer.toString();
             //System.out.println("Http Response Body from the Socket: " + responseBody);
         } finally {
             instream.close();
