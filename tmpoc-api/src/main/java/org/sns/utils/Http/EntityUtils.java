@@ -79,16 +79,18 @@ public class EntityUtils {
                 if (contentType != null) {
                     charset = contentType.getCharset();
                 }
+                
+                if (charset == null) {
+                    charset = Charset.forName("UTF-8");
+                }
+                
             } catch (final UnsupportedCharsetException ex) {
                 if (defaultCharset == null) {
                     throw new UnsupportedEncodingException(ex.getMessage());
                 }
             }
             
-            if (charset == null) {
-                charset = Charset.forName("UTF-8");
-            }
-            
+            System.out.println("Using charset: " + charset.name());
             final Reader reader = new InputStreamReader(instream, charset);
             final StringBuffer buffer = new StringBuffer(i);
             final char[] tmp = new char[1024];
