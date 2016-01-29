@@ -142,10 +142,15 @@
 			<camel:doTry>
 				<camel:bean ref="ecmService" method="getAllProductCategories"></camel:bean>
 				<camel:doCatch>
-				<camel:setBody>
-					<camel:simple>${exception}</camel:simple>
-				 </camel:setBody>
+					<camel:exception>java.lang.Exception</camel:exception>
+					<camel:log message="Exception in ECM REST API: ${exception.stacktrace}"></camel:log>
+					<camel:setBody>
+						<camel:simple>${exception}</camel:simple>
+				 	</camel:setBody>
 				</camel:doCatch>
+				<camel:doFinally>
+					<camel:log message="Exit-api: >>>${body}<<<" />
+				</camel:doFinally>
 			</camel:doTry>
 			
 		</route>
