@@ -23,14 +23,9 @@
 	<bean id="prodcat" class="com.ericsson.tm.prodcat.simple.ProdCatService"
 		init-method="init" />
 
-	<!-- <bean id="tmProxyHttpClient" class="com.ericsson.tm.http.client.TmProxyHttpClient" 
-		init-method="init"> <constructor-arg name="tmProxyConfig" value="#{cfg.getProperties('TM_PROXY')}" 
-		/> </bean> -->
+	<bean id="prodcatEcm" class="com.ericsson.tm.prodcat.ecm.ProdCatService" />
 
-	<!-- <bean id="gsonCustomerProfile" class="org.apache.camel.component.gson.GsonDataFormat"> 
-		<property name="unmarshalType" value="com.ericsson.tm.entities.CustomerProfile" 
-		/> </bean> -->
-
+	
 	<bean id="gsonGetAllProducts" class="org.apache.camel.component.gson.GsonDataFormat">
 		<property name="unmarshalType"
 			value="com.ericsson.tm.prodcat.simple.GetAllProductsRequest" />
