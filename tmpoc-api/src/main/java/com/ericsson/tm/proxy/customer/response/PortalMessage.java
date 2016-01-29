@@ -3735,46 +3735,46 @@ public class PortalMessage {
          * 
          * 
          */
- /*       @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "accountNo",
-            "customerName",
-            "segmentCode",
-            "segmentGroup",
-            "primaryIDType",
-            "primaryIDNo",
-            "tmExternalSource",
-            "blacklist",
-            "mobilePhone",
-            "officePhone",
-            "homePhone",
-            "contactMethod",
-            "industry",
-            "emailAddress",
-            "faxNumber",
-            "expiryDate",
-            "customerAddress",
-            "priority",
-            "passportCountry",
-            "registeredAddress",
-            "serviceProvider",
-            "larsRewardsNo",
-            "larsMembershipNo",
-            "larsMemberCategory",
-            "larsMemberStatus",
-            "larsTotalPoint",
-            "larsTotalPointDate",
-            "larsPointExpiry",
-            "larsPointExpiryDate",
-            "larsLastEarnTrnDate",
-            "larsLastEarnTrnDesc",
-            "larsLastEarnTrnPoint",
-            "larsLastRedemTrnDate",
-            "larsLastRedemTrnDesc",
-            "larsLastRedemTrnPoint",
-            "larsProfileEnrollFlag",
-            "tmbrnSubType"
-        })*/
+//        @XmlAccessorType(XmlAccessType.FIELD)
+//        @XmlType(name = "", propOrder = {
+//            "accountNo",
+//            "customerName",
+//            "segmentCode",
+//            "segmentGroup",
+//            "primaryIDType",
+//            "primaryIDNo",
+//            "tmExternalSource",
+//            "blacklist",
+//            "mobilePhone",
+//            "officePhone",
+//            "homePhone",
+//            "contactMethod",
+//            "industry",
+//            "emailAddress",
+//            "faxNumber",
+//            "expiryDate",
+//            "customerAddress",
+//            "priority",
+//            "passportCountry",
+//            "registeredAddress",
+//            "serviceProvider",
+//            "larsRewardsNo",
+//            "larsMembershipNo",
+//            "larsMemberCategory",
+//            "larsMemberStatus",
+//            "larsTotalPoint",
+//            "larsTotalPointDate",
+//            "larsPointExpiry",
+//            "larsPointExpiryDate",
+//            "larsLastEarnTrnDate",
+//            "larsLastEarnTrnDesc",
+//            "larsLastEarnTrnPoint",
+//            "larsLastRedemTrnDate",
+//            "larsLastRedemTrnDesc",
+//            "larsLastRedemTrnPoint",
+//            "larsProfileEnrollFlag",
+//            "tmbrnSubType"
+//        })
         public static class CustomerAccount {
 
  //           @XmlElement(name = "AccountNo", required = true)
@@ -4065,6 +4065,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "Blacklist")
             public String getBlacklist() {
                 return blacklist;
             }
@@ -4093,6 +4094,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "MobilePhone")
             public String getMobilePhone() {
                 return mobilePhone;
             }
@@ -4121,6 +4123,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "OfficePhone")
             public String getOfficePhone() {
                 return officePhone;
             }
@@ -4149,6 +4152,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "HomePhone")
             public String getHomePhone() {
                 return homePhone;
             }
@@ -4177,6 +4181,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "ContactMethod")
             public String getContactMethod() {
                 return contactMethod;
             }
@@ -4205,6 +4210,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "Industry")
             public String getIndustry() {
                 return industry;
             }
@@ -4233,6 +4239,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "EmailAddress")
             public String getEmailAddress() {
                 return emailAddress;
             }
@@ -4261,6 +4268,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "FaxNumber")
             public String getFaxNumber() {
                 return faxNumber;
             }
@@ -4289,6 +4297,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "ExpiryDate")
             public String getExpiryDate() {
                 return expiryDate;
             }
@@ -4317,6 +4326,7 @@ public class PortalMessage {
              *     {@link PortalMessage.Response.CustomerAccount.CustomerAddress }
              *     
              */
+            @XmlElement(name = "CustomerAddress")
             public PortalMessage.Response.CustomerAccount.CustomerAddress getCustomerAddress() {
                 return customerAddress;
             }
@@ -4345,6 +4355,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "Priority")
             public String getPriority() {
                 return priority;
             }
@@ -4373,6 +4384,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "PassportCountry")
             public String getPassportCountry() {
                 return passportCountry;
             }
@@ -4401,6 +4413,7 @@ public class PortalMessage {
              *     {@link PortalMessage.Response.CustomerAccount.RegisteredAddress }
              *     
              */
+            @XmlElement(name = "RegisteredAddress")
             public PortalMessage.Response.CustomerAccount.RegisteredAddress getRegisteredAddress() {
                 return registeredAddress;
             }
@@ -4429,6 +4442,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "ServiceProvider")
             public String getServiceProvider() {
                 return serviceProvider;
             }
@@ -4457,6 +4471,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "LARSRewardsNo")
             public String getLARSRewardsNo() {
                 return larsRewardsNo;
             }
@@ -4485,6 +4500,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "LARSMembershipNo")
             public String getLARSMembershipNo() {
                 return larsMembershipNo;
             }
@@ -4513,6 +4529,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "LARSMemberCategory")
             public String getLARSMemberCategory() {
                 return larsMemberCategory;
             }
@@ -4541,6 +4558,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "LARSMemberStatus")
             public String getLARSMemberStatus() {
                 return larsMemberStatus;
             }
@@ -4569,6 +4587,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "LARSTotalPoint")
             public String getLARSTotalPoint() {
                 return larsTotalPoint;
             }
@@ -4597,6 +4616,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "LARSTotalPointDate")
             public String getLARSTotalPointDate() {
                 return larsTotalPointDate;
             }
@@ -4625,6 +4645,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "LARSPointExpiry")
             public String getLARSPointExpiry() {
                 return larsPointExpiry;
             }
@@ -4653,6 +4674,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "LARSPointExpiryDate")
             public String getLARSPointExpiryDate() {
                 return larsPointExpiryDate;
             }
@@ -4681,6 +4703,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "LARSLastEarnTrnDate")
             public String getLARSLastEarnTrnDate() {
                 return larsLastEarnTrnDate;
             }
@@ -4709,6 +4732,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "LARSLastEarnTrnDesc")
             public String getLARSLastEarnTrnDesc() {
                 return larsLastEarnTrnDesc;
             }
@@ -4737,6 +4761,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "LARSLastEarnTrnPoint")
             public String getLARSLastEarnTrnPoint() {
                 return larsLastEarnTrnPoint;
             }
@@ -4765,6 +4790,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "LARSLastRedemTrnDate")
             public String getLARSLastRedemTrnDate() {
                 return larsLastRedemTrnDate;
             }
@@ -4793,6 +4819,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "LARSLastRedemTrnDesc")
             public String getLARSLastRedemTrnDesc() {
                 return larsLastRedemTrnDesc;
             }
@@ -4821,6 +4848,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "LARSLastRedemTrnPoint")
             public String getLARSLastRedemTrnPoint() {
                 return larsLastRedemTrnPoint;
             }
@@ -4877,6 +4905,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "TMBRNSubType")
             public String getTMBRNSubType() {
                 return tmbrnSubType;
             }
@@ -4928,46 +4957,46 @@ public class PortalMessage {
              * 
              * 
              */
-            @XmlAccessorType(XmlAccessType.FIELD)
-            @XmlType(name = "", propOrder = {
-                "addressType",
-                "houseUnitLot",
-                "postcode",
-                "floor",
-                "buildingName",
-                "streetType",
-                "streetName",
-                "section",
-                "city",
-                "state",
-                "country",
-                "tmAddressID"
-            })
+//            @XmlAccessorType(XmlAccessType.FIELD)
+//            @XmlType(name = "", propOrder = {
+//                "addressType",
+//                "houseUnitLot",
+//                "postcode",
+//                "floor",
+//                "buildingName",
+//                "streetType",
+//                "streetName",
+//                "section",
+//                "city",
+//                "state",
+//                "country",
+//                "tmAddressID"
+//            })
             public static class CustomerAddress {
 
-                @XmlElement(name = "AddressType")
+ //               @XmlElement(name = "AddressType")
                 protected String addressType;
-                @XmlElement(name = "HouseUnitLot")
+ //               @XmlElement(name = "HouseUnitLot")
                 protected String houseUnitLot;
-                @XmlElement(name = "Postcode")
+//                @XmlElement(name = "Postcode")
                 protected String postcode;
-                @XmlElement(name = "Floor")
+ //               @XmlElement(name = "Floor")
                 protected String floor;
-                @XmlElement(name = "BuildingName")
+ //               @XmlElement(name = "BuildingName")
                 protected String buildingName;
-                @XmlElement(name = "StreetType")
+ //               @XmlElement(name = "StreetType")
                 protected String streetType;
-                @XmlElement(name = "StreetName")
+ //               @XmlElement(name = "StreetName")
                 protected String streetName;
-                @XmlElement(name = "Section")
+ //               @XmlElement(name = "Section")
                 protected String section;
-                @XmlElement(name = "City")
+ //               @XmlElement(name = "City")
                 protected String city;
-                @XmlElement(name = "State")
+ //               @XmlElement(name = "State")
                 protected String state;
-                @XmlElement(name = "Country")
+ //               @XmlElement(name = "Country")
                 protected String country;
-                @XmlElement(name = "TMAddressID")
+ //               @XmlElement(name = "TMAddressID")
                 protected String tmAddressID;
 
                 /**
@@ -4978,6 +5007,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "AddressType")
                 public String getAddressType() {
                     return addressType;
                 }
@@ -5006,6 +5036,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "HouseUnitLot")
                 public String getHouseUnitLot() {
                     return houseUnitLot;
                 }
@@ -5034,6 +5065,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "Postcode")
                 public String getPostcode() {
                     return postcode;
                 }
@@ -5062,6 +5094,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "Floor")
                 public String getFloor() {
                     return floor;
                 }
@@ -5090,6 +5123,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "BuildingName")
                 public String getBuildingName() {
                     return buildingName;
                 }
@@ -5118,6 +5152,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "StreetType")
                 public String getStreetType() {
                     return streetType;
                 }
@@ -5146,6 +5181,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "StreetName")
                 public String getStreetName() {
                     return streetName;
                 }
@@ -5174,6 +5210,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "Section")
                 public String getSection() {
                     return section;
                 }
@@ -5202,6 +5239,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "City")
                 public String getCity() {
                     return city;
                 }
@@ -5230,6 +5268,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "State")
                 public String getState() {
                     return state;
                 }
@@ -5258,6 +5297,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "Country")
                 public String getCountry() {
                     return country;
                 }
@@ -5286,6 +5326,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "TMAddressID")
                 public String getTMAddressID() {
                     return tmAddressID;
                 }
@@ -5339,46 +5380,46 @@ public class PortalMessage {
              * 
              * 
              */
-            @XmlAccessorType(XmlAccessType.FIELD)
-            @XmlType(name = "", propOrder = {
-                "addressType",
-                "houseUnitLot",
-                "postcode",
-                "floor",
-                "buildingName",
-                "streetType",
-                "streetName",
-                "section",
-                "city",
-                "state",
-                "country",
-                "tmAddressID"
-            })
+//            @XmlAccessorType(XmlAccessType.FIELD)
+//            @XmlType(name = "", propOrder = {
+//                "addressType",
+//                "houseUnitLot",
+//                "postcode",
+//                "floor",
+//                "buildingName",
+//                "streetType",
+//                "streetName",
+//                "section",
+//                "city",
+//                "state",
+//                "country",
+//                "tmAddressID"
+//            })
             public static class RegisteredAddress {
 
-                @XmlElement(name = "AddressType")
+//                @XmlElement(name = "AddressType")
                 protected String addressType;
-                @XmlElement(name = "HouseUnitLot")
+//                @XmlElement(name = "HouseUnitLot")
                 protected String houseUnitLot;
-                @XmlElement(name = "Postcode")
+//                @XmlElement(name = "Postcode")
                 protected String postcode;
-                @XmlElement(name = "Floor")
+//                @XmlElement(name = "Floor")
                 protected String floor;
-                @XmlElement(name = "BuildingName")
+//                @XmlElement(name = "BuildingName")
                 protected String buildingName;
-                @XmlElement(name = "StreetType")
+//                @XmlElement(name = "StreetType")
                 protected String streetType;
-                @XmlElement(name = "StreetName")
+//                @XmlElement(name = "StreetName")
                 protected String streetName;
-                @XmlElement(name = "Section")
+//                @XmlElement(name = "Section")
                 protected String section;
-                @XmlElement(name = "City")
+//                @XmlElement(name = "City")
                 protected String city;
-                @XmlElement(name = "State")
+//                @XmlElement(name = "State")
                 protected String state;
-                @XmlElement(name = "Country")
+//                @XmlElement(name = "Country")
                 protected String country;
-                @XmlElement(name = "TMAddressID")
+//                @XmlElement(name = "TMAddressID")
                 protected String tmAddressID;
 
                 /**
@@ -5389,6 +5430,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "AddressType")
                 public String getAddressType() {
                     return addressType;
                 }
@@ -5417,6 +5459,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "HouseUnitLot")
                 public String getHouseUnitLot() {
                     return houseUnitLot;
                 }
@@ -5445,6 +5488,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "Postcode")
                 public String getPostcode() {
                     return postcode;
                 }
@@ -5473,6 +5517,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "Floor")
                 public String getFloor() {
                     return floor;
                 }
@@ -5501,6 +5546,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "BuildingName")
                 public String getBuildingName() {
                     return buildingName;
                 }
@@ -5529,6 +5575,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "StreetType")
                 public String getStreetType() {
                     return streetType;
                 }
@@ -5557,6 +5604,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "StreetName")
                 public String getStreetName() {
                     return streetName;
                 }
@@ -5585,6 +5633,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "Section")
                 public String getSection() {
                     return section;
                 }
@@ -5613,6 +5662,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "City")
                 public String getCity() {
                     return city;
                 }
@@ -5641,6 +5691,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "State")
                 public String getState() {
                     return state;
                 }
@@ -5669,6 +5720,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "Country")
                 public String getCountry() {
                     return country;
                 }
@@ -5697,6 +5749,7 @@ public class PortalMessage {
                  *     {@link String }
                  *     
                  */
+                @XmlElement(name = "TMAddressID")
                 public String getTMAddressID() {
                     return tmAddressID;
                 }
@@ -5746,28 +5799,28 @@ public class PortalMessage {
          * 
          * 
          */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "retailIndustry",
-            "natureOfBusiness",
-            "companyAnnualRevenue",
-            "noOfEmployees",
-            "noOfBranches",
-            "headquarterLocation"
-        })
+//        @XmlAccessorType(XmlAccessType.FIELD)
+//        @XmlType(name = "", propOrder = {
+//            "retailIndustry",
+//            "natureOfBusiness",
+//            "companyAnnualRevenue",
+//            "noOfEmployees",
+//            "noOfBranches",
+//            "headquarterLocation"
+//        })
         public static class NonConsumerDemographics {
 
-            @XmlElement(name = "RetailIndustry")
+//            @XmlElement(name = "RetailIndustry")
             protected String retailIndustry;
-            @XmlElement(name = "NatureOfBusiness")
+//            @XmlElement(name = "NatureOfBusiness")
             protected String natureOfBusiness;
-            @XmlElement(name = "CompanyAnnualRevenue")
+//            @XmlElement(name = "CompanyAnnualRevenue")
             protected String companyAnnualRevenue;
-            @XmlElement(name = "NoOfEmployees")
+//            @XmlElement(name = "NoOfEmployees")
             protected String noOfEmployees;
-            @XmlElement(name = "NoOfBranches")
+//            @XmlElement(name = "NoOfBranches")
             protected String noOfBranches;
-            @XmlElement(name = "HeadquarterLocation")
+//            @XmlElement(name = "HeadquarterLocation")
             protected String headquarterLocation;
 
             /**
@@ -5778,6 +5831,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "RetailIndustry")
             public String getRetailIndustry() {
                 return retailIndustry;
             }
@@ -5806,6 +5860,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "NatureOfBusiness")
             public String getNatureOfBusiness() {
                 return natureOfBusiness;
             }
@@ -5834,6 +5889,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "CompanyAnnualRevenu")
             public String getCompanyAnnualRevenue() {
                 return companyAnnualRevenue;
             }
@@ -5862,6 +5918,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "NoOfEmployees")
             public String getNoOfEmployees() {
                 return noOfEmployees;
             }
@@ -5890,6 +5947,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "NoOfBranches")
             public String getNoOfBranches() {
                 return noOfBranches;
             }
@@ -5918,6 +5976,7 @@ public class PortalMessage {
              *     {@link String }
              *     
              */
+            @XmlElement(name = "HeadquarterLocation")
             public String getHeadquarterLocation() {
                 return headquarterLocation;
             }
