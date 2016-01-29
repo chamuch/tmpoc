@@ -139,7 +139,13 @@
 
 		<route id="invoke-productCategory">
 			<camel:from uri="direct:productCategory"></camel:from>
-			<camel:bean ref="ecmService" method="getAllProductCategories"></camel:bean>
+			<camel:doTry>
+				<camel:bean ref="ecmService" method="getAllProductCategories"></camel:bean>
+				<camel:doCatch>
+					<camel:setBody>${exception}</camel:setBody>
+				</camel:doCatch>
+			</camel:doTry>
+			
 		</route>
 
 		<route>
