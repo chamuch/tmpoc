@@ -1,6 +1,5 @@
 package com.ericsson.tm.processor;
 
-import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,15 +12,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 
-import com.ericsson.services.ws_cil_5.addressesread.ListOfAllAddressesListpartResponse;
-import com.ericsson.services.ws_cil_5.addressesread.ListOfAllAddressesResponse;
-import com.ericsson.services.ws_cil_5.contractssearch.ContractsListpartResponse;
-import com.ericsson.services.ws_cil_5.contractssearch.ContractsResponse;
 import com.ericsson.services.ws_cil_5.customerread.CustomerReadRequest;
 import com.ericsson.services.ws_cil_5.customerread.CustomerReadResponse;
 import com.ericsson.services.ws_cil_5.customerread.ListOfAssignmentsListpartResponse;
 import com.ericsson.services.ws_cil_5.customerread.ListOfAssignmentsResponse;
-import com.ericsson.tm.proxy.service.response.PortalMessage.Response.LineItems;
 import com.ericsson.tm.services.entity.CustomerProfileRetrieveEntityService;
 import com.ericsson.tm.services.entity.ServiceDetailsRetrieveEntityService;
 import com.lhsgroup.lhsws.money.Money;

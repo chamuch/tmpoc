@@ -75,64 +75,74 @@ public class ContractSearchProcessor implements Processor {
 			
 			ContractsSearchResponse response = new ContractsSearchResponse();
 			
+			
 			ContractsResponse contractResponse = new ContractsResponse();
 			
-			if(contractResponse != null
-					&& contractResponse.getItem() != null
-					&& contractResponse.getItem().size() > 0){
-				List<ContractsListpartResponse> itemList = contractResponse.getItem();
+			
+//			if(contractResponse != null
+//					&& contractResponse.getItem() != null
+//					&& contractResponse.getItem().size() > 0){
 				
-				ContractsListpartResponse item = new ContractsListpartResponse();
-				item.setContractTypeId(new Long(1));
-				item.setBuId(new Long(2));
-				item.setCoStatus(BigInteger.valueOf(2));
+			List<ContractsListpartResponse> itemList = contractResponse.getItem();
 				
-				item.setCsCode(csIdPub);
-				
+			
 				if(respObj2.getLineItems() != null){
 					for(LineItems lineItem: respObj2.getLineItems()){
-						if (lineItem.getProductName() != null && lineItem.getProductName().equalsIgnoreCase("Residential Voice")){
+						ContractsListpartResponse item = new ContractsListpartResponse();
+						
+						//if (lineItem.getProductName() != null && lineItem.getProductName().equalsIgnoreCase("Residential Voice")){
+						if (lineItem.getProductName() != null){
+							item.setContractTypeId(new Long(1));
+							item.setBuId(new Long(2));
+							item.setCoStatus(BigInteger.valueOf(2));
+							item.setCsCode(csIdPub);
 							item.setDirnum(lineItem.getServiceID());
 						}
-					}
-				}
-				
-				if(respObj1.getCustomerAccount() != null){
-					item.setAdrFname(respObj1.getCustomerAccount().getCustomerName());
-					item.setAdrLname(respObj1.getCustomerAccount().getCustomerName());
-					if(respObj1.getCustomerAccount().getCustomerAddress() != null){
-						item.setAdrZip(respObj1.getCustomerAccount().getCustomerAddress().getPostcode());
-						item.setAdrCity(respObj1.getCustomerAccount().getCustomerAddress().getCity());
-						item.setAdrStreet(respObj1.getCustomerAccount().getCustomerAddress().getStreetType()+" "+respObj1.getCustomerAccount().getCustomerAddress().getStreetName());
-						item.setAdrStreetno(respObj1.getCustomerAccount().getCustomerAddress().getHouseUnitLot());
-					}
-				}
-								
-				item.setSubmId(new Long(1));
-				item.setPlcode(new Long(1001));
-				item.setExternalind(false);
-				item.setRpcode(new Long(14));
-				
-				DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-			    Date dobConst = df.parse("01/01/2016");
-			    GregorianCalendar constCal = new GregorianCalendar();
-			    constCal.setTimeInMillis(dobConst.getTime());
-			    XMLGregorianCalendar dateConst = DatatypeFactory.newInstance().newXMLGregorianCalendar(constCal);			
-				item.setCoActivated(dateConst);
-				
-				item.setCoId(new Long(1));
-				item.setCoIdPub("CONTR0000000010");
-				item.setCsId(new Long(csIdPubConstantResp));
-				
-				item.setCsIdPub(csIdPub);
+						
+						
+						if(respObj1.getCustomerAccount() != null){
+							item.setAdrFname(respObj1.getCustomerAccount().getCustomerName().split(" ")[0]);
+							item.setAdrLname(respObj1.getCustomerAccount().getCustomerName().split(" ")[1]);
+							if(respObj1.getCustomerAccount().getCustomerAddress() != null){
+								item.setAdrZip(respObj1.getCustomerAccount().getCustomerAddress().getPostcode());
+								item.setAdrCity(respObj1.getCustomerAccount().getCustomerAddress().getCity());
+								item.setAdrStreet(respObj1.getCustomerAccount().getCustomerAddress().getStreetType()+" "+respObj1.getCustomerAccount().getCustomerAddress().getStreetName());
+								item.setAdrStreetno(respObj1.getCustomerAccount().getCustomerAddress().getHouseUnitLot());
 
-				item.setCurrentDn(true);
-				item.setPaymentResp("X");
-				item.setCsContrResp("X");
-				item.setPaymentMethodInd("H");
+							}
+						}
 				
-				itemList.add(item);
-			}
+						item.setSubmId(new Long(1));
+						item.setPlcode(new Long(1001));
+						item.setExternalind(false);
+						item.setRpcode(new Long(14));
+
+						DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+					    Date dobConst = df.parse("01/01/2016");
+					    GregorianCalendar constCal = new GregorianCalendar();
+					    constCal.setTimeInMillis(dobConst.getTime());
+					    XMLGregorianCalendar dateConst = DatatypeFactory.newInstance().newXMLGregorianCalendar(constCal);			
+						item.setCoActivated(dateConst);
+						
+						item.setCoId(new Long(1));
+						item.setCoIdPub("CONTR0000000010");
+						item.setCsId(new Long(csIdPubConstantResp));
+						
+						item.setCsIdPub(csIdPub);
+
+						item.setCurrentDn(true);
+						item.setPaymentResp("X");
+						item.setCsContrResp("X");
+						item.setPaymentMethodInd("H");
+						
+						itemList.add(item);
+					}
+				}
+				
+				
+								
+				
+//			}
 			response.setContracts(contractResponse);
 			
 			exchange.getOut().setBody(response);
