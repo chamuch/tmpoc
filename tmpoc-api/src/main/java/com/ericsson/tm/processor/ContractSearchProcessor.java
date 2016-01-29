@@ -70,7 +70,7 @@ public class ContractSearchProcessor implements Processor {
 			ServiceDetailsRetrieveEntityService srvc2 = new ServiceDetailsRetrieveEntityService();			
 			com.ericsson.tm.proxy.service.request.PortalMessage.Request reqObj2 = new com.ericsson.tm.proxy.service.request.PortalMessage.Request();			
 			reqObj2.setCustomerAccountNo(customerAccountNo);
-			reqObj2.setStatus("ACTIVE");			
+			//reqObj2.setStatus("ACTIVE");			// remove this when you get more clarity from TM
 			com.ericsson.tm.proxy.service.response.PortalMessage.Response respObj2 = srvc2.operation(reqObj2);
 			
 			ContractsSearchResponse response = new ContractsSearchResponse();
