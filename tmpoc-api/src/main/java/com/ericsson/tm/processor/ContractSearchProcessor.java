@@ -149,10 +149,12 @@ public class ContractSearchProcessor implements Processor {
 			System.out.println("Returned");
 			
 		}catch(Exception genE){
-			System.out.println("Encountered exception:"+genE);
+			System.out.println("Contract Search Encountered exception:"+genE);
+			genE.printStackTrace();
 			throw genE;
 		} catch (Throwable e) {
-			System.out.println("Processor threw up!! - " + e);
+			System.out.println("Contract Search Processor threw up!! - " + e);
+			e.printStackTrace();
 			throw e;
 		}
 	}
