@@ -5,12 +5,17 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.nio.charset.Charset;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+
+import com.ericsson.tm.adaptors.DiceHttp43Adaptor;
 import com.ericsson.tm.adaptors.DiceHttpAdaptor;
 import com.ericsson.tm.utility.GenericUtilities;
 //import com.vekomy.PortalMessageNew;
@@ -73,10 +78,12 @@ public class ServiceDetailsRetrieveEntityService {
 		
 		try {
 			responseXml = "NO DICE CLIENT";
-			DiceHttpAdaptor clientAdaptor = new DiceHttpAdaptor();
+			HttpClient client = DiceHttp43Adaptor.getInstance();
 			
 			responseXml = "NO DICE CLIENT HTTP EXECUTE";
-			responseXml = clientAdaptor.executeHttpPost(requestXML);
+			responseXml = DiceHttp43Adaptor.executeHttpPost(client, requestXML);
+			((CloseableHttpClient)client).close();
+			client = null;
 		} catch (Exception e) {	
 			e.printStackTrace();
 		}
@@ -113,30 +120,19 @@ public class ServiceDetailsRetrieveEntityService {
 	
 	public com.ericsson.tm.proxy.service.response.PortalMessage convertXMLToPojo(String respXML){
 		com.ericsson.tm.proxy.service.response.PortalMessage respObj = null;
-		com.ericsson.tm.proxy.service.response.PortalMessageNew response = null ;
+		//com.ericsson.tm.proxy.service.response.PortalMessageNew response = null ;
+		
+		respXML = respXML.trim().replaceFirst("^([\\W\\t]+)<","<");
+		respXML = respXML.replaceAll("[^\\x20-\\x7e\\x0A]", "");
+		System.out.println("Validate Service RespXML: <<<<||||" + respXML + "||||>>>>");
+		
 		try{
-			// Create XML unmarshaller
+			JAXBContext jaxbContext = JAXBContext.newInstance(PortalMessage.class);
 			Unmarshaller unmarshaller = jaxbCtxResp.createUnmarshaller();
 			
-			// Convert XML string into input stream
-			InputStream xmlInpStream = new ByteArrayInputStream(respXML.getBytes());
-		
-			// Convert to object
-			//respObj = (PortalMessage) unmarshaller.unmarshal(xmlInpStream);
-			//com.ericsson.tm.proxy.service.response.PortalMessageNew response = null ;
-			response = (com.ericsson.tm.proxy.service.response.PortalMessageNew) unmarshaller.unmarshal(xmlInpStream);
-            System.out.println("RESPONSE OBJECT ======="+response);
-			/*File file = new File("Test.xml");
-			FileWriter fileWriter = new FileWriter(file);
-			fileWriter.write(respXML);
-			fileWriter.flush();
-			fileWriter.close();
-			JAXBContext jaxbContext = JAXBContext.newInstance(PortalMessageNew.class);
-
-			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			PortalMessageNew customer = (PortalMessageNew) jaxbUnmarshaller.unmarshal(file);
-			System.out.println(customer);*/
-			
+			InputStream xmlInpStream = new ByteArrayInputStream(respXML.getBytes(Charset.forName("UTF-8")));
+			respObj = (PortalMessage) unmarshaller.unmarshal(xmlInpStream);
+						
 		}catch(Exception genE){
 			System.err.println("Exception in responseXml2Pojo");
 			genE.printStackTrace();

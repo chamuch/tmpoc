@@ -11,6 +11,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
 
 import com.ericsson.tm.adaptors.DiceHttp43Adaptor;
 //import com.ericsson.tm.adaptors.DiceHttpAdaptor;
@@ -80,6 +81,7 @@ public class CustomerProfileRetrieveEntityService {
 			responseXml = "NO DICE CLIENT HTTP EXECUTE";
 			System.out.println("Start invoking TM API");
 			responseXml = DiceHttp43Adaptor.executeHttpPost(client, requestXML);
+			((CloseableHttpClient)client).close();
 			client = null;
 		} catch (Exception e) {	
 			System.out.println("Execute failed!! - " + e);
@@ -124,7 +126,7 @@ public class CustomerProfileRetrieveEntityService {
 		
 		respXML = respXML.trim().replaceFirst("^([\\W\\t]+)<","<");
 		respXML = respXML.replaceAll("[^\\x20-\\x7e\\x0A]", "");
-		System.out.println("Validate RespXML: <<<<||||" + respXML + "||||>>>>");
+		System.out.println("Validate Customer RespXML: <<<<||||" + respXML + "||||>>>>");
 		try{
 			JAXBContext jaxbContext = JAXBContext.newInstance(PortalMessage.class);
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
