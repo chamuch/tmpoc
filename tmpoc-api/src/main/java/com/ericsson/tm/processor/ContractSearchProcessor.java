@@ -86,7 +86,7 @@ public class ContractSearchProcessor implements Processor {
 			List<ContractsListpartResponse> itemList = contractResponse.getItem();
 				
 			
-				if(respObj2.getLineItems() != null){
+				if(respObj2 != null && respObj2.getLineItems() != null){
 					for(LineItems lineItem: respObj2.getLineItems()){
 						ContractsListpartResponse item = new ContractsListpartResponse();
 						
