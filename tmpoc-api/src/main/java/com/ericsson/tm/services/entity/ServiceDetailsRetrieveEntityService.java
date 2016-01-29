@@ -36,7 +36,7 @@ public class ServiceDetailsRetrieveEntityService {
 		this.initJaxbContexts();
 	}
 	
-	public com.ericsson.tm.proxy.service.response.PortalMessage.Response operation(com.ericsson.tm.proxy.service.request.PortalMessage.Request requestObj){
+	public com.ericsson.tm.proxy.service.response.PortalMessage.Response operation(com.ericsson.tm.proxy.service.request.PortalMessage.Request requestObj) throws Exception{
 		
 		//Generate Request
 		com.ericsson.tm.proxy.service.request.PortalMessage profileReq = new com.ericsson.tm.proxy.service.request.PortalMessage();
@@ -112,13 +112,13 @@ public class ServiceDetailsRetrieveEntityService {
 						
 			System.out.println("TransformPojoToXML is successful..");
 		}catch(Exception genE){
-			System.err.println("Exception in Pojo2XmlReq");
+			System.out.println("Exception in Pojo2XmlReq");
 			genE.printStackTrace();
 		}
 		return xmlStringWriter.toString();
 	}
 	
-	public com.ericsson.tm.proxy.service.response.PortalMessage convertXMLToPojo(String respXML){
+	public com.ericsson.tm.proxy.service.response.PortalMessage convertXMLToPojo(String respXML) throws Exception{
 		com.ericsson.tm.proxy.service.response.PortalMessage respObj = null;
 		//com.ericsson.tm.proxy.service.response.PortalMessageNew response = null ;
 		
@@ -134,8 +134,9 @@ public class ServiceDetailsRetrieveEntityService {
 			respObj = (PortalMessage) unmarshaller.unmarshal(xmlInpStream);
 						
 		}catch(Exception genE){
-			System.err.println("Exception in responseXml2Pojo");
+			System.out.println("Exception in responseXml2Pojo");
 			genE.printStackTrace();
+			throw genE;
 		}
 		return respObj;
 	}

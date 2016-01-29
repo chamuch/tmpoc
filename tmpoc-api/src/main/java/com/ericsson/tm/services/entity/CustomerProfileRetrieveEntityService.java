@@ -115,13 +115,13 @@ public class CustomerProfileRetrieveEntityService {
 						
 			System.out.println("TransformPojoToXML is successful..");
 		}catch(Exception genE){
-			System.err.println("Exception in Pojo2XmlReq");
+			System.out.println("Exception in Pojo2XmlReq");
 			genE.printStackTrace();
 		}
 		return xmlStringWriter.toString();
 	}
 	
-	public com.ericsson.tm.proxy.customer.response.PortalMessage convertXMLToPojo(String respXML){
+	public com.ericsson.tm.proxy.customer.response.PortalMessage convertXMLToPojo(String respXML) throws Exception{
 		com.ericsson.tm.proxy.customer.response.PortalMessage respObj = null;
 		
 		respXML = respXML.trim().replaceFirst("^([\\W\\t]+)<","<");
@@ -135,8 +135,9 @@ public class CustomerProfileRetrieveEntityService {
 			respObj = (PortalMessage) unmarshaller.unmarshal(xmlInpStream);
 			
 		}catch(Exception genE){
-			System.err.println("Exception in responseXml2Pojo");
+			System.out.println("Exception in responseXml2Pojo");
 			genE.printStackTrace();
+			throw genE;
 		}
 		return respObj;
 	}
