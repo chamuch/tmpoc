@@ -142,7 +142,9 @@
 			<camel:doTry>
 				<camel:bean ref="ecmService" method="getAllProductCategories"></camel:bean>
 				<camel:doCatch>
-					<camel:setBody>${exception}</camel:setBody>
+				<camel:setBody>
+					<camel:simple>${exception}</camel:simple>
+				 </camel:setBody>
 				</camel:doCatch>
 			</camel:doTry>
 			
