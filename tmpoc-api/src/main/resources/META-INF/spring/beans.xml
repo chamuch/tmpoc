@@ -70,9 +70,7 @@
 		</httpj:engine>
 	</httpj:engine-factory>
 
-	<!-- <cxf:rsServer id="tmeServer" bus="tmPocApiEngine" address="http://0.0.0.0:9090/tmpoc-api/" 
-		serviceClass="com.ericsson.tm.web.TmApiRestEndPoint" /> -->
-
+	
 	<cxf:cxfEndpoint id="cbioEndPoint"
 		serviceClass="com.ericsson.services.ws_cil_5.SoaService"
 		xmlns:soapenv="http://schemas.xmlsoap.org/wsdl/soap/" wsdlURL="classpath:wsdl/ws_CIL_5_SoaService.wsdl"
@@ -88,8 +86,6 @@
 
 	<cxf:rsServer id="ecmServer" bus="tmPocApiEngine"
 		address="http://0.0.0.0:9090/ecm/" loggingFeatureEnabled="true">
-		<!-- serviceClass="com.ericsson.tm.prodcat.ecm.processors.EcmProdcatProcessor"> -->
-		<!-- serviceClass="com.ericsson.tm.web.EcmProdcatEndpoint"> -->
 		<cxf:serviceBeans>
 			<ref bean="ecmService" />
 		</cxf:serviceBeans>
@@ -126,6 +122,7 @@
 						message="Delegating to GetAllProductCategories: Request: ${body}" />
 					<camel:to uri="direct:productCategory"></camel:to>
 				</camel:when>
+				
 				<camel:doCatch>
 					<camel:exception>java.lang.Exception</camel:exception>
 					<camel:log message="Exception: ${exception.stacktrace}" />

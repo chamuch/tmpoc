@@ -30,7 +30,8 @@ public class MyMessageBodyHandler implements MessageBodyWriter<Object>, MessageB
 	private Gson gson;
 
 	@Override
-	public boolean isReadable(Class<?> arg0, Type arg1, Annotation[] arg2, MediaType arg3) {
+	public boolean isReadable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
+		System.out.println("Custom Reader invoked for: " + type + " & mediaType: " + mediaType);
 		return true;
 	}
 
@@ -38,6 +39,8 @@ public class MyMessageBodyHandler implements MessageBodyWriter<Object>, MessageB
 	public Object readFrom(Class<Object> type, Type genericType, Annotation[] annotations, MediaType mediaType,
 			MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
 					throws IOException, WebApplicationException {
+		System.out.println("Custom Reader invoked for: " + type + " & mediaType: " + mediaType + " & HttpHeaders: " + httpHeaders);
+
 		InputStreamReader streamReader = new InputStreamReader(entityStream, UTF_8);
 		try {
 			Type jsonType;
@@ -59,6 +62,7 @@ public class MyMessageBodyHandler implements MessageBodyWriter<Object>, MessageB
 
 	@Override
 	public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
+		System.out.println("Custom Writer invoked for: " + type + " & mediaType: " + mediaType);
 		return true;
 	}
 
@@ -66,6 +70,8 @@ public class MyMessageBodyHandler implements MessageBodyWriter<Object>, MessageB
 	public void writeTo(Object object, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType,
 			MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
 					throws IOException, WebApplicationException {
+		System.out.println("Custom Writer invoked for: " + type + " & mediaType: " + mediaType + " & HttpHeaders: " + httpHeaders);
+
 		OutputStreamWriter writer = new OutputStreamWriter(entityStream, UTF_8);
 		try {
 			Type jsonType;
