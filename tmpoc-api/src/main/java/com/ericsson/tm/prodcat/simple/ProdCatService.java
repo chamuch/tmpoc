@@ -51,6 +51,8 @@ public class ProdCatService implements IProdCatDiscovery {
 			if (product.isDiscoverable())
 				discovery.add(product);
 		}
+		
+		System.out.println("Products list length: " + discovery.size());
 		return discovery;
 	}
 

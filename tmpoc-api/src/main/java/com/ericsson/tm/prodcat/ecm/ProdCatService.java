@@ -18,19 +18,25 @@ public class ProdCatService implements IProdCatEcm {
 		ArrayList<String> categories = new ArrayList<>();
 		
 		IProdCatDiscovery localDiscovery = SpringHelper.getProductCatalogForDiscovery();
+		System.out.println("localDiscovery instance initialized: " + (localDiscovery!=null));
 		
 		for (Product product: localDiscovery.getAllProducts()) {
+			System.out.println("product (" + product.getName() + ") metas: " + product.getMetas());
 			if (product.getMetas().size() > 0) {
 				if (product.getMeta("Category") != null) {
 					String cat = product.getMeta("Category");
+					System.out.println("product (" + product.getName() + ") meta:Category found is: " + cat);
 					if (categories.indexOf(cat) != -1) {
 						categories.add(cat);
+						
 						ProductCategory pc = new ProductCategory();
 						pc.setId(cat);
 						pc.setName(cat);
 						pc.setDescription(cat);
 						response.add(pc);
 					}
+				} else {
+					System.out.println("product (" + product.getName() + ") meta:Category not found");
 				}
 			}
 		}
