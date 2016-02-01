@@ -67,7 +67,7 @@ public class Product {
 		this.compositions = composition;
 	}
 
-	@XmlElement (name="price", type=Price.class)
+	@XmlElement (name="price")
 	public Price getPrice() {
 		return price;
 	}
