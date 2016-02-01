@@ -80,6 +80,9 @@ public class MyMessageBodyHandler implements MessageBodyWriter<Object>, MessageB
 			} else {
 				jsonType = genericType;
 			}
+			
+			System.out.println("Object's type: " + object.getClass() + ", CXF Type: " + type + ", jsonType: " + jsonType);
+			System.out.println("Dry Run Serialization: " + getGson().toJson(object, jsonType));
 			getGson().toJson(object, jsonType, writer);
 		} finally {
 			writer.close();
