@@ -11,6 +11,10 @@ import com.ericsson.tm.prodcat.ecm.entities.product.ProductOffering;
 import com.ericsson.tm.prodcat.simple.entities.Product;
 
 public class ProdCatService implements IProdCatEcm {
+	
+	public ProdCatService() {
+		System.out.println("Prodcat ecm bean initialized!!");
+	}
 
 	@Override
 	public List<ProductCategory> getAllProductCategoies() {

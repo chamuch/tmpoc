@@ -85,7 +85,7 @@
 		address="http://0.0.0.0:9090/prodcat-api/" serviceClass="com.ericsson.tm.web.NativeSimpleProdcatEndpoint" />
 
 	<cxf:rsServer id="ecmServer" bus="tmPocApiEngine"
-		address="http://0.0.0.0:9090/ecm/" loggingFeatureEnabled="true">
+		address="/ecm/" loggingFeatureEnabled="true">
 		<cxf:serviceBeans>
 			<ref bean="ecmService" />
 		</cxf:serviceBeans>
@@ -114,7 +114,7 @@
 			</camel:doTry> </route> -->
 
 		<route id="prodcat-ecm">
-			<from uri="cxfrs://bean://ecmServer" />
+			<from uri="cxfrs:bean:ecmServer" />
 			<camel:doTry>
 				<camel:when>
 					<camel:simple>${header.operationName} == 'productCategory'</camel:simple>

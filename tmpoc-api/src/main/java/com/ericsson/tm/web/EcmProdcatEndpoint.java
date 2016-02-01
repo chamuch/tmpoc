@@ -8,6 +8,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import com.ericsson.tm.prodcat.ecm.entities.ProductCategory;
 
@@ -17,12 +18,12 @@ public interface EcmProdcatEndpoint {
 	
 	@GET
 	@Path("/productCategory/")
-	@Produces("application/json")
+	@Produces(MediaType.APPLICATION_JSON)
 	public List<ProductCategory> getAllProductCategories();
 	
 	@GET
 	@Path("/productCategory/{productCategoryId}")
-	@Produces("application/json")
+	@Produces(MediaType.APPLICATION_JSON)
 	public ProductCategory getProductCategory(@PathParam ("productCategoryId") String productCategoryId);
 
 }
