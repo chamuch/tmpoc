@@ -1,15 +1,12 @@
 package com.ericsson.tm.prodcat.simple.entities;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 
-//@XmlRootElement(name="commercial")
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "commercial")
+@XmlRootElement(name="commercial")
+//@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlType(name = "commercial")
 public class Price {
 
 	private String currencyCode = null;
