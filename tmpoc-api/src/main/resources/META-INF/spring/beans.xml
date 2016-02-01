@@ -85,7 +85,7 @@
 		address="http://0.0.0.0:9090/prodcat-api/" serviceClass="com.ericsson.tm.web.NativeSimpleProdcatEndpoint" />
 
 	<cxf:rsServer id="ecmServer" bus="tmPocApiEngine"
-		address="/ecm/" loggingFeatureEnabled="true">
+		address="http://0.0.0.0:9090/ecm/" loggingFeatureEnabled="true">
 		<cxf:serviceBeans>
 			<ref bean="ecmService" />
 		</cxf:serviceBeans>
@@ -116,12 +116,13 @@
 		<route id="prodcat-ecm">
 			<from uri="cxfrs:bean:ecmServer" />
 			<camel:doTry>
-				<camel:when>
-					<camel:simple>${header.operationName} == 'productCategory'</camel:simple>
-					<camel:log
-						message="Delegating to GetAllProductCategories: Request: ${body}" />
-					<camel:to uri="direct:productCategory"></camel:to>
-				</camel:when>
+				<camel:choice>
+					<camel:when>
+						<camel:simple>${header.operationName} == 'productCategory'</camel:simple>
+						<camel:log message="Delegating to GetAllProductCategories: Request: ${body}" />
+						<camel:to uri="direct:productCategory"></camel:to>
+					</camel:when>
+				</camel:choice>
 				
 				<camel:doCatch>
 					<camel:exception>java.lang.Exception</camel:exception>
