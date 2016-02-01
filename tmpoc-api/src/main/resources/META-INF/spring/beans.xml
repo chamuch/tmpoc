@@ -121,7 +121,7 @@
 			<camel:doTry>
 				<camel:choice>
 					<camel:when>
-						<camel:simple>${header.operationName} == 'productCategory'</camel:simple>
+						<camel:simple>${header.operationName} == 'getAllProductCategories'</camel:simple>
 						<camel:log message="Delegating to GetAllProductCategories: Request: ${body}" />
 						<camel:to uri="direct:productCategory"></camel:to>
 					</camel:when>
