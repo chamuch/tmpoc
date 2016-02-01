@@ -67,7 +67,7 @@ public class ProdCatService implements IProdCatDiscovery {
 					System.out.println("Coming inside Compositions..:"+product.getCompositions().size());
 					
 					for(Composition compositionItem: product.getCompositions()){
-						System.out.println("compositionItemType:"+compositionItem.getType().name());
+						System.out.println("compositionItemType:"+compositionItem.getType());
 						if(compositionItem.getAtomicProducts() != null){
 							for(int i=0; i < compositionItem.getAtomicProducts().size(); i++){
 								System.out.println(compositionItem.getAtomicProducts().get(i));

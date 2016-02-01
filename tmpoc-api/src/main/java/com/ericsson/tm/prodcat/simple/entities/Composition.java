@@ -15,8 +15,8 @@ public class Composition {
 	private ArrayList<Composition> childCompositions = new ArrayList<>();
 	
 	@XmlAttribute (name="type")
-	public CompositionType getType() {
-		return type;
+	public String getType() {
+		return type.name();
 	}
 	
 	public void setType(String type) {
