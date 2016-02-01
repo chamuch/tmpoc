@@ -20,12 +20,12 @@ public class Price {
 	}
 	
 	@XmlAttribute (name="amount")
-	public long getAmount() {
-		return amount;
+	public String getAmount() {
+		return "" + amount;
 	}
-	public void setAmount(long amount) {
+	public void setAmount(String amount) {
 		System.out.println("Price attribute 'amount' set to : " + amount);
-		this.amount = amount;
+		this.amount = Long.parseLong(amount);
 	}
 
 	@Override
