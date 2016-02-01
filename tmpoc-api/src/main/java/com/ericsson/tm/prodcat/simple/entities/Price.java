@@ -27,6 +27,13 @@ public class Price {
 		System.out.println("Price attribute 'amount' set to : " + amount);
 		this.amount = amount;
 	}
+
+	@Override
+	public String toString() {
+		return "Price [isoCurrencyCode=" + isoCurrencyCode + ", amount=" + amount + "]";
+	}
+	
+	
 	
 	
 }

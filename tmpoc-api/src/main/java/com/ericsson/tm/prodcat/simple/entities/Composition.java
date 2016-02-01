@@ -34,6 +34,7 @@ public class Composition {
 	}
 	
 	public void setAtomicProducts(ArrayList<AtomicProduct> atomicProducts) {
+		System.out.println("AtomicProducts set for Composition with size: " + resources.size());
 		this.atomicProducts = atomicProducts;
 	}
 	
@@ -43,6 +44,7 @@ public class Composition {
 	}
 	
 	public void setResources(ArrayList<Resource> resources) {
+		System.out.println("Resources set for Composition with size: " + resources.size());
 		this.resources = resources;
 	}
 
@@ -52,6 +54,7 @@ public class Composition {
 	}
 
 	public void setChildCompositions(ArrayList<Composition> childCompositions) {
+		System.out.println("Sub Composition set for Composition with size: " + childCompositions.size());
 		this.childCompositions = childCompositions;
 	}
 

@@ -52,6 +52,7 @@ public class Product {
 	}
 
 	public void setDescription(String description) {
+		System.out.println("Description set for product with value: " + description);
 		this.description = description;
 	}
 
@@ -61,6 +62,7 @@ public class Product {
 	}
 
 	public void setCompositions(ArrayList<Composition> composition) {
+		System.out.println("Composition set for product with size: " + composition.size());
 		this.compositions = composition;
 	}
 
@@ -70,6 +72,7 @@ public class Product {
 	}
 
 	public void setPrice(Price price) {
+		System.out.println("Price set for product, with values: " + price);
 		this.price = price;
 	}
 
@@ -79,6 +82,7 @@ public class Product {
 	}
 
 	public void setMetas(ArrayList<Meta> metas) {
+		System.out.println("Metas set for product with size: " + metas.size());
 		this.metas = metas;
 	}
 
