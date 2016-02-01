@@ -14,7 +14,7 @@ public class Product {
 	private String name = null;
 	private String description = null;
 	private ArrayList<Composition> compositions = new ArrayList<Composition>();
-	private Price price = null;
+	private ArrayList<Price> price = null;
 	private ArrayList<Meta> metas = new ArrayList<Meta>();
 	
 	@XmlAttribute (name="id")
@@ -68,13 +68,16 @@ public class Product {
 	}
 
 	@XmlElement (name="price")
-	public Price getPrice() {
-		return price;
+	public Price getPrices() {
+		if (this.price != null && this.price.size() > 0)
+			return price.get(0);
+		else
+			return null;
 	}
 
-	public void setPrice(Price price) {
-		System.out.println("Price set for product, with values: " + price);
-		this.price = price;
+	public void setPrice(ArrayList<Price> prices) {
+		System.out.println("Price set for product, with values: " + prices);
+		this.price = prices;
 	}
 
 	@XmlElement (name="meta")

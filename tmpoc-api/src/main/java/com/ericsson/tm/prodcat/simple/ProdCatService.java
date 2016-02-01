@@ -28,7 +28,7 @@ public class ProdCatService implements IProdCatDiscovery {
 			JAXBContext jaxbContext = JAXBContext.newInstance(ProdCat.class);
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			prodcat = (ProdCat) unmarshaller.unmarshal(new File(prodcatUrl));
-					
+			System.out.println("Completely unmarshalled the simple prodcat XML");
 			
 		} catch (JAXBException e) {
 			System.out.println("JaxbException in prodcat load...");
