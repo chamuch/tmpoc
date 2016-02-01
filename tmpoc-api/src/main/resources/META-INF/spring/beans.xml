@@ -115,6 +115,9 @@
 
 		<route id="prodcat-ecm">
 			<from uri="cxfrs:bean:ecmServer" />
+			<camel:log message="CXF route....http method ${header.CamelHttpMethod}"></camel:log>
+			<camel:log message="CXF route....http path ${header.CamelHttpPath}"></camel:log>
+			<camel:log message="CXF route....header operation ${header.operationName}"></camel:log>
 			<camel:doTry>
 				<camel:choice>
 					<camel:when>
