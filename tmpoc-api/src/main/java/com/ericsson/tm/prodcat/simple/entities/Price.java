@@ -12,19 +12,19 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "commercial")
 public class Price {
 
-	@XmlAttribute (name="isoCurrencyCode")
-	private String isoCurrencyCode = null;
+	private String currencyCode = null;
 	private long amount = -1;
 	
-//	public String getIsoCurrencyCode() {
-//		return isoCurrencyCode;
-//	}
-//	
-//	public void setIsoCurrencyCode(String isoCurrencyCode) {
-//		System.out.println("Price attribute 'isoCurrencyCode' set to : " + isoCurrencyCode);
-//		this.isoCurrencyCode = isoCurrencyCode;
-//	}
-//	
+	@XmlAttribute (name="isoCurrencyCode")
+	public String getIsoCurrencyCode() {
+		return currencyCode;
+	}
+	
+	public void setIsoCurrencyCode(String isoCurrencyCode) {
+		System.out.println("Price attribute 'isoCurrencyCode' set to : " + isoCurrencyCode);
+		this.currencyCode = isoCurrencyCode;
+	}
+	
 	/*@XmlAttribute (name="amount")
 	public String getAmount() {
 		return "" + amount;
@@ -41,7 +41,7 @@ public class Price {
 
 	@Override
 	public String toString() {
-		return "Price [isoCurrencyCode=" + isoCurrencyCode + ", amount=" + amount + "]";
+		return "Price [isoCurrencyCode=" + currencyCode + ", amount=" + amount + "]";
 	}
 	
 	
