@@ -1,5 +1,5 @@
 <!ELEMENT prodcat (product*)>
-<!ELEMENT product (name, description?, composition+, price+,  meta*)>
+<!ELEMENT product (name, description?, composition+, commercial?,  prodMeta*)>
 <!ELEMENT name EMPTY>
 <!ELEMENT description EMPTY>
 <!ELEMENT composition ((atomicProduct|resource)+, composition*)>
