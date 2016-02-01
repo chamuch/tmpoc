@@ -146,7 +146,7 @@
 				 	</camel:setBody>
 				</camel:doCatch>
 				<camel:doFinally>
-					<camel:log message="Exit-api: >>>${body}<<<" />
+					<camel:log message="Exit-api: |||${body}|||" />
 				</camel:doFinally>
 			</camel:doTry>
 			
