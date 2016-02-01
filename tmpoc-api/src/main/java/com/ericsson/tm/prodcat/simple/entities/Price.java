@@ -1,7 +1,9 @@
 package com.ericsson.tm.prodcat.simple.entities;
 
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name="price")
 public class Price {
 
 	private String isoCurrencyCode = null;

@@ -1,7 +1,9 @@
 package com.ericsson.tm.prodcat.simple.entities;
 
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name="meta")
 public class Meta {
 	
 	private String name = null;
