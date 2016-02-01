@@ -19,6 +19,7 @@
 >
 
 <!ATTLIST commercial
+	amount CDATA #REQUIRED
 	isoCurrencyCode CDATA #REQUIRED
 >
 

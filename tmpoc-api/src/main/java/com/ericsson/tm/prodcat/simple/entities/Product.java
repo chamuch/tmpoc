@@ -119,6 +119,14 @@ public class Product {
 		}
 		return null;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", discoverable=" + discoverable + ", name=" + name + ", description="
+				+ description + ", compositions=" + compositions + ", price=" + price + ", metas=" + metas + "]";
+	}
+	
+	
 	
 
 }

@@ -16,6 +16,7 @@ public class ProdCat {
 	}
 	
 	public void setProducts(ArrayList<Product> products) {
+		System.out.println("Check all products parsed: " + products);
 		this.products = products;
 	}
 

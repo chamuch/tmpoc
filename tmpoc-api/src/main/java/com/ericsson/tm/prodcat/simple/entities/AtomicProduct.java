@@ -17,6 +17,11 @@ public class AtomicProduct {
 		System.out.println("AtomicProduct attribute 'id' set to : " + id);
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return "AtomicProduct [id=" + id + "]";
+	}
 	
 	
 	

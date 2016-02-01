@@ -12,7 +12,7 @@
 		</composition>
 <!-- 		<commercial> <amount>17900</amount> <isoCurrencyCode>MYR</isoCurrencyCode> </commercial> -->
 			<!-- <commercial amount="17900" />  -->
-			<commercial isoCurrencyCode="MYR"/>
+			<commercial amount="17900" isoCurrencyCode="MYR"/>
 		<prodMeta name="Category" value="Bundle" />
 		
 	</product>
@@ -108,7 +108,7 @@
 			<resource id="CommitmentPeriod" />
 			<resource id="TVChannel"/>
 		</composition>
-		<commercial isoCurrencyCode="MYR" />
+		<commercial amount="3000" isoCurrencyCode="MYR" />
 		<prodMeta name="Category" value="TVPack" />
 		
 	</product>
@@ -120,7 +120,7 @@
 			<resource id="TVChannel"/>
 			<atomicProduct id="PRD_15"/>
 		</composition>
-			<commercial isoCurrencyCode="MYR"/>
+			<commercial amount="2000" isoCurrencyCode="MYR"/>
 <!-- 		<commercial> <amount>3000</amount> <isoCurrencyCode>MYR</isoCurrencyCode> </commercial> -->
 		<prodMeta name="Category" value="TVPack" />
 		
@@ -144,7 +144,7 @@
 		<composition type="include">
 			<resource id="TVChannel"/>
 		</composition>
-		<commercial isoCurrencyCode="MYR"/>
+		<commercial amount="3000" isoCurrencyCode="MYR"/>
 <!-- 		<commercial> <amount>3000</amount> <isoCurrencyCode>MYR</isoCurrencyCode> </commercial> -->
 		<prodMeta name="Category" value="TV" />
 		

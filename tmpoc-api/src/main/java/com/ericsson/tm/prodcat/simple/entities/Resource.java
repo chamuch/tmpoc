@@ -17,6 +17,11 @@ public class Resource {
 		System.out.println("Resource attribute 'id' set to : " + id);
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return "Resource [id=" + id + "]";
+	}
 	
 	
 	

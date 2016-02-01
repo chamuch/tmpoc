@@ -85,6 +85,12 @@ public class Composition {
 		
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		return "Composition [type=" + type + ", atomicProducts=" + atomicProducts + ", resources=" + resources
+				+ ", childCompositions=" + childCompositions + "]";
+	}
 	
 	
 
