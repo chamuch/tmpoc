@@ -34,10 +34,10 @@ public class Price {
 		this.amount = Long.parseLong(amount);
 	}*/
 
-	/*@Override
+	@Override
 	public String toString() {
 		return "Price [isoCurrencyCode=" + isoCurrencyCode + ", amount=" + amount + "]";
-	}*/
+	}
 	
 	
 	
