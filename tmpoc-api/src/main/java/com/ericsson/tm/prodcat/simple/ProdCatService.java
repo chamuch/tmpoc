@@ -31,10 +31,16 @@ public class ProdCatService implements IProdCatDiscovery {
 					
 			
 		} catch (JAXBException e) {
+			System.out.println("JaxbException in prodcat load...");
+			e.printStackTrace();
 			throw new RuntimeException("prodcat config failed to load!!", e);
 		} catch (Exception e) {
+			System.out.println("Exception in prodcat load...");
+			e.printStackTrace();
 			throw new RuntimeException("prodcat config failed to load!!", e);
 		}  catch (Error e) {
+			System.out.println("Error in prodcat load...");
+			e.printStackTrace();
 			throw new RuntimeException("prodcat config failed to load!!", e);
 		}
 		
