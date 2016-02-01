@@ -1,6 +1,6 @@
 package com.ericsson.tm.prodcat.simple.entities;
 
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
@@ -10,7 +10,7 @@ public class Price {
 	private String isoCurrencyCode = null;
 	private long amount = -1;
 	
-	@XmlElement (name="isoCurrencyCode")
+	@XmlAttribute (name="isoCurrencyCode")
 	public String getIsoCurrencyCode() {
 		return isoCurrencyCode;
 	}
@@ -20,7 +20,7 @@ public class Price {
 		this.isoCurrencyCode = isoCurrencyCode;
 	}
 	
-	@XmlElement (name="amount")
+	@XmlAttribute (name="amount")
 	public String getAmount() {
 		return "" + amount;
 	}
