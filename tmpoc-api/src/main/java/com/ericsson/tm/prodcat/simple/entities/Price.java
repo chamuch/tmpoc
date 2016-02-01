@@ -20,7 +20,7 @@ public class Price {
 		this.isoCurrencyCode = isoCurrencyCode;
 	}
 	
-	@XmlAttribute (name="amount")
+	/*@XmlAttribute (name="amount")
 	public String getAmount() {
 		return "" + amount;
 	}
@@ -32,12 +32,12 @@ public class Price {
 	public void setAmount(String amount) {
 		System.out.println("Price attribute 'amount' set to : " + amount);
 		this.amount = Long.parseLong(amount);
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Price [isoCurrencyCode=" + isoCurrencyCode + ", amount=" + amount + "]";
-	}
+	}*/
 	
 	
 	

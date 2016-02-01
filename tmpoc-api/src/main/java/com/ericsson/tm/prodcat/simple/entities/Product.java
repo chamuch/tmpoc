@@ -14,7 +14,7 @@ public class Product {
 	private String name = null;
 	private String description = null;
 	private ArrayList<Composition> compositions = new ArrayList<Composition>();
-	private ArrayList<Price> price = null;
+	private ArrayList<Price> price = new ArrayList<Price>();
 	private ArrayList<Meta> metas = new ArrayList<Meta>();
 	
 	@XmlAttribute (name="id")
