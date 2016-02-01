@@ -5,13 +5,14 @@
 
 	<product id="PRD_14" discoverable="true">
 		<name>UniFi Advance 30Mbps</name>
-		<price amount="17900" isoCurrencyCode="MYR" />
-		<meta name="Category" value="Bundle" />
 		<composition type="include">
 			<atomicProduct id="PRD_9"/>
 			<atomicProduct id="PRD_11"/>
 			<atomicProduct id="PRD_13"/>
 		</composition>
+		<price amount="17900" isoCurrencyCode="MYR" />
+		<meta name="Category" value="Bundle" />
+		
 	</product>
 
 	<product id="PRD_9" discoverable="true">
@@ -28,10 +29,11 @@
 
 	<product id="PRD_11"  discoverable="true">
 		<name>Residential Voice</name>
-		<meta name="Category" value="VoicePack"/>
 		<composition type="include">
 			<atomicProduct id="PRD_10" />
 		</composition>
+		<meta name="Category" value="VoicePack"/>
+		
 	</product>
 
 
@@ -45,10 +47,11 @@
 
 	<product id="PRD_13"  discoverable="true">
 		<name>Residential High Speed Internet</name>
-		<meta name="Category" value="DataPack"/>
 		<composition type="include">
 			<atomicProduct id="PRD_12" />
 		</composition>
+		<meta name="Category" value="DataPack"/>
+		
 	</product>
 
 
@@ -99,43 +102,47 @@
 
 	<product id="PRD_2" discoverable="false">
 		<name>Commitment Period - Aneka Pack</name>
-		<price amount="2000" isoCurrencyCode="MYR" />
-		<meta name="Category" value="TVPack" />
 		<composition type="include">
 			<resource id="CommitmentPeriod" />
 			<resource id="TVChannel"/>
 		</composition>
+		<price amount="2000" isoCurrencyCode="MYR" />
+		<meta name="Category" value="TVPack" />
+		
 	</product>
 
 	<product id="PRD_3" discoverable="false">
 		<name>Commitment Period - Jumbo Pack</name>
-		<price amount="3000" isoCurrencyCode="MYR" />
-		<meta name="Category" value="TVPack" />
 		<composition type="include">
 			<resource id="CommitmentPeriod" />
 			<resource id="TVChannel"/>
 			<atomicProduct id="PRD_15"/>
 		</composition>
+		<price amount="3000" isoCurrencyCode="MYR" />
+		<meta name="Category" value="TVPack" />
+		
 	</product>
 
 	<product id="PRD_4" discoverable="false">
 		<name>Commitment Period - Sport Pack</name>
-		<price amount="2000" isoCurrencyCode="MYR" />
-		<meta name="Category" value="TVPack" />
 		<composition type="include">
 			<resource id="CommitmentPeriod" />
 			<resource id="TVChannel"/>
 		</composition>
+		<price amount="2000" isoCurrencyCode="MYR" />
+		<meta name="Category" value="TVPack" />
+		
 	</product>
 
 	<product id="PRD_15" discoverable="true">
 		<name>Kids Co</name>
-		<price amount="3000" isoCurrencyCode="MYR" />
-		<meta name="Category" value="TV" />
 		<description>Ala Carte Channel - Kids</description>
 		<composition type="include">
 			<resource id="TVChannel"/>
 		</composition>
+		<price amount="3000" isoCurrencyCode="MYR" />
+		<meta name="Category" value="TV" />
+		
 	</product>
 
 	<product id="PRD_16" discoverable="true">
