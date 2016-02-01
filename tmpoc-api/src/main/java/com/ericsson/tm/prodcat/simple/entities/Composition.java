@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Composition {
 	
 	private CompositionType type = null;
-	private ArrayList<AtomicProduct> atomicProducts = new ArrayList<>();
-	private ArrayList<Resource> resources = new ArrayList<>();
-	private ArrayList<Composition> childCompositions = new ArrayList<>();
+	private ArrayList<AtomicProduct> atomicProducts = new ArrayList<AtomicProduct>();
+	private ArrayList<Resource> resources = new ArrayList<Resource>();
+	private ArrayList<Composition> childCompositions = new ArrayList<Composition>();
 	
 	@XmlAttribute (name="type")
 	public String getType() {
@@ -33,9 +33,9 @@ public class Composition {
 		return atomicProducts;
 	}
 	
-	public void setAtomicProducts(ArrayList<AtomicProduct> atomicProducts) {
-		System.out.println("AtomicProducts set for Composition with size: " + resources.size());
-		this.atomicProducts = atomicProducts;
+	public void setAtomicProducts(ArrayList<AtomicProduct> atomicProduct) {
+		System.out.println("AtomicProducts set for Composition with size: " + atomicProduct.size());
+		this.atomicProducts = atomicProduct;
 	}
 	
 	@XmlElement (name="resource")
@@ -43,9 +43,9 @@ public class Composition {
 		return resources;
 	}
 	
-	public void setResources(ArrayList<Resource> resources) {
-		System.out.println("Resources set for Composition with size: " + resources.size());
-		this.resources = resources;
+	public void setResources(ArrayList<Resource> resource) {
+		System.out.println("Resources set for Composition with size: " + resource.size());
+		this.resources = resource;
 	}
 
 	@XmlElement (name="composition")
@@ -53,9 +53,9 @@ public class Composition {
 		return childCompositions;
 	}
 
-	public void setChildCompositions(ArrayList<Composition> childCompositions) {
-		System.out.println("Sub Composition set for Composition with size: " + childCompositions.size());
-		this.childCompositions = childCompositions;
+	public void setChildCompositions(ArrayList<Composition> childComposition) {
+		System.out.println("Sub Composition set for Composition with size: " + childComposition.size());
+		this.childCompositions = childComposition;
 	}
 
 	public boolean hasResourceAccess(String resourceId) {

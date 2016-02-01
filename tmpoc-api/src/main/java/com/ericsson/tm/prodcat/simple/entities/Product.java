@@ -42,8 +42,9 @@ public class Product {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String prodName) {
+		System.out.println("Product Name set to: " + prodName);
+		this.name = prodName;
 	}
 
 	@XmlElement (name="description")

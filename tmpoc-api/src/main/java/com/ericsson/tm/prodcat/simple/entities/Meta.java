@@ -28,6 +28,12 @@ public class Meta {
 		System.out.println("Meta attribute 'value' set to : " + value);
 		this.value = value;
 	}
+
+	@Override
+	public String toString() {
+		return "Meta [name=" + name + ", value=" + value + "]";
+	}
+	
 	
 	
 
