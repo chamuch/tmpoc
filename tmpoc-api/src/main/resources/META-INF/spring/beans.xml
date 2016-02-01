@@ -117,7 +117,7 @@
 			<from uri="cxfrs://bean://ecmServer" />
 			<camel:doTry>
 				<camel:when>
-					<camel:simple>${in.header.operationName} == 'productCategory'</camel:simple>
+					<camel:simple>${header.operationName} == 'productCategory'</camel:simple>
 					<camel:log
 						message="Delegating to GetAllProductCategories: Request: ${body}" />
 					<camel:to uri="direct:productCategory"></camel:to>
