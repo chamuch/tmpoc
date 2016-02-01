@@ -85,7 +85,7 @@
 		address="http://0.0.0.0:9090/prodcat-api/" serviceClass="com.ericsson.tm.web.NativeSimpleProdcatEndpoint" />
 
 	<cxf:rsServer id="ecmServer" bus="tmPocApiEngine"
-		address="/ecm/" loggingFeatureEnabled="true">
+		address="http://0.0.0.0:9090/ecm/" loggingFeatureEnabled="true">
 		<cxf:serviceBeans>
 			<ref bean="ecmService" />
 		</cxf:serviceBeans>
