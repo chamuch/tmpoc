@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
+@XmlType ( propOrder = {"name", "description", "composition", "commercial", "prodMeta"} )
 @XmlRootElement(name="product")
 public class Product {
 	
