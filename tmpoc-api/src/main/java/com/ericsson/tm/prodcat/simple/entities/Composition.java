@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Composition {
 	
 	private CompositionType type = null;
-	private ArrayList<String> atomicProducts = new ArrayList<String>();
-	private ArrayList<String> resources = new ArrayList<String>();
-	private ArrayList<Composition> childCompositions = new ArrayList<Composition>();
+	private ArrayList<AtomicProduct> atomicProducts = new ArrayList<>();
+	private ArrayList<Resource> resources = new ArrayList<>();
+	private ArrayList<Composition> childCompositions = new ArrayList<>();
 	
 	@XmlAttribute (name="type")
 	public CompositionType getType() {
@@ -29,20 +29,20 @@ public class Composition {
 	}
 	
 	@XmlElement (name="atomicProduct")
-	public ArrayList<String> getAtomicProducts() {
+	public ArrayList<AtomicProduct> getAtomicProducts() {
 		return atomicProducts;
 	}
 	
-	public void setAtomicProducts(ArrayList<String> atomicProducts) {
+	public void setAtomicProducts(ArrayList<AtomicProduct> atomicProducts) {
 		this.atomicProducts = atomicProducts;
 	}
 	
 	@XmlElement (name="resource")
-	public ArrayList<String> getResources() {
+	public ArrayList<Resource> getResources() {
 		return resources;
 	}
 	
-	public void setResources(ArrayList<String> resources) {
+	public void setResources(ArrayList<Resource> resources) {
 		this.resources = resources;
 	}
 
@@ -61,8 +61,8 @@ public class Composition {
 				return true;
 		}
 		
-		for (String resource: this.getResources()) {
-			if (resource.equals(resourceId))
+		for (Resource resource: this.getResources()) {
+			if (resource.getId().equals(resourceId))
 				return true;
 		}
 		
@@ -75,8 +75,8 @@ public class Composition {
 				return true;
 		}
 		
-		for (String product: this.getAtomicProducts()) {
-			if (product.equals(productId))
+		for (AtomicProduct product: this.getAtomicProducts()) {
+			if (product.getId().equals(productId))
 				return true;
 		}
 		
