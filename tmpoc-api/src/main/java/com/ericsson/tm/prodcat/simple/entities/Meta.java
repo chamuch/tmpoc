@@ -3,7 +3,7 @@ package com.ericsson.tm.prodcat.simple.entities;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="meta")
+@XmlRootElement(name="prodMeta")
 public class Meta {
 	
 	private String name = null;

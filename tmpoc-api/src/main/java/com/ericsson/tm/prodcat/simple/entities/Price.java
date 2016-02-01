@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-@XmlRootElement(name="price")
+@XmlRootElement(name="commercial")
 public class Price {
 
 	private String isoCurrencyCode = null;

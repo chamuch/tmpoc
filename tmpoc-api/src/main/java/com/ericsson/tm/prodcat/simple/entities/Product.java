@@ -67,7 +67,7 @@ public class Product {
 		this.compositions = composition;
 	}
 
-	@XmlElement (name="price")
+	@XmlElement (name="commercial")
 	public Price getPrices() {
 		if (this.price != null && this.price.size() > 0)
 			return price.get(0);
@@ -80,7 +80,7 @@ public class Product {
 		this.price = prices;
 	}
 
-	@XmlElement (name="meta")
+	@XmlElement (name="prodMeta")
 	public ArrayList<Meta> getMetas() {
 		return metas;
 	}

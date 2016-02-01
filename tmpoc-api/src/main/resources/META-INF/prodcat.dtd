@@ -3,9 +3,9 @@
 <!ELEMENT name EMPTY>
 <!ELEMENT description EMPTY>
 <!ELEMENT composition ((atomicProduct|resource)+, composition*)>
-<!-- <!ELEMENT price (isoCurrencyCode, amount)> -->
-<!ELEMENT price EMPTY>
-<!ELEMENT meta EMPTY>
+<!-- <!ELEMENT commercial (isoCurrencyCode, amount)> -->
+<!ELEMENT commercial EMPTY>
+<!ELEMENT prodMeta EMPTY>
 <!ELEMENT atomicProduct EMPTY>
 <!ELEMENT resource EMPTY>
 
@@ -18,11 +18,11 @@
 	type (include|mutex) #REQUIRED
 >
 
-<!ATTLIST price
+<!ATTLIST commercial
 	isoCurrencyCode CDATA #REQUIRED
 >
 
-<!ATTLIST meta
+<!ATTLIST prodMeta
 	name CDATA #REQUIRED
 	value CDATA #REQUIRED
 >
