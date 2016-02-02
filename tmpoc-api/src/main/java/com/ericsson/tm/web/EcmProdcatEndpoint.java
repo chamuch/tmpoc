@@ -36,7 +36,7 @@ public interface EcmProdcatEndpoint {
     public ProductOfferingType getProductOffering(@PathParam ("productOfferingId") String productOfferingId);
 	
 	@GET
-	@Path("/productOffering/?")
+	@Path("/browseProductOffering/?")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ProductOfferingResultList browseProductOfferings(@Context UriInfo queryParams);
 //    public ProductOfferingResultList browseProductOfferings(@QueryParam ("categoryId") String categoryId,
