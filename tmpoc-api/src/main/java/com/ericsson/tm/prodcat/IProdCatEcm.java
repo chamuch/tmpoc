@@ -2,8 +2,6 @@ package com.ericsson.tm.prodcat;
 
 import java.util.List;
 
-import javax.ws.rs.core.UriInfo;
-
 import com.ericsson.tm.prodcat.ecm.entities.msdp.ExtensionType;
 import com.ericsson.tm.prodcat.ecm.entities.msdp.ProductCategoryType;
 import com.ericsson.tm.prodcat.ecm.entities.msdp.ProductOfferingResultList;
