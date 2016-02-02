@@ -1,6 +1,12 @@
 package com.ericsson.tm.prodcat;
 
+import java.util.List;
+
+import javax.ws.rs.core.UriInfo;
+
+import com.ericsson.tm.prodcat.ecm.entities.msdp.ExtensionType;
 import com.ericsson.tm.prodcat.ecm.entities.msdp.ProductCategoryType;
+import com.ericsson.tm.prodcat.ecm.entities.msdp.ProductOfferingResultList;
 import com.ericsson.tm.prodcat.ecm.entities.msdp.ProductOfferingType;
 
 public interface IProdCatEcm {
@@ -11,8 +17,6 @@ public interface IProdCatEcm {
 
     public ProductOfferingType getProductOffering(String productOfferingId);
 
-//	public ProductOffering getProductOffering(String id);
-//
-//	public List<ProductOffering> getProductsFor(String resourceId, String serviceId);
+    public ProductOfferingResultList browseProductOffering(String categoryId, int fromItem, int maxItems, List<ExtensionType> searchCriteria);
 
 }

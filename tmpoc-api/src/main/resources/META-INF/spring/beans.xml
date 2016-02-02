@@ -138,6 +138,12 @@
 						<camel:to uri="direct:productOffering"></camel:to>
 					</camel:when>
 					
+					<camel:when>
+						<camel:simple>${header.operationName} == 'browseProductOfferings'</camel:simple>
+						<camel:log message="Delegating to BrowseProductOfferings: Request: ${body}" />
+						<camel:to uri="direct:browseProductOfferings"></camel:to>
+					</camel:when>
+					
 				</camel:choice>
 				
 				<camel:doCatch>
@@ -192,6 +198,24 @@
 			<camel:from uri="direct:productOffering"></camel:from>
 			<camel:doTry>
 				<camel:bean ref="ecmService" method="getProductOffering"></camel:bean>
+				<camel:doCatch>
+					<camel:exception>java.lang.Exception</camel:exception>
+					<camel:log message="Exception in ECM REST API: ${exception.stacktrace}"></camel:log>
+					<camel:setBody>
+						<camel:simple>${exception}</camel:simple>
+				 	</camel:setBody>
+				</camel:doCatch>
+				<camel:doFinally>
+					<camel:log message="Exit-api: |||${body}|||" />
+				</camel:doFinally>
+			</camel:doTry>			
+		</route>
+		
+		<!-- browseProductOfferings -->
+		<route id="invoke-browseProductOfferings">
+			<camel:from uri="direct:browseProductOfferings"></camel:from>
+			<camel:doTry>
+				<camel:bean ref="ecmService" method="browseProductOfferings"></camel:bean>
 				<camel:doCatch>
 					<camel:exception>java.lang.Exception</camel:exception>
 					<camel:log message="Exception in ECM REST API: ${exception.stacktrace}"></camel:log>

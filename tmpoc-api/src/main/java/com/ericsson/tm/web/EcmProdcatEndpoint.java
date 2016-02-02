@@ -7,9 +7,12 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriInfo;
 
 import com.ericsson.tm.prodcat.ecm.entities.msdp.ProductCategoryType;
+import com.ericsson.tm.prodcat.ecm.entities.msdp.ProductOfferingResultList;
 import com.ericsson.tm.prodcat.ecm.entities.msdp.ProductOfferingType;
 
 
@@ -31,5 +34,14 @@ public interface EcmProdcatEndpoint {
     @Path("/productOffering/{productOfferingId}")
     @Produces(MediaType.APPLICATION_JSON)
     public ProductOfferingType getProductOffering(@PathParam ("productOfferingId") String productOfferingId);
+	
+	@GET
+	@Path("/productOffering/?")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ProductOfferingResultList browseProductOfferings(@Context UriInfo queryParams);
+//    public ProductOfferingResultList browseProductOfferings(@QueryParam ("categoryId") String categoryId,
+//                                                            @DefaultValue ("0") @QueryParam ("fromId") int fromId,
+//                                                            @DefaultValue ("10") @QueryParam ("maxItems") int maxItems,
+//                                                            @QueryParam(value = "") String... searchCriteria); 
 
 }
