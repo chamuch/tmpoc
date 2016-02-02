@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.ws.rs.core.UriInfo;
+//import javax.ws.rs.core.UriInfo;
 
 import com.ericsson.tm.core.SpringHelper;
 import com.ericsson.tm.prodcat.IProdCatDiscovery;

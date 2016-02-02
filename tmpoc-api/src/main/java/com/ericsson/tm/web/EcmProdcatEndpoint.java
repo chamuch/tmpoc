@@ -38,10 +38,9 @@ public interface EcmProdcatEndpoint {
 	@GET
 	@Path("/browseProductOffering/?")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ProductOfferingResultList browseProductOfferings(@Context UriInfo queryParams);
-//    public ProductOfferingResultList browseProductOfferings(@QueryParam ("categoryId") String categoryId,
-//                                                            @DefaultValue ("0") @QueryParam ("fromId") int fromId,
-//                                                            @DefaultValue ("10") @QueryParam ("maxItems") int maxItems,
-//                                                            @QueryParam(value = "") String... searchCriteria); 
+//	public ProductOfferingResultList browseProductOfferings(@Context UriInfo queryParams);
+    public ProductOfferingResultList browseProductOfferings(@QueryParam ("categoryId") String categoryId,
+                                                            @DefaultValue ("0") @QueryParam ("fromItem") int fromItem,
+                                                            @DefaultValue ("10") @QueryParam ("maxItems") int maxItems); 
 
 }
