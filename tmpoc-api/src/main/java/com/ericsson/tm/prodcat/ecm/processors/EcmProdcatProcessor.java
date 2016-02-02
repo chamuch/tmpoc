@@ -37,7 +37,7 @@ public class EcmProdcatProcessor implements EcmProdcatEndpoint {
 
     }
 
-    //@Override
+    @Override
     public ProductOfferingResultList browseProductOfferings(UriInfo queryParams) {
         System.out.println("BrowseProductOfferingProcessor start");
         
@@ -80,7 +80,7 @@ public class EcmProdcatProcessor implements EcmProdcatEndpoint {
 
     }
 
-	@Override
+//	@Override
 	public ProductOfferingResultList browseProductOfferings(String categoryId, int fromItem, int maxItems, List<ExtensionType> searchCriteria) {
 		if (categoryId == null || categoryId.equals(""))
             throw new IllegalArgumentException("CategoryId parameter is missing or empty!!");
