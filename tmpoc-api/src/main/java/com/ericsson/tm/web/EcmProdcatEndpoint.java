@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.ericsson.tm.prodcat.ecm.entities.msdp.ProductCategoryType;
+import com.ericsson.tm.prodcat.ecm.entities.msdp.ProductOfferingType;
 
 
 @Path("/ecmRT/v2/")
@@ -25,5 +26,10 @@ public interface EcmProdcatEndpoint {
 	@Path("/productCategory/{productCategoryId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ProductCategoryType getProductCategory(@PathParam ("productCategoryId") String productCategoryId);
+	
+	@GET
+    @Path("/productOffering/{productOfferingId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ProductOfferingType getProductOffering(@PathParam ("productOfferingId") String productOfferingId);
 
 }

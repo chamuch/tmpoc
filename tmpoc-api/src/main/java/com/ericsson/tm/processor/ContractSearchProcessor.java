@@ -57,9 +57,25 @@ public class ContractSearchProcessor implements Processor {
 				}
 			} else if (request.getInputAttributes() != null && request.getInputAttributes().getDirnum() != null) {
 				dirNum = request.getInputAttributes().getDirnum();
-				customerAccountNo = "1-1LTUM7F";
-				csIdPubConstantResp = "1";
+				if (dirNum.equals("4947116011")) {
+				    csIdPub = "CUST_88";
+				    customerAccountNo = "1-10E2Y4D";
+                    csIdPubConstantResp = "2";
+				} else if (dirNum.equals("4947116010")) {
+                    csIdPub = "CUST_86";
+                    customerAccountNo = "1-1LTUM7F";
+                    csIdPubConstantResp = "1";
+                } else  if (dirNum.equals("13800138011")) {
+                    csIdPub = "CUST_101";
+                    customerAccountNo = "1-4HQDJHY";
+                    csIdPubConstantResp = "3";
+                } else if (dirNum.equals("13800138021")) {
+                    csIdPub = "CUST_102";
+                    customerAccountNo = "1-12YASD";
+                    csIdPubConstantResp = "4";
+                } 
 			} else{
+			    csIdPub = dirNum;
 				customerAccountNo = "1-UNKNOWN";
 				csIdPubConstantResp = "5";
 			}

@@ -132,6 +132,11 @@
 						<camel:to uri="direct:productCategory"></camel:to>
 					</camel:when>
 					
+					<camel:when>
+						<camel:simple>${header.operationName} == 'getProductOffering'</camel:simple>
+						<camel:log message="Delegating to GetProductOffering: Request: ${body}" />
+						<camel:to uri="direct:productOffering"></camel:to>
+					</camel:when>
 					
 				</camel:choice>
 				
@@ -169,6 +174,24 @@
 			<camel:from uri="direct:productCategory"></camel:from>
 			<camel:doTry>
 				<camel:bean ref="ecmService" method="getProductCategory"></camel:bean>
+				<camel:doCatch>
+					<camel:exception>java.lang.Exception</camel:exception>
+					<camel:log message="Exception in ECM REST API: ${exception.stacktrace}"></camel:log>
+					<camel:setBody>
+						<camel:simple>${exception}</camel:simple>
+				 	</camel:setBody>
+				</camel:doCatch>
+				<camel:doFinally>
+					<camel:log message="Exit-api: |||${body}|||" />
+				</camel:doFinally>
+			</camel:doTry>			
+		</route>
+		
+		<!-- getProductOffering -->
+		<route id="invoke-productOffering">
+			<camel:from uri="direct:productOffering"></camel:from>
+			<camel:doTry>
+				<camel:bean ref="ecmService" method="getProductOffering"></camel:bean>
 				<camel:doCatch>
 					<camel:exception>java.lang.Exception</camel:exception>
 					<camel:log message="Exception in ECM REST API: ${exception.stacktrace}"></camel:log>
