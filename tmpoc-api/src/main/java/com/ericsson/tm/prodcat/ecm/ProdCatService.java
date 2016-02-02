@@ -6,8 +6,10 @@ import java.util.List;
 import com.ericsson.tm.core.SpringHelper;
 import com.ericsson.tm.prodcat.IProdCatDiscovery;
 import com.ericsson.tm.prodcat.IProdCatEcm;
-import com.ericsson.tm.prodcat.ecm.entities.ProductCategory;
-import com.ericsson.tm.prodcat.ecm.entities.product.ProductOffering;
+
+import com.ericsson.tm.prodcat.ecm.entities.msdp.ProductCategoryList;
+import com.ericsson.tm.prodcat.ecm.entities.msdp.ProductCategoryType;
+
 import com.ericsson.tm.prodcat.simple.entities.Product;
 
 public class ProdCatService implements IProdCatEcm {
@@ -17,8 +19,9 @@ public class ProdCatService implements IProdCatEcm {
 	}
 
 	@Override
-	public List<ProductCategory> getAllProductCategoies() {
-		ArrayList<ProductCategory> response = new ArrayList<>();
+	public ProductCategoryType getAllProductCategories() {
+		ProductCategoryType response = new ProductCategoryType();
+		ProductCategoryList prodCategoryList = new ProductCategoryList();
 		ArrayList<String> categories = new ArrayList<>();
 		
 		IProdCatDiscovery localDiscovery = SpringHelper.getProductCatalogForDiscovery();
@@ -30,14 +33,15 @@ public class ProdCatService implements IProdCatEcm {
 				if (product.getMeta("Category") != null) {
 					String cat = product.getMeta("Category");
 					System.out.println("product (" + product.getName() + ") meta:Category found is: " + cat);
-					if (categories.indexOf(cat) != -1) {
+					if (categories.indexOf(cat) == -1) {
 						categories.add(cat);
 						
-						ProductCategory pc = new ProductCategory();
+						ProductCategoryType pc = new ProductCategoryType();
 						pc.setId(cat);
 						pc.setName(cat);
 						pc.setDescription(cat);
-						response.add(pc);
+						pc.setRoot((product.getCompositions().size() > 0) && (product.isDiscoverable()));
+						prodCategoryList.addProductCategory(pc);
 					}
 				} else {
 					System.out.println("product (" + product.getName() + ") meta:Category not found");
@@ -45,24 +49,34 @@ public class ProdCatService implements IProdCatEcm {
 			}
 		}
 		
+		response.setProductCategoryList(prodCategoryList);
 		return response;
 		
 	}
-	
+
 	@Override
-	public ProductCategory getProductCategory(String categoryId) {
-		return null;
+	public ProductCategoryType getProductCategory(String categoryId) {
+		ProductCategoryType response = new ProductCategoryType();
 		
+		IProdCatDiscovery localDiscovery = SpringHelper.getProductCatalogForDiscovery();
+		System.out.println("localDiscovery instance initialized: " + (localDiscovery!=null));
+		
+		for (Product product: localDiscovery.getAllProducts()) {
+			System.out.println("product (" + product.getName() + ") metas: " + product.getMetas());
+			if (product.getMetas().size() > 0) {
+				if (product.getMeta("Category") != null && categoryId.equalsIgnoreCase(product.getMeta("Category"))) {
+					response.setId(categoryId);
+					response.setName(categoryId);
+					response.setDescription(product.getDescription());
+					response.setRoot((product.getCompositions().size() > 0) && (product.isDiscoverable()));
+					return response;
+				}
+			}
+		}
+		
+		return response;
 	}
 	
-	@Override
-	public ProductOffering getProductOffering(String id) {
-		return null;
-	}
 	
-	@Override
-	public List<ProductOffering> getProductsFor(String resourceId, String serviceId) {
-		return null;
-	}
 	
 }

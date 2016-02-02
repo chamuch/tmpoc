@@ -1,18 +1,15 @@
 package com.ericsson.tm.prodcat;
 
-import java.util.List;
-
-import com.ericsson.tm.prodcat.ecm.entities.ProductCategory;
-import com.ericsson.tm.prodcat.ecm.entities.product.ProductOffering;
+import com.ericsson.tm.prodcat.ecm.entities.msdp.ProductCategoryType;
 
 public interface IProdCatEcm {
 
-	public List<ProductCategory> getAllProductCategoies();
+	public ProductCategoryType getAllProductCategories();
 
-	public ProductCategory getProductCategory(String categoryId);
+	public ProductCategoryType getProductCategory(String categoryId);
 
-	public ProductOffering getProductOffering(String id);
-
-	public List<ProductOffering> getProductsFor(String resourceId, String serviceId);
+//	public ProductOffering getProductOffering(String id);
+//
+//	public List<ProductOffering> getProductsFor(String resourceId, String serviceId);
 
 }

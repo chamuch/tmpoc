@@ -1,23 +1,24 @@
 package com.ericsson.tm.prodcat.ecm.processors;
 
-import java.util.List;
+
 
 import com.ericsson.tm.core.SpringHelper;
-import com.ericsson.tm.prodcat.ecm.entities.ProductCategory;
+import com.ericsson.tm.prodcat.ecm.entities.msdp.ProductCategoryType;
 import com.ericsson.tm.web.EcmProdcatEndpoint;
 
 public class EcmProdcatProcessor implements EcmProdcatEndpoint {
 
 	@Override
-	public List<ProductCategory> getAllProductCategories() {
+	public ProductCategoryType getAllProductCategories() {
 		System.out.println("GetAllProductCategoriesProcessor start");
-		return SpringHelper.getEcmProductCatalog().getAllProductCategoies();
+		return SpringHelper.getEcmProductCatalog().getAllProductCategories();
 		
 	}
 
 	@Override
-	public ProductCategory getProductCategory(String productCategoryId) {
-		return null;
+	public ProductCategoryType getProductCategory(String productCategoryId) {
+		System.out.println("GetAllProductCategoryProcessor start");
+		return SpringHelper.getEcmProductCatalog().getProductCategory(productCategoryId);
 		
 	}
 

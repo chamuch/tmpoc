@@ -33,6 +33,7 @@ public class ContractSearchProcessor implements Processor {
 			String csIdPub = "";
 			String customerAccountNo = "";			
 			String csIdPubConstantResp = "";
+			String dirNum = "";
 			
 			if(request.getInputAttributes() != null && request.getInputAttributes().getCsIdPub() != null){
 				csIdPub = request.getInputAttributes().getCsIdPub();
@@ -54,7 +55,11 @@ public class ContractSearchProcessor implements Processor {
 					customerAccountNo = "1-UNKNOWN";
 					csIdPubConstantResp = "5";
 				}
-			}else{
+			} else if (request.getInputAttributes() != null && request.getInputAttributes().getDirnum() != null) {
+				dirNum = request.getInputAttributes().getDirnum();
+				customerAccountNo = "1-1LTUM7F";
+				csIdPubConstantResp = "1";
+			} else{
 				customerAccountNo = "1-UNKNOWN";
 				csIdPubConstantResp = "5";
 			}

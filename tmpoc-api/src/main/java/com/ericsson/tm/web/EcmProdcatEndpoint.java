@@ -1,7 +1,6 @@
 package com.ericsson.tm.web;
 
 
-import java.util.List;
 
 import javax.jws.WebService;
 import javax.ws.rs.GET;
@@ -10,7 +9,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.ericsson.tm.prodcat.ecm.entities.ProductCategory;
+import com.ericsson.tm.prodcat.ecm.entities.msdp.ProductCategoryType;
+
 
 @Path("/ecmRT/v2/")
 @WebService
@@ -19,11 +19,11 @@ public interface EcmProdcatEndpoint {
 	@GET
 	@Path("/productCategory/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<ProductCategory> getAllProductCategories();
+	public ProductCategoryType getAllProductCategories();
 	
 	@GET
 	@Path("/productCategory/{productCategoryId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ProductCategory getProductCategory(@PathParam ("productCategoryId") String productCategoryId);
+	public ProductCategoryType getProductCategory(@PathParam ("productCategoryId") String productCategoryId);
 
 }
